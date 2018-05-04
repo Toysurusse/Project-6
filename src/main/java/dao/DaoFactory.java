@@ -1,53 +1,46 @@
-package basededonnee;
+package dao;
+
+import dao.CommentaireDaoImpl;
+import dao.TopoDaoImpl;
+import dao.list.CommentaireDAO;
+import dao.list.TopoDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DaoFactory {
+    private String url;
+    private String username;
+    private String password;
 
-    private static Connection connect;
-
-    public static Connection getInstance() {
-        if (connect ==null){
-            new DaoFactory();
-        }
-        return connect;
+    DaoFactory(String url, String username, String password) {
+        this.url = url;
+        this.username = username;
+        this.password = password;
     }
 
-    private DaoFactory() {
-        System.out.println("-------- PostgreSQL "
-                + "JDBC Connection Testing ------------");
+    public static DaoFactory getInstance() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Where is your PostgreSQL JDBC Driver? "
-                    + "Include in your library path!");
-            e.printStackTrace();
-        }
-        System.out.println("PostgreSQL JDBC Driver Registered!");
-        try {
-            connect = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/PJ6", "postgres",
-                    "Toysrusse");
-
-            if (connect != null) {
-                System.out.println("You made it, take control your database now!");
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-        } catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
         }
 
+        DaoFactory instance = new DaoFactory(
+                "jdbc:postgresql://localhost:5432/PJ6", "postgres", "Toysrusse");
+        return instance;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, username, password);
     }
 
     public TopoDAO getTopoDAO(){
-
-        return new TopoDAOImpl;
+        return new TopoDaoImpl(this);
     }
 
-
+    public CommentaireDAO getCommentaireDAO() {
+        return new CommentaireDaoImpl(this);
+    }
 
 }

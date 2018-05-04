@@ -1,10 +1,11 @@
 package dao.list;
 
+import beans.Commentaire;
 import beans.Topo;
 
 import java.util.List;
 
-public interface TopoDAO {
-    void ajouter (Topo topo);
-    List <Topo> lister();
+public interface CommentaireDAO {
+    void ajouter(Commentaire commentaire);
+    List <Commentaire> lister();
 }

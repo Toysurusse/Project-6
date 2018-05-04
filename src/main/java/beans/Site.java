@@ -1,9 +1,10 @@
-package entity;
+package beans;
 
 public class Site {
 
-    private String nb;
+    private String id;
     private String location;
+
     private String way;
     private String height;
     private String hardness;
@@ -11,7 +12,7 @@ public class Site {
     private String topos;
 
     public Site(String id, String secteur, String voie, String hauteur, String cotation, String nb_points, String topo){
-        this.nb=id;
+        this.id=id;
         this.location = secteur;
         this.way= voie;
         this.height=hauteur;
@@ -21,7 +22,7 @@ public class Site {
         }
 
     public String getNb() {
-        return nb;
+        return id;
     }
     public String getLocation() {
         return location;
@@ -40,6 +41,28 @@ public class Site {
     }
     public String getTopos() {
         return topos;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public void setWay(String way) {
+        this.way = way;
+    }
+    public void setHeight(String height) {
+        this.height = height;
+    }
+    public void setHardness(String hardness) {
+        this.hardness = hardness;
+    }
+    public void setPoints_nb(String points_nb) {
+        this.points_nb = points_nb;
+    }
+    public void setTopos(String topos) {
+        this.topos = topos;
     }
 
 }

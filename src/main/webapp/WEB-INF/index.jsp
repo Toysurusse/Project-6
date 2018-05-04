@@ -1,7 +1,4 @@
 
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,32 +12,6 @@
 
 <div>
     <p><c:out value ="Bonjour !"/></p>
-
-    <ul>
-        <c:forEach var="topo" items="${ topos }">
-            <li>
-                <div>
-                <c:out value="${ topo.getID ()}" /> <c:out value="${ topo.getLocation ()}" />
-                </div>
-                <div>
-                    <c:out value="${ topo.getResume ()}" /> /</br>
-                </div>
-            </li>
-        </c:forEach>
-    </ul>
-    <ul>
-        <c:forEach var="commentaire" items="${ commentaires }">
-            <li>
-                <div>
-                    <c:out value="${ commentaire.getComId ()}" /> <c:out value="${ commentaire.getTitle ()}" />
-                </div>
-                <div>
-                    <c:out value="${ commentaire.getCommentary ()}" /> /</br>
-                </div>
-            </li>
-        </c:forEach>
-    </ul>
-
     <a href="http://localhost:8080/accueil" target="_blank"> <input type="button" name="share"  value="partager une information"> </a>
 </div>
 <div>

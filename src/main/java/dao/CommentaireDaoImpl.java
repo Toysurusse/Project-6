@@ -1,52 +1,64 @@
 package dao;
 
-import beans.Topo;
-import dao.list.TopoDAO;
+import beans.Commentaire;
+import dao.list.CommentaireDAO;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopoDaoImpl implements TopoDAO {
+public class CommentaireDaoImpl implements CommentaireDAO {
 
     private DaoFactory daoFactory;
 
-    TopoDaoImpl (DaoFactory daoFactory){
+    public CommentaireDaoImpl(DaoFactory daoFactory){
         this.daoFactory=daoFactory;
     }
 
     @Override
-    public void ajouter(Topo topo) {
+    public void ajouter(Commentaire commentaire) {
 
     }
 
     @Override
-    public List<Topo> lister() {
-        List<Topo> topos = new ArrayList<Topo>();
-        Statement statement ;
-        ResultSet resultat ;
+    public List<Commentaire> lister() {
+        List<Commentaire> commentaires = new ArrayList<Commentaire>();
+        Statement statement =null ;
+        ResultSet resultat =null ;
+        Connection connexion =null;
 
         try {
-            statement=DaoFactory.getInstance().createStatement();
-            resultat = statement.executeQuery("SELECT * FROM topo;");
+
+            connexion =daoFactory.getConnection();
+            statement=connexion.createStatement();
+            resultat = statement.executeQuery("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id;");
 
             while (resultat.next()) {
-                String id = resultat.getString(1);
-                String spot = resultat.getString(2);
-                String descript = resultat.getString(3);
+                String account = resultat.getString(6);
+                String title= resultat.getString(7);
+                String commentary= resultat.getString(8);
+                String comId= resultat.getString(2);
+                String pageId= resultat.getString(1);
+                String siteId= resultat.getString(3);
+                String topoId= resultat.getString(4);
 
-                Topo topo = new Topo();
-                topo.setId(id);
-                topo.setLocation(spot);
-                topo.setResume(descript);
+                Commentaire commentaire = new Commentaire();
+                commentaire.setAccount(account);
+                commentaire.setTitle(title);
+                commentaire.setCommentary(commentary);
+                commentaire.setComId(comId);
+                commentaire.setPageId(pageId);
+                commentaire.setSiteId(siteId);
+                commentaire.setTopoId(topoId);
 
-                topos.add(topo);
+                commentaires.add(commentaire);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return topos;
+        return commentaires;
     }
 }

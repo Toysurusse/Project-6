@@ -1,24 +1,36 @@
-package entity;
+package beans;
 
 public class Topo {
 
-    private String nb;
+    private String id;
+
+
     private String location;
     private String resume;
 
-    public Topo (String id, String spot, String descript){
-        this.nb=id;
-        this.location = spot;
-        this.resume= descript;
+    public Topo (){
+        this.id=id;
+        this.location = location;
+        this.resume= location;
     }
 
-    public String getNb() {
-        return nb;
+    public String getID() {
+        return id;
     }
     public String getLocation() {
         return location;
     }
     public String getResume() {
         return resume;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }
