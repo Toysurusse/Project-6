@@ -22,6 +22,33 @@
     <url-pattern>/topo</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Connect</servlet-name>
+    <servlet-class>servlets.Connect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connect</servlet-name>
+    <url-pattern>/connect</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Filter</servlet-name>
+    <servlet-class>servlets.Filter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Filter</servlet-name>
+    <url-pattern>/filter</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CreateAccount</servlet-name>
+    <servlet-class>servlets.CreateAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAccount</servlet-name>
+    <url-pattern>/createaccount</url-pattern>
+  </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
@@ -29,5 +56,16 @@
         </jsp-property-group>
 
     </jsp-config>
+
+  <!-- Filter Struts -->
+
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
 </web-app>

@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 
-<div class = "Menu">
+<div class ="Menu"></div>
     <div>
         <div class ="Space"></div>
         <div>
@@ -36,6 +36,6 @@
         </div>
         <div class ="Space"></div>
     </div>
-</div>
+
 
 

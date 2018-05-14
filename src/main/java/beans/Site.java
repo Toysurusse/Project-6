@@ -4,24 +4,13 @@ public class Site {
 
     private String id;
     private String location;
-
     private String way;
     private String height;
     private String hardness;
     private String points_nb;
-    private String topos;
+    private int topos;
 
-    public Site(String id, String secteur, String voie, String hauteur, String cotation, String nb_points, String topo){
-        this.id=id;
-        this.location = secteur;
-        this.way= voie;
-        this.height=hauteur;
-        this.hardness=cotation;
-        this.points_nb=nb_points;
-        this.topos=topo;
-        }
-
-    public String getNb() {
+    public String getId() {
         return id;
     }
     public String getLocation() {
@@ -39,7 +28,7 @@ public class Site {
     public String getPoints_nb() {
         return points_nb;
     }
-    public String getTopos() {
+    public int getTopos() {
         return topos;
     }
 
@@ -61,7 +50,7 @@ public class Site {
     public void setPoints_nb(String points_nb) {
         this.points_nb = points_nb;
     }
-    public void setTopos(String topos) {
+    public void setTopos(int topos) {
         this.topos = topos;
     }
 

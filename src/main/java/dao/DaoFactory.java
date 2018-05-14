@@ -2,8 +2,7 @@ package dao;
 
 import dao.CommentaireDaoImpl;
 import dao.TopoDaoImpl;
-import dao.list.CommentaireDAO;
-import dao.list.TopoDAO;
+import dao.list.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +12,8 @@ public class DaoFactory {
     private String url;
     private String username;
     private String password;
+
+    public Connection connect;
 
     DaoFactory(String url, String username, String password) {
         this.url = url;
@@ -35,6 +36,10 @@ public class DaoFactory {
         return DriverManager.getConnection(url, username, password);
     }
 
+    public SiteDAO getSiteDAO(){
+        return new SiteDaoImpl(this);
+    }
+
     public TopoDAO getTopoDAO(){
         return new TopoDaoImpl(this);
     }
@@ -43,4 +48,11 @@ public class DaoFactory {
         return new CommentaireDaoImpl(this);
     }
 
+    public AccountDAO getAccountDAO(){
+        return new AccountDaoImpl(this);
+    }
+
+    public AddressDAO getAdressDAO(){
+        return new AdressDaoImpl(this);
+    }
 }

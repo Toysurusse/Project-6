@@ -1,0 +1,106 @@
+/* Général ------------------------------------------------------------------------------------- */
+
+body, p, legend, label, input {
+    font: normal 8pt verdana, helvetica, sans-serif;
+}
+
+.fonds {
+    background-image: url(picture/escalade.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.TitlePage{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.logo {
+    background-image: url(picture/Logo.png);
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+}
+
+.tribe{
+    width: 10px;
+    height: 10px;;
+}
+
+.titre{
+    text-align: center;
+    color: #e46e55;
+}
+
+.alignV{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Menu{
+    text-align: center;
+    color: #e46e55;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.ButMenu{
+    text-decoration: none;
+    font-family: Arial,sans-serif;
+    font-size: 1.6em;
+    width: 250px;
+    height: 43px;
+    padding-top: 7px; /*permet le centrage vertical*/
+    text-align: center;
+    vertical-align:middle;
+    color: white;
+    border-radius: 8px;
+    background: #39b0f8;
+    background: linear-gradient( #65b7e8, #009fff);
+    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+    box-shadow: 0 0 5px #009fff,
+    0 -1px 0 #65b7e8;
+}
+
+.ButMenu:hover{
+    color: white;
+    background: #369edd;
+    background: linear-gradient( #65b7e8, #008ce1);
+}
+
+.ButMenu:active{
+    color: white;
+    background: #1fa0ee;
+    background: linear-gradient( #65b7e8, #027fca);
+    box-shadow: 1px 1px 10px #009fff inset,
+    0 1px 0 #65b7e8;
+}
+
+.FirstPage{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-radius: 8px;
+    border-color: #027fca;
+}
+
+.Article{
+    text-align: justify;
+    background: white;
+    border: 3px #027fca dashed;
+    border-radius: 10px;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+}
+
+.bordure{
+    width: 50px;
+    height: 50px;;
+}
+
+

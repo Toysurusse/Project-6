@@ -12,19 +12,19 @@ import java.util.List;
 
 public class TopoDaoImpl implements TopoDAO {
 
+    TopoDaoImpl (DaoFactory daoFactory){
+        this.daoFactory =daoFactory;
+    }
+
     private DaoFactory daoFactory;
 
-    TopoDaoImpl (DaoFactory daoFactory){
-        this.daoFactory=daoFactory;
-    }
-
     @Override
-    public void ajouter(Topo topo) {
+    public void add(Topo topo) {
 
     }
 
     @Override
-    public List<Topo> lister() {
+    public List<Topo> read() {
         List<Topo> topos = new ArrayList<Topo>();
         Statement statement =null ;
         ResultSet resultat =null ;
@@ -32,12 +32,12 @@ public class TopoDaoImpl implements TopoDAO {
 
         try {
 
-            connexion =daoFactory.getConnection();
-            statement=connexion.createStatement();
+            connexion = daoFactory.getConnection();
+            statement = connexion.createStatement();
             resultat = statement.executeQuery("SELECT * FROM topo;");
 
             while (resultat.next()) {
-                String id = resultat.getString(1);
+                int id = resultat.getInt(1);
                 String spot = resultat.getString(2);
                 String descript = resultat.getString(3);
 
@@ -45,14 +45,39 @@ public class TopoDaoImpl implements TopoDAO {
                 topo.setId(id);
                 topo.setLocation(spot);
                 topo.setResume(descript);
-
-                System.out.println(topo.getID()+" ; "+topo.getLocation()+" ; "+topo.getResume());
-
+                System.out.println(id + spot +descript);
                 topos.add(topo);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return topos;
+    }
+
+    @Override
+    public Topo topoSelect(int topoid) {
+        Topo topo = new Topo();
+        Statement statement =null ;
+        ResultSet resultat =null ;
+        Connection connexion =null;
+
+        try {
+            connexion = daoFactory.getConnection();
+            statement = connexion.createStatement();
+            resultat = statement.executeQuery("SELECT * FROM topo WHERE topo_id = "+topoid+";");
+
+            while (resultat.next()) {
+                int id = resultat.getInt(1);
+                String spot = resultat.getString(2);
+                String descript = resultat.getString(3);
+
+                topo.setId(id);
+                topo.setLocation(spot);
+                topo.setResume(descript);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return topo;
     }
 }

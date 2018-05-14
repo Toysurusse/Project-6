@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+        <!-- Action par défaut -->
+        <default-action-ref name="accueil" />
+        <!-- Action "index" -->
+        <action name="accueil">
+            <result>/jsp/accueil.jsp</result>
+        </action>
+
+        <!-- Action listant les topos -->
+        <action name="list_topo"
+                class="actions.TopoController"
+                method="doList">
+            <result>/jsp/topo.jsp</result>
+        </action>
+
+        <!-- Action affichant le détail d'un projet -->
+        <action name="projet_detail"
+                class="actions.TopoController"
+                method="doDetail">
+            <result name="success">/jsp/topo/site.jsp</result>
+        </action>
+
+
+    </package>
+</struts>

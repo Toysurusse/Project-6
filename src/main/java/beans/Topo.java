@@ -2,20 +2,13 @@ package beans;
 
 public class Topo {
 
-    private String id;
-
-
+    private int identifiant;
     private String location;
     private String resume;
 
-    public Topo (){
-        this.id=id;
-        this.location = location;
-        this.resume= location;
-    }
 
-    public String getID() {
-        return id;
+    public int getIdentifiant() {
+        return identifiant;
     }
     public String getLocation() {
         return location;
@@ -24,8 +17,8 @@ public class Topo {
         return resume;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int identifiant) {
+        this.identifiant = identifiant;
     }
     public void setLocation(String location) {
         this.location = location;

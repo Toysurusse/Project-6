@@ -5,6 +5,7 @@ import beans.Topo;
 import java.util.List;
 
 public interface TopoDAO {
-    void ajouter (Topo topo);
-    List <Topo> lister();
+    void add (Topo topo);
+    List <Topo> read();
+    Topo topoSelect (int topoid);
 }

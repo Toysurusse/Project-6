@@ -6,6 +6,7 @@ import beans.Topo;
 import java.util.List;
 
 public interface CommentaireDAO {
-    void ajouter(Commentaire commentaire);
-    List <Commentaire> lister();
+    void add(Commentaire commentaire);
+    List <Commentaire> read();
+    int lastIDCom (List <Commentaire> com);
 }

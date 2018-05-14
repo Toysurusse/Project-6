@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.Commentaire;
 import dao.DaoFactory;
 import dao.list.CommentaireDAO;
 import dao.list.TopoDAO;
@@ -25,17 +26,31 @@ public class Topo extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        int Compteid = 1;
+        String Commentary = request.getParameter("Commentary");
+        String title = request.getParameter("Title");
+        Commentaire addCom = new Commentaire();
 
+        addCom.setPageId(String.valueOf(commentaireDAO.lastIDCom(commentaireDAO.read())+1));
+        addCom.setComId(String.valueOf(commentaireDAO.lastIDCom(commentaireDAO.read())+1));
+        addCom.setSiteId("0");
+        addCom.setTopoId("0");
+        addCom.setAccount(String.valueOf(Compteid));
+        addCom.setTitle(title);
+        addCom.setCommentary(Commentary);
 
+        commentaireDAO.add(addCom);
 
+        request.setAttribute("topos", topoDAO.read());
+        request.setAttribute("commentaires", commentaireDAO.read());
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("topos", topoDAO.lister());
-        request.setAttribute("commentaires", commentaireDAO.lister());
+        request.setAttribute("topos", topoDAO.read());
+        request.setAttribute("commentaires", commentaireDAO.read());
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-
     }
 }

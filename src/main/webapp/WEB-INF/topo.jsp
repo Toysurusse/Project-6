@@ -1,60 +1,92 @@
-
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
-<html>
+<html class = fonds>
 <head>
-    <title>Accueil</title>
-    <link type="text/css" rel="stylesheet" href="PageCSS\index.css" />
+    <title>Topos</title>
+    <link type="text/css" rel="stylesheet" href="CSS\topo.css" />
 </head>
 <body>
-<h1>Bienvenu sur notre site d'escalade !</h1>
+<div class = "TitlePage">
+    <div class = "logo">
+    </div>
+    <div class = "titre">
+        <h1>Liste des différents Topos</h1>
+    </div>
+    <div>
+        <c:choose>
+            <c:when test="${ !empty sessionScope.pseudo && !empty sessionScope.password }">
+                <p>Bienvenu ${ sessionScope.pseudo } !</p>
+            </c:when>
+            <c:when test="${ empty sessionScope.pseudo && empty sessionScope.password }">
+                <a href="http://localhost:8080/connect" target="_blank"> <input type="button" name="share"  value="Se Connecter" class ="ButMenu"> </a>
+            </c:when>
+        </c:choose>
 
-<p>Vous souhaitez ?</p>
+    </div>
+</div>
+<div class = "tribe"></div>
 
-<div>
-    <p><c:out value ="Bonjour !"/></p>
 
-    <ul>
+<%@ include file="index.jsp" %>
+
         <c:forEach var="topo" items="${ topos }">
-            <li>
+            <c:if test = "${topo.getID () != 0}">
+                <div class ="sub">
+                <div class = "bordureW"></div>
+                <div  class = "Article">
                 <div>
-                <c:out value="${ topo.getID ()}" /> <c:out value="${ topo.getLocation ()}" />
+                <u><c:out value="${ topo.getID ()}" /> <c:out value="${ topo.getLocation ()}" /></u>
                 </div>
                 <div>
                     <c:out value="${ topo.getResume ()}" /> /</br>
                 </div>
-            </li>
+                <div class = "bordureH"></div>
+                </div>
+                <div class = "bordureW"></div>
+                </div>
+            </c:if>
         </c:forEach>
-    </ul>
-    <ul>
         <c:forEach var="commentaire" items="${ commentaires }">
-            <li>
+            <div class ="sub">
+            <div class = "bordureW"></div>
+            <div  class = "Article">
                 <div>
-                    <c:out value="${ commentaire.getComId ()}" /> <c:out value="${ commentaire.getTitle ()}" />
+                    <u><c:out value="${ commentaire.getComId ()}" /> <c:out value="${ commentaire.getTitle ()}" /></u>
                 </div>
                 <div>
                     <c:out value="${ commentaire.getCommentary ()}" /> /</br>
                 </div>
-            </li>
+                <div class = "bordureH"></div>
+            </div>
+            <div class = "bordureW"></div>
+            </div>
         </c:forEach>
-    </ul>
 
-    <a href="http://localhost:8080/accueil" target="_blank"> <input type="button" name="share"  value="partager une information"> </a>
-</div>
-<div>
-    <a href="http://localhost:8080/filtre" target="_blank"> <input type="button" name="filtre" value="Rechercher un site de grimpe"> </a>
-</div>
-<div>
-    <a href="http://localhost:8080/topo" target="_blank"> <input type="button" name="topos" value="Accéder aux topos"> </a>
-</div>
-<div>
-    <a href="http://localhost:8080/accueil" target="_blank"> <input type="button" name="accueil" value="Louer un topo"> </a>
-</div>
-<div>
-    <a href="http://localhost:8080/inscription" target="_blank"> <input type="button" value="Vous inscrire ?"> </a>
-</div>
+<form method="post" action="topo">
+    <div class ="sub">
+        <div class = "bordureW"></div>
+        <div class = Article>
+            <p>
+                <label for="Commentary">Commentary : </label>
+                <input type="text" name="Commentary" id="Commentary" />
+            </p>
+            <p>
+                <label for="Title">Title : </label>
+                <input type="text" name="Title" id="Title" />
+            </p>
+            <input type="submit" class ="ButMenu" />
+        </div>
+        <div class = "bordureW"></div>
+    </div>
+    <input type="submit" />
+    </div>
+    <div class = "bordureW"></div>
+    </div>
+</form>
+
+
 
 </body>
 </html>
