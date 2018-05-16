@@ -22,7 +22,7 @@ public class SiteDaoImpl implements SiteDAO {
         try {
             connexion = daoFactory.getConnection();
             preparedStatement = connexion.prepareStatement("INSERT INTO public.site_de_grimpe(site_id, secteur, voie, hauteur, cotation, nb_points, topo)VALUES (?, ?, ?, ?, ?, ?, ?);");
-            preparedStatement.setString(1, site.getId());
+            preparedStatement.setInt(1, site.getIdentifiant());
             preparedStatement.setString(2, site.getLocation());
             preparedStatement.setString(3, site.getWay());
             preparedStatement.setString(4, site.getHeight());
@@ -33,6 +33,44 @@ public class SiteDaoImpl implements SiteDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public List<Site> siteTopoSelect (int siteid) {
+        List<Site> sites = new ArrayList<Site>();
+        Statement statement =null ;
+        ResultSet resultat =null ;
+        Connection connexion =null;
+
+        try {
+            connexion =daoFactory.getConnection();
+            statement=connexion.createStatement();
+            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+";");
+
+            while (resultat.next()) {
+                int id= resultat.getInt(1);
+                String location= resultat.getString(2);
+                String way= resultat.getString(3);
+                String height= resultat.getString(4);
+                String hardness= resultat.getString(5);
+                String points_nb= resultat.getString(6);
+                int topos= resultat.getInt(7);
+
+                Site site = new Site();
+                site.setId(id);
+                site.setLocation(location);
+                site.setWay(way);
+                site.setHeight(height);
+                site.setHardness(hardness);
+                site.setPoints_nb(points_nb);
+                site.setTopos(topos);
+                sites.add(site);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sites;
     }
 
     @Override
@@ -48,7 +86,7 @@ public class SiteDaoImpl implements SiteDAO {
             resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+";");
 
             while (resultat.next()) {
-                String id= resultat.getString(1);
+                int id= resultat.getInt(1);
                 String location= resultat.getString(2);
                 String way= resultat.getString(3);
                 String height= resultat.getString(4);
@@ -87,7 +125,7 @@ public class SiteDaoImpl implements SiteDAO {
 
             while (resultat.next()) {
 
-                String id= resultat.getString(1);
+                int id= resultat.getInt(1);
                 String location= resultat.getString(2);
                 String way= resultat.getString(3);
                 String height= resultat.getString(4);

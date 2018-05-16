@@ -22,17 +22,23 @@
 </div>
 <div class = "tribe"></div>
 <ul>
-    <s:iterator var="Topo" value="listTopo">
-        <p>
-        <s:a action="topo_detail">
-            <s:param name="id"><s:property value="identifiant" /> </s:param>
-            <s:property value="location" />
-        </s:a>
-        <p>
-        <s:property value="resume" />
-        </p>
-    </s:iterator>
+    <s:form action="topo_detail">
+        <s:select name="topoid" label="topo"
+                  list="listTopo" listKey="identifiant" listValue="location"
+                  emptyOption="true"
+                  requiredLabel="true"/>
+        <s:select name="topoid" label="site"
+              list="listSite" listKey="identifiant" listValue="way"
+              emptyOption="true"
+              requiredLabel="true"/>
+    <s:submit value="Rechercher"/>
+    </s:form>
 </ul>
+
+
+<footer>
+    <%@ include file="index.jsp" %>
+</footer>
 
 </body>
 </html>

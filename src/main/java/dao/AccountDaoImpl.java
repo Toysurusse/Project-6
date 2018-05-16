@@ -39,15 +39,14 @@ public class AccountDaoImpl implements AccountDAO {
         int size =acc.size();
         return size;}
 
-    public boolean control(String pseudo, String password,List <Account> accountDAO) {
-        boolean test = false;
-
+    public Account control(String pseudo, String password,List <Account> accountDAO) {
+        Account account = null ;
         for (int i = 0; i < accountDAO.size(); i++) {
             if (pseudo.equals(accountDAO.get(i).getPseudo()) && password.equals(accountDAO.get(i).getPassword())) {
-                test = true;
+                account = accountDAO.get(i);
             }
         }
-        return test;
+        return account;
     }
 
 

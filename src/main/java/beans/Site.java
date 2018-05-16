@@ -2,7 +2,7 @@ package beans;
 
 public class Site {
 
-    private String id;
+    private int identifiant;
     private String location;
     private String way;
     private String height;
@@ -10,8 +10,8 @@ public class Site {
     private String points_nb;
     private int topos;
 
-    public String getId() {
-        return id;
+    public int getIdentifiant() {
+        return identifiant;
     }
     public String getLocation() {
         return location;
@@ -32,8 +32,8 @@ public class Site {
         return topos;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int identifiant) {
+        this.identifiant = identifiant;
     }
     public void setLocation(String location) {
         this.location = location;

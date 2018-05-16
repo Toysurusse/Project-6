@@ -29,10 +29,7 @@ public class Connect extends HttpServlet {
         HttpSession session = request.getSession();
         request.setAttribute("accounts", accountDAO.read());
 
-        if (accountDAO.control(pseudo,password,accountDAO.read())){
-            session.setAttribute("pseudo", pseudo);
-            session.setAttribute("password", password);
-        }
+
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

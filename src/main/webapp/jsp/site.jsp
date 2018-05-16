@@ -24,7 +24,10 @@
 
 <s:iterator var="Site" value="listSite">
     <p>
-        <s:property value="location" />
+        <s:a action="site_detail">
+        <s:param name="id"><s:property value="identifiant" /> </s:param>
+            <s:property value="location" />
+        </s:a>
     <p>
         <s:property value="way" /> :
     </p>
@@ -37,6 +40,10 @@
 </s:iterator>
 
 
+
+<footer>
+    <%@ include file="index.jsp" %>
+</footer>
 
 </body>
 </html>

@@ -14,25 +14,20 @@
     <div class = "logo">
     </div>
     <div class = "titre">
-        <h1>Liste des différents Topos</h1>
+        <h1>Connectez-vous</h1>
     </div>
     <div>
 
     </div>
 </div>
 <div class = "tribe"></div>
-<ul>
-    <s:iterator var="Topo" value="listTopo">
-        <p>
-        <s:a action="topo_detail">
-            <s:param name="id"><s:property value="identifiant" /> </s:param>
-            <s:property value="location" />
-        </s:a>
-        <p>
-        <s:property value="resume" />
-        </p>
-    </s:iterator>
-</ul>
 
+    <s:actionerror />
+
+    <s:form action="connecttry">
+        <s:textfield name="pseudo" label="pseudo" requiredLabel="true" />
+        <s:textfield name="password" label="password" requiredLabel="true" />
+        <s:submit value="OK"/>
+    </s:form>
 </body>
 </html>

@@ -15,21 +15,11 @@
         <h1>Bienvenue sur notre site d'escalade !</h1>
     </div>
     <div>
-        <c:choose>
-            <c:when test="${ !empty sessionScope.pseudo && !empty sessionScope.password }">
-                <p>Bienvenu ${ sessionScope.pseudo } !</p>
-            </c:when>
-            <c:when test="${ empty sessionScope.pseudo && empty sessionScope.password }">
-                <a href="http://localhost:8080/connect" target="_blank"> <input type="button" name="share"  value="Se Connecter" class ="ButMenu"> </a>
-            </c:when>
-        </c:choose>
-
+        <s:a action="connectinit"><input type="button" name="accueil" value="Se Connecter" class ="ButMenu"> </s:a>
     </div>
 </header>
 
 <body class = "fonds">
-
-<s:a action="list_topo">Liste des projets</s:a>
 
 <div class = "FirstPage">
     <div class = "bordure"></div>

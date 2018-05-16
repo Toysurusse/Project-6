@@ -67,15 +67,6 @@ public class CreateAccount extends HttpServlet {
         boolean principalAdress = Boolean.parseBoolean(request.getParameter("principalAdress"));
         addadress.setPrincipalAdress(principalAdress);
 
-        addressDAO.add(addadress);
-        accountDAO.add(addaccount);
-
-        HttpSession session = request.getSession();
-        request.setAttribute("accounts", accountDAO.read());
-        if (accountDAO.control(pseudo,password,accountDAO.read())){
-            session.setAttribute("pseudo", pseudo);
-            session.setAttribute("password", password);
-        }
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

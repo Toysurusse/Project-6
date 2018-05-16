@@ -9,4 +9,5 @@ public interface SiteDAO {
     void add(Site site);
     List <Site> read();
     List <Site> siteSelect (int siteid);
+    List <Site> siteTopoSelect (int topoid);
 }

@@ -14,25 +14,13 @@
     <div class = "logo">
     </div>
     <div class = "titre">
-        <h1>Liste des différents Topos</h1>
+        <h1>Vous êtes connecté</h1>
     </div>
     <div>
 
     </div>
 </div>
 <div class = "tribe"></div>
-<ul>
-    <s:iterator var="Topo" value="listTopo">
-        <p>
-        <s:a action="topo_detail">
-            <s:param name="id"><s:property value="identifiant" /> </s:param>
-            <s:property value="location" />
-        </s:a>
-        <p>
-        <s:property value="resume" />
-        </p>
-    </s:iterator>
-</ul>
 
 </body>
 </html>

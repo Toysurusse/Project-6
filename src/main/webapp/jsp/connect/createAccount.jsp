@@ -12,5 +12,10 @@
 </head>
 <body>
 
+
+<footer>
+    <%@ include file="../index.jsp" %>
+</footer>
+
 </body>
 </html>
