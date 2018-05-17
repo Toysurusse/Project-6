@@ -8,6 +8,6 @@ import java.util.List;
 public interface SiteDAO {
     void add(Site site);
     List <Site> read();
-    List <Site> siteSelect (int siteid);
+    List <Site> topoSiteSelect(int siteid);
     List <Site> siteTopoSelect (int topoid);
 }

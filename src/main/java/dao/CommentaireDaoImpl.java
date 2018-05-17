@@ -8,16 +8,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentaireDaoImpl implements CommentaireDAO {
-
     public CommentaireDaoImpl(DaoFactory daoFactory){
         this.daoFactory =daoFactory;
     }
-
     private DaoFactory daoFactory;
 
     public int lastIDCom (List <Commentaire> com){
         int comnb =com.size();
     return comnb;}
+
+    @Override
+    public List<Commentaire> read() {
+        List<Commentaire> commentaires = new ArrayList<Commentaire>();
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id ;");
+        return commentaires;
+    }
+
+        @Override
+    public List<Commentaire> readTopo(int id) {
+        List<Commentaire> commentaires = new ArrayList<Commentaire>();
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+";");
+        return commentaires;
+    }
+
+
+    @Override
+    public List<Commentaire> readWay(int id) {
+        List<Commentaire> commentaires = new ArrayList<Commentaire>();
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE siteid ="+id+";");
+        return commentaires;
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
 
     @Override
     public void add(Commentaire commentaire) {
@@ -45,8 +70,8 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         }
     }
 
-    @Override
-    public List<Commentaire> read() {
+
+    private List<Commentaire> extract(String request){
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
         Statement statement =null ;
         ResultSet resultat =null ;
@@ -55,7 +80,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         try {
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id;");
+            resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
                 String pageId= resultat.getString(1);

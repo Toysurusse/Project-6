@@ -52,8 +52,4 @@ public class ConnexionController extends ActionSupport {
             }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
-
-
-
-
 }

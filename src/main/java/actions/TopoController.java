@@ -1,9 +1,11 @@
 package actions;
 
+import beans.Commentaire;
 import beans.Site;
 import beans.Topo;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
+import dao.list.CommentaireDAO;
 import dao.list.SiteDAO;
 import dao.list.TopoDAO;
 
@@ -12,12 +14,13 @@ import java.util.List;
 
 public class TopoController extends ActionSupport {
 
-    private Integer topoid;
-    private Integer siteid;
+    public Integer topoid;
+    public Integer siteid;
     private Integer id;
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private TopoDAO topoDAO;
     private SiteDAO siteDAO;
+    private CommentaireDAO commentaireDAO;
 
 
     public Integer getId() {
@@ -43,6 +46,7 @@ public class TopoController extends ActionSupport {
 
     private List<Topo> listTopo;
     private List<Site> listSite;
+    private List<Commentaire> listCommentaire;
     private Topo topo;
 
     public List<Topo> getListTopo() {
@@ -51,41 +55,45 @@ public class TopoController extends ActionSupport {
     public List<Site> getListSite() {
         return listSite;
     }
+    public List<Commentaire> getListCommentaire() {
+        return listCommentaire;
+    }
+    public void setListCommentaire(List<Commentaire> listCommentaire) {
+        this.listCommentaire = listCommentaire;
+    }
+
 
     public String doList() {
         this.topoDAO = daoFactory.getTopoDAO();
         listTopo = this.topoDAO.read();
         this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.read();
         return ActionSupport.SUCCESS;
     }
 
     public String dFindTopo() {
-        topoid = id;
         this.topoDAO = daoFactory.getTopoDAO();
         topo = this.topoDAO.topoSelect(topoid);
         this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.siteSelect(siteid);
+        listSite = this.siteDAO.topoSiteSelect(siteid);
         return ActionSupport.SUCCESS;
     }
 
     public String doFindSite() {
-        siteid=id;
         System.out.println(siteid);
         this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.siteSelect(siteid);
+        listSite = this.siteDAO.topoSiteSelect(topoid);
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        listCommentaire=this.commentaireDAO.readWay(topoid);
         return ActionSupport.SUCCESS;
     }
+
 
     public String doFindsSiteTopo() {
-        topoid = id;
-        System.out.println(topoid);
+        System.out.println(siteid);
         this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.siteTopoSelect(topoid);
+        listSite = this.siteDAO.siteTopoSelect(siteid);
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        listCommentaire=this.commentaireDAO.readTopo(siteid);
         return ActionSupport.SUCCESS;
     }
-
-
-
-
 }

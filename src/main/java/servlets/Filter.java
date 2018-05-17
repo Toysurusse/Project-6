@@ -1,7 +1,6 @@
 package servlets;
 
 import dao.DaoFactory;
-import dao.list.CommentaireDAO;
 import dao.list.SiteDAO;
 import dao.list.TopoDAO;
 
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
 public class Filter extends HttpServlet {
 
@@ -32,7 +30,7 @@ public class Filter extends HttpServlet {
         String siteChoix = request.getParameter("sitechoisi");
 
         request.setAttribute("topoChoix", topoDAO.topoSelect(Integer.parseInt(topoChoix)));
-        request.setAttribute("siteChoix", siteDAO.siteSelect(Integer.parseInt(siteChoix)));
+        request.setAttribute("siteChoix", siteDAO.topoSiteSelect(Integer.parseInt(siteChoix)));
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

@@ -17,7 +17,7 @@
     <div>
         <div class ="Space"></div>
         <div>
-            <s:a action="list_topo"><input type="button" name="accueil" value="Louer un topo" class ="ButMenu"> </s:a>
+            <s:a action="list_topo"><input type="button" name="accueil" value="Accéder aux topos" class ="ButMenu"> </s:a>
         </div>
         <div class ="Space"></div>
     </div>

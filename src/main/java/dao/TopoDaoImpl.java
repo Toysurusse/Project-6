@@ -34,7 +34,7 @@ public class TopoDaoImpl implements TopoDAO {
 
             connexion = daoFactory.getConnection();
             statement = connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM topo;");
+            resultat = statement.executeQuery("SELECT * FROM topo WHERE topo_id <> '0';");
 
             while (resultat.next()) {
                 int id = resultat.getInt(1);
@@ -64,7 +64,7 @@ public class TopoDaoImpl implements TopoDAO {
         try {
             connexion = daoFactory.getConnection();
             statement = connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM topo WHERE topo_id = "+topoid+";");
+            resultat = statement.executeQuery("SELECT * FROM topo WHERE topo_id = "+topoid+" WHERE topo_id <> '0';");
 
             while (resultat.next()) {
                 int id = resultat.getInt(1);

@@ -1,19 +1,34 @@
 /* Général ------------------------------------------------------------------------------------- */
 
+body{
+    margin:0;
+    padding:0;
+}
+
+
 body, p, legend, label, input {
     font: normal 8pt verdana, helvetica, sans-serif;
 }
 
-.fonds {
-    background-image: url(picture/escalade.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+
+footer {
+    position:absolute;
+    bottom:0px;
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.TitlePage{
+.fonds {
+    background-color: aliceblue;
+}
+
+header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: dimgray;
 }
 
 
@@ -25,19 +40,14 @@ body, p, legend, label, input {
     height: 100px;
 }
 
-.tribe{
-    width: 10px;
-    height: 10px;;
+.Space{
+    width: 5px;
+    height: 5px;;
 }
 
 .titre{
     text-align: center;
     color: #e46e55;
-}
-
-.alignV{
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .Menu{
@@ -52,7 +62,7 @@ body, p, legend, label, input {
     text-decoration: none;
     font-family: Arial,sans-serif;
     font-size: 1.6em;
-    width: 250px;
+    width: 100%;
     height: 43px;
     padding-top: 7px; /*permet le centrage vertical*/
     text-align: center;

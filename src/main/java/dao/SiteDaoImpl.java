@@ -46,7 +46,7 @@ public class SiteDaoImpl implements SiteDAO {
         try {
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+";");
+            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+" AND site_id <> '0';");
 
             while (resultat.next()) {
                 int id= resultat.getInt(1);
@@ -74,7 +74,7 @@ public class SiteDaoImpl implements SiteDAO {
     }
 
     @Override
-    public List<Site> siteSelect (int topoid) {
+    public List<Site> topoSiteSelect(int topoid) {
         List<Site> sites = new ArrayList<Site>();
         Statement statement =null ;
         ResultSet resultat =null ;
@@ -83,7 +83,7 @@ public class SiteDaoImpl implements SiteDAO {
         try {
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+";");
+            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+" AND site_id <> '0';");
 
             while (resultat.next()) {
                 int id= resultat.getInt(1);
@@ -121,7 +121,7 @@ public class SiteDaoImpl implements SiteDAO {
         try {
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe;");
+            resultat = statement.executeQuery("SELECT * FROM site_de_grimpe WHERE site_id <> '0';");
 
             while (resultat.next()) {
 

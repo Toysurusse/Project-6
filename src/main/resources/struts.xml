@@ -27,6 +27,18 @@
             <result name="success">/jsp/site.jsp</result>
         </action>
 
+        <action name="deleteCom"
+                class="actions.CommentaireController"
+                method="deletecom">
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
+        <action name="addCom"
+                class="actions.CommentaireController"
+                method="addcom">
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
         <!-- Action affichant le détail d'un projet -->
         <action name="site_detail"
                 class="actions.TopoController"

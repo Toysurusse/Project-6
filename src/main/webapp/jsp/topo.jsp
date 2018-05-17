@@ -21,18 +21,18 @@
     </div>
 </div>
 <div class = "tribe"></div>
-<ul>
     <s:iterator var="Topo" value="listTopo">
         <p>
         <s:a action="topo_detail">
-            <s:param name="id"><s:property value="identifiant" /> </s:param>
+            <s:param name="topoid"><s:property value="identifiant" /> </s:param>
+            <s:param name="siteId"><s:property value="identifiant" /> </s:param>
             <s:property value="location" />
         </s:a>
         <p>
         <s:property value="resume" />
         </p>
     </s:iterator>
-</ul>
+
 
 </body>
 </html>

@@ -25,7 +25,8 @@
 <s:iterator var="Site" value="listSite">
     <p>
         <s:a action="site_detail">
-        <s:param name="id"><s:property value="identifiant" /> </s:param>
+        <s:param name="topoid"><s:property value="identifiant" /> </s:param>
+        <s:param name="siteId"><s:property value="identifiant" /> </s:param>
             <s:property value="location" />
         </s:a>
     <p>
@@ -39,6 +40,32 @@
     </br>
 </s:iterator>
 
+<div class = "ComFrame">
+<s:form action="addCom">
+    <s:textfield name="title" label="title" requiredLabel="true" />
+    <s:textfield name="commentaire" label="commentaire" requiredLabel="true" />
+    <s:submit value="OK"/>
+</s:form>
+</div>
+
+<s:iterator var="Commentaire" value="listCommentaire">
+<div class = "ComFrame">
+    <div>
+    <p>
+        <s:property value="title" />
+    </p>
+    <p>
+        <s:property value="commentary" />
+    </p>
+    </div>
+    <div class = Delete>
+        <s:a action="deleteCom">
+            <s:param name="comid"><s:property value="comId" /> </s:param>
+            Suppr
+        </s:a>
+    </div>
+</div>
+</s:iterator>
 
 
 <footer>
