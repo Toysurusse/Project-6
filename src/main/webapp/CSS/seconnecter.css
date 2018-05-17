@@ -12,7 +12,6 @@ body, p, legend, label, input {
 
 
 footer {
-    position:absolute;
     bottom:0px;
     width: 98%;
     display: flex;

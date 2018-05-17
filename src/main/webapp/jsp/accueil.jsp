@@ -10,7 +10,7 @@
 
 <body class = "fonds">
 
-<%@ include file="head.jsp" %>
+<%@ include file="blocktype/head.jsp" %>
 
 
 <div class = "FirstPage">
@@ -56,7 +56,7 @@
 </div>
 
 <footer>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="blocktype/footer.jsp" %>
 </footer>
 
 </body>

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@ include file="../head.jsp" %>
+<%@ include file="../blocktype/head.jsp" %>
 
 <div class = "tribe"></div>
 
@@ -24,7 +24,7 @@
     </s:form>
 
 <footer>
-    <%@ include file="../footer.jsp" %>
+    <%@ include file="../blocktype/footer.jsp" %>
 </footer>
 
 </body>

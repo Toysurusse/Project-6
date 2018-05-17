@@ -45,7 +45,6 @@ public class TopoDaoImpl implements TopoDAO {
                 topo.setId(id);
                 topo.setLocation(spot);
                 topo.setResume(descript);
-                System.out.println(id + spot +descript);
                 topos.add(topo);
             }
         } catch (SQLException e) {

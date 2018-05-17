@@ -11,14 +11,14 @@
 </head>
 <body>
 
-<%@ include file="head.jsp" %>
+<%@ include file="blocktype/head.jsp" %>
 
 <div class = "tribe"></div>
     <s:iterator var="Topo" value="listTopo">
         <p>
         <s:a action="topo_detail">
             <s:param name="topoid"><s:property value="identifiant" /> </s:param>
-            <s:param name="siteId"><s:property value="identifiant" /> </s:param>
+            <s:param name="siteid">0</s:param>
             <s:property value="location" />
         </s:a>
         <p>
@@ -27,7 +27,7 @@
     </s:iterator>
 
 <footer>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="blocktype/footer.jsp" %>
 </footer>
 
 </body>

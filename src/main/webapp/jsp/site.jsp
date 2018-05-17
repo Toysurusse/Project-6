@@ -11,34 +11,43 @@
 </head>
 <body>
 
-<%@ include file="head.jsp" %>
+<%@ include file="blocktype/head.jsp" %>
 
 <div class = "tribe"></div>
 
 <s:iterator var="Site" value="listSite">
     <p>
         <s:a action="site_detail">
-        <s:param name="topoid"><s:property value="identifiant" /> </s:param>
-        <s:param name="siteId"><s:property value="identifiant" /> </s:param>
-            <s:property value="location" />
+            <s:param name="topoid"><s:property value="topos" /> </s:param>
+            <s:param name="siteid"><s:property value="identifiant" /> </s:param>
+            <s:property value="location" /> :
         </s:a>
-    <p>
-        <s:property value="way" /> :
+        <s:property value="way" />
     </p>
     <p>
-        hauteur : <s:property value="height" /> </br>
+        hauteur : <s:property value="height" /> mètres </br>
         difficulté : <s:property value="hardness" /> </br>
-        nombre de points : <s:property value="points_nb" /> </br>
+        nombre de points d'attache : <s:property value="points_nb" /> </br>
     </p>
     </br>
 </s:iterator>
 
 <div class = "ComFrame">
-<s:form action="addCom">
-    <s:textfield name="title" label="title" requiredLabel="true" />
-    <s:textfield name="commentaire" label="commentaire" requiredLabel="true" />
-    <s:submit value="OK"/>
-</s:form>
+
+    <s:if test="#session.user">
+        <s:form action="addcom">
+            <s:hidden name="commentaire.topoId" value="%{topoid}" />
+            <s:hidden name="commentaire.siteId" value="%{siteid}" />
+            <s:hidden name="commentaire.account" value="%{#session.user.id}" />
+            <s:textfield name="commentaire.title" label="title" requiredLabel="true" />
+            <s:textfield name="commentaire.commentary" label="commentaire" requiredLabel="true" />
+            <s:submit value="OK"/>
+        </s:form>
+    </s:if>
+    <s:else>
+        <s:a action="connectinit"><input type="button" name="accueil" value="Connectez vous pour ajouter un commentaire" class ="ButMenu"> </s:a>
+    </s:else>
+
 </div>
 
 <s:iterator var="Commentaire" value="listCommentaire">
@@ -53,7 +62,6 @@
     </div>
     <div class = Delete>
         <s:a action="deleteCom">
-            <s:param name="comid"><s:property value="comId" /> </s:param>
             Suppr
         </s:a>
     </div>
@@ -62,7 +70,7 @@
 
 
 <footer>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="blocktype/footer.jsp" %>
 </footer>
 
 </body>

@@ -2,25 +2,25 @@ package beans;
 
 public class Commentaire {
 
-    private String account;
+    private int account;
     private String title;
     private String commentary;
-    private String comId;
-    private String pageId;
-    private String siteId;
-    private String topoId;
+    private int comId;
+    private int pageId;
+    private int siteId;
+    private int topoId;
 
-    public String getComId() {
+    public int getComId() {
         return comId;
     }
-    public void setComId(String comId) {
+    public void setComId(int comId) {
         this.comId = comId;
     }
 
-    public String getAccount() {
+    public int getAccount() {
         return account;
     }
-    public void setAccount(String account) {
+    public void setAccount(int account) {
         this.account = account;
     }
 
@@ -38,24 +38,24 @@ public class Commentaire {
         this.commentary = commentary;
     }
 
-    public String getPageId() {
+    public int getPageId() {
         return pageId;
     }
-    public void setPageId(String pageId) {
+    public void setPageId(int pageId) {
         this.pageId = pageId;
     }
 
-    public String getSiteId() {
+    public int getSiteId() {
         return siteId;
     }
-    public void setSiteId(String siteId) {
+    public void setSiteId(int siteId) {
         this.siteId = siteId;
     }
 
-    public String getTopoId() {
+    public int getTopoId() {
         return topoId;
     }
-    public void setTopoId(String topoId) {
+    public void setTopoId(int topoId) {
         this.topoId = topoId;
     }
 }

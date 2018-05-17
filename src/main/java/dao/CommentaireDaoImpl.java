@@ -14,7 +14,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
     private DaoFactory daoFactory;
 
     public int lastIDCom (List <Commentaire> com){
-        int comnb =com.size();
+        int comnb = com.get(com.size()-1).getComId();
     return comnb;}
 
     @Override
@@ -27,10 +27,9 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         @Override
     public List<Commentaire> readTopo(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+";");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0;");
         return commentaires;
     }
-
 
     @Override
     public List<Commentaire> readWay(int id) {
@@ -52,17 +51,17 @@ public class CommentaireDaoImpl implements CommentaireDAO {
             connexion = daoFactory.getConnection();
 
             preparedStatement = connexion.prepareStatement("INSERT INTO public.commentaires(com_id, compte_id, titre, commentaire)VALUES (?, ?, ?, ?);");
-            preparedStatement.setInt(1,  Integer.parseInt(commentaire.getComId()));
-            preparedStatement.setInt(2, Integer.parseInt(commentaire.getAccount()));
+            preparedStatement.setInt(1,  commentaire.getComId());
+            preparedStatement.setInt(2, commentaire.getAccount());
             preparedStatement.setString(3, commentaire.getTitle());
             preparedStatement.setString(4, commentaire.getCommentary());
             preparedStatement.executeUpdate();
 
             preparedStatement = connexion.prepareStatement("INSERT INTO public.page_index(page_id, comid, siteid, topoid)VALUES (?, ?, ?, ?);");
-            preparedStatement.setInt(1, Integer.parseInt(commentaire.getPageId()));
-            preparedStatement.setInt(2, Integer.parseInt(commentaire.getComId()));
-            preparedStatement.setInt(3, Integer.parseInt(commentaire.getSiteId()));
-            preparedStatement.setInt(4, Integer.parseInt(commentaire.getTopoId()));
+            preparedStatement.setInt(1, commentaire.getPageId());
+            preparedStatement.setInt(2, commentaire.getComId());
+            preparedStatement.setInt(3, commentaire.getSiteId());
+            preparedStatement.setInt(4, commentaire.getTopoId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -83,11 +82,11 @@ public class CommentaireDaoImpl implements CommentaireDAO {
             resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
-                String pageId= resultat.getString(1);
-                String comId= resultat.getString(2);
-                String siteId= resultat.getString(3);
-                String topoId= resultat.getString(4);
-                String account = resultat.getString(6);
+                int pageId= resultat.getInt(1);
+                int comId= resultat.getInt(2);
+                int siteId= resultat.getInt(3);
+                int topoId= resultat.getInt(4);
+                int account = resultat.getInt(6);
                 String title= resultat.getString(7);
                 String commentary= resultat.getString(8);
 

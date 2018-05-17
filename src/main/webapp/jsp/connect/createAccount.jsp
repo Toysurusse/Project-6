@@ -12,10 +12,10 @@
 </head>
 <body>
 
-<%@ include file="../head.jsp" %>
+<%@ include file="../blocktype/head.jsp" %>
 
 <footer>
-    <%@ include file="../footer.jsp" %>
+    <%@ include file="../blocktype/footer.jsp" %>
 </footer>
 
 </body>

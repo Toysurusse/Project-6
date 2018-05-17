@@ -31,11 +31,11 @@ public class Topo extends HttpServlet {
         String title = request.getParameter("Title");
         Commentaire addCom = new Commentaire();
 
-        addCom.setPageId(String.valueOf(commentaireDAO.lastIDCom(commentaireDAO.read())+1));
-        addCom.setComId(String.valueOf(commentaireDAO.lastIDCom(commentaireDAO.read())+1));
-        addCom.setSiteId("0");
-        addCom.setTopoId("0");
-        addCom.setAccount(String.valueOf(Compteid));
+        addCom.setPageId(commentaireDAO.lastIDCom(commentaireDAO.read())+1);
+        addCom.setComId(commentaireDAO.lastIDCom(commentaireDAO.read())+1);
+        addCom.setSiteId(0);
+        addCom.setTopoId(0);
+        addCom.setAccount(Compteid);
         addCom.setTitle(title);
         addCom.setCommentary(Commentary);
 

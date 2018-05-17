@@ -46,8 +46,7 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         this.listAccount = listAccount;
     }
 
-
-    public String doconnectControl() throws NotFoundException {
+    public String doConnectControl() throws NotFoundException {
         this.accountDAO=daoFactory.getAccountDAO();
         if (pseudo != null && password!=null) {
             account = accountDAO.control(pseudo, password, accountDAO.read());

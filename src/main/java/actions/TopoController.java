@@ -37,7 +37,7 @@ public class TopoController extends ActionSupport {
         topoid = pId;
     }
 
-    public Integer getSiteId() {
+    public Integer getSiteid() {
         return siteid;
     }
     public void setSiteId(Integer pId) {
@@ -62,38 +62,28 @@ public class TopoController extends ActionSupport {
         this.listCommentaire = listCommentaire;
     }
 
-
     public String doList() {
         this.topoDAO = daoFactory.getTopoDAO();
         listTopo = this.topoDAO.read();
-        this.siteDAO = daoFactory.getSiteDAO();
-        return ActionSupport.SUCCESS;
-    }
-
-    public String dFindTopo() {
-        this.topoDAO = daoFactory.getTopoDAO();
-        topo = this.topoDAO.topoSelect(topoid);
-        this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.topoSiteSelect(siteid);
         return ActionSupport.SUCCESS;
     }
 
     public String doFindSite() {
-        System.out.println(siteid);
-        this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.topoSiteSelect(topoid);
-        this.commentaireDAO=daoFactory.getCommentaireDAO();
-        listCommentaire=this.commentaireDAO.readWay(topoid);
-        return ActionSupport.SUCCESS;
-    }
-
-
-    public String doFindsSiteTopo() {
-        System.out.println(siteid);
         this.siteDAO = daoFactory.getSiteDAO();
         listSite = this.siteDAO.siteTopoSelect(siteid);
         this.commentaireDAO=daoFactory.getCommentaireDAO();
-        listCommentaire=this.commentaireDAO.readTopo(siteid);
+        listCommentaire=this.commentaireDAO.readWay(siteid);
         return ActionSupport.SUCCESS;
     }
+
+    public String doFindSiteTopo() {
+        this.siteDAO = daoFactory.getSiteDAO();
+        listSite = this.siteDAO.topoSiteSelect(topoid);
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        listCommentaire=this.commentaireDAO.readTopo(topoid);
+        return ActionSupport.SUCCESS;
+    }
+
+
+
 }

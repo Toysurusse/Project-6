@@ -27,14 +27,14 @@
         <!-- Action affichant le détail d'un projet -->
         <action name="topo_detail"
                 class="actions.TopoController"
-                method="doFindSite">
+                method="doFindSiteTopo">
             <result name="success">/jsp/site.jsp</result>
         </action>
 
         <!-- Action affichant le détail d'un projet -->
         <action name="site_detail"
                 class="actions.TopoController"
-                method="doFindsSiteTopo">
+                method="doFindSite">
             <result name="success">/jsp/site.jsp</result>
         </action>
 
@@ -52,9 +52,10 @@
             <result name="success">/jsp/site.jsp</result>
         </action>
 
-        <action name="addCom"
+        <action name="addcom"
                 class="actions.CommentaireController"
                 method="addcom">
+            <result name="input">/jsp/site.jsp</result>
             <result name="success">/jsp/site.jsp</result>
         </action>
 
@@ -88,7 +89,7 @@
         <!-- Actions permettant de se connecter -->
         <action name="connecttry"
                 class="actions.ConnexionController"
-                method="doconnectControl">
+                method="doConnectControl">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
