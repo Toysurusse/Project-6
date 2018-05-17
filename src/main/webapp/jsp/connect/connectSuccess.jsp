@@ -10,17 +10,14 @@
     <link type="text/css" rel="stylesheet" href="CSS\topo.css" />
 </head>
 <body>
-<div class = "TitlePage">
-    <div class = "logo">
-    </div>
-    <div class = "titre">
-        <h1>Vous êtes connecté</h1>
-    </div>
-    <div>
 
-    </div>
-</div>
+<%@ include file="../head.jsp" %>
+
 <div class = "tribe"></div>
+
+<footer>
+    <%@ include file="../footer.jsp" %>
+</footer>
 
 </body>
 </html>

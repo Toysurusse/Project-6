@@ -4,11 +4,15 @@ import beans.Commentaire;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
 import dao.list.CommentaireDAO;
+import org.apache.struts2.interceptor.SessionAware;
 
-public class CommentaireController {
+import java.util.Map;
+
+public class CommentaireController extends ActionSupport {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private CommentaireDAO commentaireDAO;
+
 
     private String title;
     private String commentary;
@@ -61,4 +65,5 @@ public class CommentaireController {
         this.commentaireDAO.delete(id);
         return ActionSupport.SUCCESS;
     }
+
 }

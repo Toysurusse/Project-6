@@ -12,9 +12,10 @@
 </head>
 <body>
 
+<%@ include file="../head.jsp" %>
 
 <footer>
-    <%@ include file="../index.jsp" %>
+    <%@ include file="../footer.jsp" %>
 </footer>
 
 </body>

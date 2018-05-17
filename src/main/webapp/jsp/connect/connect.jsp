@@ -10,16 +10,9 @@
     <link type="text/css" rel="stylesheet" href="CSS\topo.css" />
 </head>
 <body>
-<div class = "TitlePage">
-    <div class = "logo">
-    </div>
-    <div class = "titre">
-        <h1>Connectez-vous</h1>
-    </div>
-    <div>
 
-    </div>
-</div>
+<%@ include file="../head.jsp" %>
+
 <div class = "tribe"></div>
 
     <s:actionerror />
@@ -29,5 +22,10 @@
         <s:textfield name="password" label="password" requiredLabel="true" />
         <s:submit value="OK"/>
     </s:form>
+
+<footer>
+    <%@ include file="../footer.jsp" %>
+</footer>
+
 </body>
 </html>

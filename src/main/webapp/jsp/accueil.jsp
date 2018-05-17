@@ -8,18 +8,10 @@
     <link type="text/css" rel="stylesheet" href="CSS\index.css" />
 </head>
 
-<header>
-    <div class = "logo">
-    </div>
-    <div class = "titre">
-        <h1>Bienvenue sur notre site d'escalade !</h1>
-    </div>
-    <div>
-        <s:a action="connectinit"><input type="button" name="accueil" value="Se Connecter" class ="ButMenu"> </s:a>
-    </div>
-</header>
-
 <body class = "fonds">
+
+<%@ include file="head.jsp" %>
+
 
 <div class = "FirstPage">
     <div class = "bordure"></div>
@@ -64,7 +56,7 @@
 </div>
 
 <footer>
-    <%@ include file="index.jsp" %>
+    <%@ include file="footer.jsp" %>
 </footer>
 
 </body>

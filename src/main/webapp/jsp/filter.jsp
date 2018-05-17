@@ -10,16 +10,9 @@
     <link type="text/css" rel="stylesheet" href="CSS\topo.css" />
 </head>
 <body>
-<div class = "TitlePage">
-    <div class = "logo">
-    </div>
-    <div class = "titre">
-        <h1>Liste des différents Topos</h1>
-    </div>
-    <div>
 
-    </div>
-</div>
+<%@ include file="head.jsp" %>
+
 <div class = "tribe"></div>
 <ul>
     <s:form action="topo_detail">
@@ -37,7 +30,7 @@
 
 
 <footer>
-    <%@ include file="index.jsp" %>
+    <%@ include file="footer.jsp" %>
 </footer>
 
 </body>

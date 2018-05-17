@@ -6,6 +6,9 @@
 
 <struts>
     <package name="default" extends="struts-default">
+
+
+        <!--==================================Accueil=============================================-->
         <!-- Action par défaut -->
         <default-action-ref name="accueil" />
         <!-- Action "index" -->
@@ -13,6 +16,7 @@
             <result>/jsp/accueil.jsp</result>
         </action>
 
+        <!--==================================Topo/voies=============================================-->
         <!-- Action listant les topos -->
         <action name="list_topo"
                 class="actions.TopoController"
@@ -24,18 +28,6 @@
         <action name="topo_detail"
                 class="actions.TopoController"
                 method="doFindSite">
-            <result name="success">/jsp/site.jsp</result>
-        </action>
-
-        <action name="deleteCom"
-                class="actions.CommentaireController"
-                method="deletecom">
-            <result name="success">/jsp/site.jsp</result>
-        </action>
-
-        <action name="addCom"
-                class="actions.CommentaireController"
-                method="addcom">
             <result name="success">/jsp/site.jsp</result>
         </action>
 
@@ -53,14 +45,33 @@
             <result name="success">/jsp/filter.jsp</result>
         </action>
 
+        <!--==================================Commentaires=============================================-->
+        <action name="deleteCom"
+                class="actions.CommentaireController"
+                method="deletecom">
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
+        <action name="addCom"
+                class="actions.CommentaireController"
+                method="addcom">
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
         <!-- Action affichant la confirmation de connection -->
         <action name="connectinit">
             <result name="success">/jsp/connect/connect.jsp</result>
         </action>
 
 
+        <!--==================================Login=============================================-->
 
-
+        <!-- Action affichant la confirmation de connection -->
+        <action name="disconnect"
+                class="actions.ConnexionController"
+                method="doLogOut">
+            <result name="success">/jsp/accueil.jsp</result>
+        </action>
 
         <!-- Action affichant la confirmation de connection -->
         <action name="connected"
@@ -77,7 +88,7 @@
         <!-- Actions permettant de se connecter -->
         <action name="connecttry"
                 class="actions.ConnexionController"
-                method="connectControl">
+                method="doconnectControl">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>

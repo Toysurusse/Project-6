@@ -5,10 +5,19 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
 import dao.list.AccountDAO;
 import javassist.NotFoundException;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
+import java.util.Map;
 
-public class ConnexionController extends ActionSupport {
+public class ConnexionController extends ActionSupport implements SessionAware {
+
+    private Map<String, Object> session;
+
+    @Override
+    public void setSession(Map<String, Object> pSession) {
+        this.session = pSession;
+    }
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AccountDAO accountDAO;
@@ -38,18 +47,25 @@ public class ConnexionController extends ActionSupport {
     }
 
 
-    public String connectControl () throws NotFoundException {
+    public String doconnectControl() throws NotFoundException {
         this.accountDAO=daoFactory.getAccountDAO();
-
         if (pseudo != null && password!=null) {
             account = accountDAO.control(pseudo, password, accountDAO.read());
             if (account== null){
                 this.addActionError(getText("error.connectError"));
+            }else {
+                this.session.put("user",account);
             }
         }
         else {
             this.addActionError(getText("error.connectEmpty"));
             }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+    public String doLogOut (){
+        // Suppression de l'utilisateur en session
+        this.session.remove("user");
+        return ActionSupport.SUCCESS;
     }
 }
