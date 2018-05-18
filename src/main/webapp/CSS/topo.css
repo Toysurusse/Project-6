@@ -111,17 +111,21 @@ header{
     width: 50px;
     height: 50px;;
 }
+
 .ComFrame {
     border-width:1px 2px 3px 2px;
     border-style:solid dotted;
     border-color:black red;
     padding:0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .Delete {
     background-image: url("picture/Delete.JPG");
+    background-size: 10px 10px;
     background-repeat: no-repeat;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    width: 10px;
+    height: 10px;
 }

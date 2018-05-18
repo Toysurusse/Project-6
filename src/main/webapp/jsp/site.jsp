@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Topos</title>
-    <link type="text/css" rel="stylesheet" href="CSS\topo.css" />
+    <link type="text/css" rel="stylesheet" href="CSS/topo.css" />
 </head>
 <body>
 
@@ -29,7 +29,6 @@
         difficulté : <s:property value="hardness" /> </br>
         nombre de points d'attache : <s:property value="points_nb" /> </br>
     </p>
-    </br>
 </s:iterator>
 
 <div class = "ComFrame">
@@ -62,12 +61,12 @@
     </div>
     <div class = Delete>
         <s:a action="deleteCom">
-            Suppr
+            <s:property value="comId" />
+            <s:param name="id"><s:property value="comId" /> </s:param>
         </s:a>
     </div>
 </div>
 </s:iterator>
-
 
 <footer>
     <%@ include file="blocktype/footer.jsp" %>

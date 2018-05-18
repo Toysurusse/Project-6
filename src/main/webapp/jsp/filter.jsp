@@ -20,7 +20,7 @@
                   list="listTopo" listKey="identifiant" listValue="location"
                   emptyOption="true"
                   requiredLabel="true"/>
-        <s:select name="topoid" label="site"
+        <s:select name="siteid" label="site"
               list="listSite" listKey="identifiant" listValue="way"
               emptyOption="true"
               requiredLabel="true"/>

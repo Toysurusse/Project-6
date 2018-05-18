@@ -100,5 +100,14 @@
             <result name="success">/jsp/connect/connectSuccess.jsp</result>
             <result name="error">/jsp/connect/connect.jsp</result>
         </action>
+
+        <!-- Actions permettant de se connecter -->
+        <action name="newaccount"
+                class="actions.ConnexionController"
+                method="doCreateAccount">
+            <result name="input">/jsp/connect/connect.jsp</result>
+            <result name="success">/jsp/connect/createAccount.jsp</result>
+            <result name="error">/jsp/connect/connect.jsp</result>
+        </action>
     </package>
 </struts>

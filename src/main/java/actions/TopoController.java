@@ -65,6 +65,8 @@ public class TopoController extends ActionSupport {
     public String doList() {
         this.topoDAO = daoFactory.getTopoDAO();
         listTopo = this.topoDAO.read();
+        this.siteDAO = daoFactory.getSiteDAO();
+        listSite = this.siteDAO.read();
         return ActionSupport.SUCCESS;
     }
 

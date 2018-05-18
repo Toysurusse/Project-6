@@ -67,4 +67,15 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         this.session.remove("user");
         return ActionSupport.SUCCESS;
     }
+
+    public String doCreateAccount (){
+        // Suppression de l'utilisateur en session
+        this.accountDAO=daoFactory.getAccountDAO();
+
+
+        accountDAO.add(account);
+
+        return ActionSupport.SUCCESS;
+    }
+
 }

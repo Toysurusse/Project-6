@@ -14,8 +14,17 @@ public class CommentaireDaoImpl implements CommentaireDAO {
     private DaoFactory daoFactory;
 
     public int lastIDCom (List <Commentaire> com){
-        int comnb = com.get(com.size()-1).getComId();
-    return comnb;}
+        int comnb=0;
+        for (int i=0; i<=com.size()-2;i++){
+            if (com.get(i).getComId()==com.get(i+1).getComId()-1){
+                comnb =com.get(i).getComId()+1;
+            }
+            }
+        if (comnb==0){
+            comnb = com.get(com.size()-1).getComId();
+        }
+    return comnb;
+    }
 
     @Override
     public List<Commentaire> read() {
@@ -24,7 +33,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         return commentaires;
     }
 
-        @Override
+    @Override
     public List<Commentaire> readTopo(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
         commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0;");
@@ -40,7 +49,17 @@ public class CommentaireDaoImpl implements CommentaireDAO {
 
     @Override
     public void delete(int id) {
-
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = connexion.prepareStatement("DELETE FROM page_index WHERE comid = "+id+";");
+            preparedStatement.executeUpdate();
+            preparedStatement = connexion.prepareStatement("DELETE FROM commentaires WHERE com_id = "+id+";");
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
