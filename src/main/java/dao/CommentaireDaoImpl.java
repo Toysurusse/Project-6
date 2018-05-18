@@ -5,6 +5,7 @@ import dao.list.CommentaireDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CommentaireDaoImpl implements CommentaireDAO {
@@ -15,7 +16,9 @@ public class CommentaireDaoImpl implements CommentaireDAO {
 
     public int lastIDCom (List <Commentaire> com){
         int comnb=0;
+
         for (int i=0; i<=com.size()-2;i++){
+            System.out.println(com.get(i).getComId()+" ; "+com.get(i+1).getComId());
             if (com.get(i).getComId()==com.get(i+1).getComId()-1){
                 comnb =com.get(i).getComId()+1;
             }
@@ -29,21 +32,21 @@ public class CommentaireDaoImpl implements CommentaireDAO {
     @Override
     public List<Commentaire> read() {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id ;");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id ORDER BY comid;");
         return commentaires;
     }
 
     @Override
     public List<Commentaire> readTopo(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0;");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0  ORDER BY comid;");
         return commentaires;
     }
 
     @Override
     public List<Commentaire> readWay(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE siteid ="+id+";");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE siteid ="+id+" ORDER BY comid;");
         return commentaires;
     }
 

@@ -23,6 +23,10 @@
         <s:submit value="OK"/>
     </s:form>
 
+    <s:a action="newaccount">
+        Créer un compte ?
+    </s:a>
+
 <footer>
     <%@ include file="../blocktype/footer.jsp" %>
 </footer>

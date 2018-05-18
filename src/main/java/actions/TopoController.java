@@ -70,22 +70,18 @@ public class TopoController extends ActionSupport {
         return ActionSupport.SUCCESS;
     }
 
-    public String doFindSite() {
-        this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.siteTopoSelect(siteid);
-        this.commentaireDAO=daoFactory.getCommentaireDAO();
-        listCommentaire=this.commentaireDAO.readWay(siteid);
-        return ActionSupport.SUCCESS;
-    }
-
     public String doFindSiteTopo() {
-        this.siteDAO = daoFactory.getSiteDAO();
-        listSite = this.siteDAO.topoSiteSelect(topoid);
-        this.commentaireDAO=daoFactory.getCommentaireDAO();
-        listCommentaire=this.commentaireDAO.readTopo(topoid);
+        if (siteid==0){
+            this.siteDAO = daoFactory.getSiteDAO();
+            listSite = this.siteDAO.topoSiteSelect(topoid);
+            this.commentaireDAO=daoFactory.getCommentaireDAO();
+            listCommentaire=this.commentaireDAO.readTopo(topoid);
+        }else{
+            this.siteDAO = daoFactory.getSiteDAO();
+            listSite = this.siteDAO.siteTopoSelect(siteid);
+            this.commentaireDAO=daoFactory.getCommentaireDAO();
+            listCommentaire=this.commentaireDAO.readWay(siteid);
+        }
         return ActionSupport.SUCCESS;
     }
-
-
-
 }

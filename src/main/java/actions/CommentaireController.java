@@ -81,6 +81,7 @@ public class CommentaireController extends ActionSupport {
 
     public String deletecom() {
         this.commentaireDAO=daoFactory.getCommentaireDAO();
+
         this.commentaireDAO.delete(id);
         return ActionSupport.SUCCESS;
     }

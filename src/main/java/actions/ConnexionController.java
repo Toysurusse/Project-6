@@ -1,6 +1,7 @@
 package actions;
 
 import beans.Account;
+import beans.Adress;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
 import dao.list.AccountDAO;
@@ -21,11 +22,12 @@ public class ConnexionController extends ActionSupport implements SessionAware {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AccountDAO accountDAO;
+    private Account account;
+    private Adress adress;
 
     String pseudo=null;
     String password=null;
     List<Account> listAccount;
-    Account account;
 
     public String getPseudo() {
         return pseudo;
@@ -44,6 +46,18 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     }
     public void setListAccount(List<Account> listAccount) {
         this.listAccount = listAccount;
+    }
+    public Adress getAdress() {
+        return adress;
+    }
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public String doConnectControl() throws NotFoundException {
@@ -71,6 +85,8 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     public String doCreateAccount (){
         // Suppression de l'utilisateur en session
         this.accountDAO=daoFactory.getAccountDAO();
+
+
 
 
         accountDAO.add(account);

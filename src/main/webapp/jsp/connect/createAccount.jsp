@@ -14,6 +14,36 @@
 
 <%@ include file="../blocktype/head.jsp" %>
 
+<s:form action="newaccount">
+
+    <s:textfield name="account.id" label="id" requiredLabel="true" />
+    <s:textfield name="account.name" label="name" requiredLabel="true" />
+    <s:textfield name="account.firstName" label="firstName" requiredLabel="true" />
+    <s:textfield name="account.pseudo" label="pseudo" requiredLabel="true" />
+    <s:textfield name="account.password" label="password" requiredLabel="true" />
+    <s:select label="Sexe :"
+              headerKey="-1" headerValue="Sexe :"
+              list="{'H', 'F'}"
+              name="account.sex"
+              value="0" />
+    <s:textfield name="account.adresseId" label="adresseId" requiredLabel="true" />
+
+    <s:textfield name="adress.adressId" label="adressId" requiredLabel="true" />
+    <s:textfield name="adress.nbStreet" label="nbStreet" requiredLabel="true" />
+    <s:textfield name="adress.street" label="street" requiredLabel="true" />
+    <s:textfield name="adress.postalCode" label="postalCode" requiredLabel="true" />
+    <s:textfield name="adress.city" label="city" requiredLabel="true" />
+    <s:textfield name="adress.code" label="code" requiredLabel="true" />
+    <s:textfield name="adress.infoSub" label="infoSub" requiredLabel="true" />
+    <s:select label="Adresse Principale :"
+              headerKey="-1" headerValue="Adresse Principale :"
+              list="{'Oui', 'Non'}"
+              name="adress.principalAdress"
+              value="0" />
+
+    <s:submit value="OK"/>
+</s:form>
+
 <footer>
     <%@ include file="../blocktype/footer.jsp" %>
 </footer>

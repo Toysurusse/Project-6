@@ -31,13 +31,6 @@
             <result name="success">/jsp/site.jsp</result>
         </action>
 
-        <!-- Action affichant le détail d'un projet -->
-        <action name="site_detail"
-                class="actions.TopoController"
-                method="doFindSite">
-            <result name="success">/jsp/site.jsp</result>
-        </action>
-
         <!-- Action affichant le filtre -->
         <action name="filter"
                 class="actions.TopoController"
@@ -49,23 +42,30 @@
         <action name="deleteCom"
                 class="actions.CommentaireController"
                 method="deletecom">
-            <result name="success">/jsp/site.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">topo_detail</param>
+                <param name="topoid">${commentaire.topoId}</param>
+                <param name="siteid">${commentaire.siteId}</param>
+            </result>
         </action>
 
         <action name="addcom"
                 class="actions.CommentaireController"
                 method="addcom">
             <result name="input">/jsp/site.jsp</result>
-            <result name="success">/jsp/site.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">topo_detail</param>
+                <param name="topoid">${commentaire.topoId}</param>
+                <param name="siteid">${commentaire.siteId}</param>
+            </result>
         </action>
+
+        <!--==================================Login=============================================-->
 
         <!-- Action affichant la confirmation de connection -->
         <action name="connectinit">
             <result name="success">/jsp/connect/connect.jsp</result>
         </action>
-
-
-        <!--==================================Login=============================================-->
 
         <!-- Action affichant la confirmation de connection -->
         <action name="disconnect"
@@ -97,7 +97,9 @@
             <interceptor-ref name="defaultStack" />
 
             <result name="input">/jsp/connect/connect.jsp</result>
-            <result name="success">/jsp/connect/connectSuccess.jsp</result>
+            <result name="success" type="redirectAction">
+            <param name="actionName">accueil</param>
+        </result>
             <result name="error">/jsp/connect/connect.jsp</result>
         </action>
 

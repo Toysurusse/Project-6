@@ -17,7 +17,7 @@
 
 <s:iterator var="Site" value="listSite">
     <p>
-        <s:a action="site_detail">
+        <s:a action="topo_detail">
             <s:param name="topoid"><s:property value="topos" /> </s:param>
             <s:param name="siteid"><s:property value="identifiant" /> </s:param>
             <s:property value="location" /> :
@@ -61,6 +61,8 @@
     </div>
     <div class = Delete>
         <s:a action="deleteCom">
+            <s:param name="commentaire.topoId" value="%{topoid}" />
+            <s:param name="commentaire.siteId" value="%{siteid}" />
             <s:property value="comId" />
             <s:param name="id"><s:property value="comId" /> </s:param>
         </s:a>

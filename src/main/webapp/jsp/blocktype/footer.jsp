@@ -11,7 +11,7 @@
     <div>
         <div class ="Space"></div>
         <div>
-            <s:a action="filter"> <input type="button" name="topos" value="Accéder aux topos" class ="ButMenu"> </s:a>        </div>
+            <s:a action="filter"> <input type="button" name="topos" value="Rechercher" class ="ButMenu"> </s:a>        </div>
         <div class ="Space"></div>
     </div>
     <div>
