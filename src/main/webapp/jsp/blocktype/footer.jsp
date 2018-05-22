@@ -31,7 +31,7 @@
     <div>
         <div class ="Space"></div>
         <div>
-        <a href="http://localhost:8080/createaccount" target="_blank"> <input type="button" value="Vous inscrire ?" class ="ButMenu"> </a>
+            <s:a action="newaccount"><input type="button" name="accueil" value="Vous inscrire?" class ="ButMenu"> </s:a>
         </div>
         <div class ="Space"></div>
     </div>

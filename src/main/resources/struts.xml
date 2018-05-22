@@ -120,6 +120,17 @@
         </action>
 
         <!-- Actions permettant de se connecter -->
+        <action name="createaccount"
+                class="actions.ConnexionController"
+                method="doAddAccount">
+            <result name="input">/jsp/connect/createAccount.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">accueil</param>
+            </result>
+            <result name="error">/jsp/connect/createAccount.jsp</result>
+        </action>
+
+        <!-- Actions permettant de se connecter -->
         <action name="addaddress"
                 class="actions.ConnexionController"
                 method="doAddAdress">
@@ -130,9 +141,7 @@
         <action name="newaccount"
                 class="actions.ConnexionController"
                 method="doCreateAccount">
-            <result name="input">/jsp/connect/createAccount.jsp</result>
             <result name="success">/jsp/connect/createAccount.jsp</result>
-            <result name="error">/jsp/connect/createAccount.jsp</result>
         </action>
     </package>
 </struts>

@@ -1,7 +1,5 @@
 package dao;
 
-import dao.CommentaireDaoImpl;
-import dao.TopoDaoImpl;
 import dao.list.*;
 
 import java.sql.Connection;
@@ -48,7 +46,7 @@ public class DaoFactory {
     public AccountDAO getAccountDAO(){
         return new AccountDaoImpl(this);
     }
-    public AddressDAO getAdressDAO(){
+    public AdressDaoImpl getAdressDAO(){
         return new AdressDaoImpl(this);
     }
     public InfoDAO getInfoDAO () {

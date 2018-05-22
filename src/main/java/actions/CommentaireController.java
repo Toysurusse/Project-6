@@ -72,16 +72,12 @@ public class CommentaireController extends ActionSupport {
         this.commentaireDAO = daoFactory.getCommentaireDAO();
         commentaire.setComId(this.commentaireDAO.lastIDCom(this.commentaireDAO.read())+1);
         commentaire.setPageId(commentaire.getComId());
-
-        System.out.println(commentaire.getCommentary()+" ; "+commentaire.getAccount()+" ; "+commentaire.getTitle()+" ; "+commentaire.getTopoId()+" ; "+commentaire.getSiteId()+" ; "+commentaire.getPageId()+" ; "+commentaire.getComId());
-
         this.commentaireDAO.add(commentaire);
         return ActionSupport.SUCCESS;
     }
 
     public String deletecom() {
         this.commentaireDAO=daoFactory.getCommentaireDAO();
-
         this.commentaireDAO.delete(id);
         return ActionSupport.SUCCESS;
     }

@@ -6,7 +6,7 @@
 <html class = fonds>
 <head>
     <meta charset="UTF-8">
-    <title>Choisir un Site</title>
+    <title>Informations</title>
     <link type="text/css" rel="stylesheet" href="CSS/topo.css" />
 </head>
 <body>

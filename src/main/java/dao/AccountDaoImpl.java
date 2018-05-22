@@ -37,6 +37,7 @@ public class AccountDaoImpl implements AccountDAO {
 
     public int lastIDCom (List <Account> acc){
         int size =acc.size();
+        System.out.println(size);
         return size;}
 
     public Account control(String pseudo, String password,List <Account> accountDAO) {
@@ -61,7 +62,7 @@ public class AccountDaoImpl implements AccountDAO {
 
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM compte");
+            resultat = statement.executeQuery("SELECT * FROM public.compte order by id");
 
             while (resultat.next()) {
 

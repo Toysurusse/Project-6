@@ -50,8 +50,7 @@ public class InfoController extends ActionSupport {
     public String doAddInfo() {
         this.infoDAO = daoFactory.getInfoDAO();
         listInfo = this.infoDAO.read();
-        //this.infoDAO.lastIDInfo(listInfo)
-        information.setId(1);
+        information.setId(this.infoDAO.lastIDInfo(listInfo)+1);
         this.infoDAO.add(information);
         return ActionSupport.SUCCESS;
     }

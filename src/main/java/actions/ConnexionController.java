@@ -3,6 +3,7 @@ package actions;
 import beans.Account;
 import beans.Adress;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.AdressDaoImpl;
 import dao.DaoFactory;
 import dao.list.AccountDAO;
 import javassist.NotFoundException;
@@ -22,8 +23,9 @@ public class ConnexionController extends ActionSupport implements SessionAware {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AccountDAO accountDAO;
-    private Account account=null;
-    private Adress adress;
+    private AdressDaoImpl adressDao;
+    private Account account=new Account();
+    private Adress adress = new Adress();
 
     private Boolean addAdress ;
     private String pseudo = null;
@@ -100,16 +102,45 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     }
 
     public String doCreateAccount (){
-        // Suppression de l'utilisateur en session
-        if (addAdress==null){
-            addAdress=true;
-        }
-
-        this.accountDAO=daoFactory.getAccountDAO();
-        if (account!=null){
-            accountDAO.add(account);
-        }
+            // Suppression de l'utilisateur en session
+            if (addAdress==null){
+                addAdress=true;
+            }
         return ActionSupport.SUCCESS;
     }
 
+    public String doAddAccount () {
+        this.accountDAO=daoFactory.getAccountDAO();
+        this.adressDao=daoFactory.getAdressDAO();
+        listAccount=this.accountDAO.read();
+        System.out.println(this.accountDAO.lastIDCom(listAccount)+"int");
+        account.setId(this.accountDAO.lastIDCom(listAccount));
+        account.setAdresseId(account.getId());
+        adress.setAdressId(account.getId());
+        System.out.println(account.getId()+" ; "+account.getSex()+" ; "+" ; "+account.getPseudo()+" ; "+account.getPassword()+" ; "+account.getName()+" ; "+account.getFirstName()+" ; "+account.getAdresseId());
+        System.out.println(adress.getCity()+" ; "+adress.getAdressId()+" ; "+adress.getCode()+" ; "+adress.getInfoSub()+" ; "+adress.getNbStreet()+" ; "+adress.getPostalCode()+" ; "+adress.getPrincipalAdress()+" ; "+adress.getStreet());
+
+        if(account.getName().equals("")){
+            this.addActionError(getText("error.emptyName"));
+        }
+        if(account.getFirstName().equals("")){
+            this.addActionError(getText("error.emptyFirstName"));
+        }
+        if(account.getPseudo().equals("")){
+            this.addActionError(getText("error.emptyPseudo"));
+        }
+        if(account.getPassword().equals("")){
+            this.addActionError(getText("error.emptyPassword"));
+        }
+        if(account.getSex().equals("-1")){
+            this.addActionError(getText("error.emptySex"));
+        }
+        if (!this.hasErrors()){
+            this.adressDao.add(adress);
+            this.accountDAO.add(account);
+            this.session.put("user",account);
+        }
+
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
 }

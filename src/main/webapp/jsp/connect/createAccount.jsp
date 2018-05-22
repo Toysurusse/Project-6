@@ -13,9 +13,18 @@
 
 <%@ include file="../blocktype/head.jsp" %>
 
-<s:form action="newaccount">
 
-    <s:textfield name="account.id" label="id" requiredLabel="true" />
+<s:if test="#session.user">
+    Vous êtes déjà connecté en tant que :
+    <s:property value="#session.user.pseudo" /></br>
+    <s:a action="disconnect">Cliquez ici pour vous déconnecter</s:a>
+</s:if>
+<s:else>
+
+<s:actionerror />
+
+<s:form action="createaccount">
+
     <s:textfield name="account.name" label="name" requiredLabel="true" />
     <s:textfield name="account.firstName" label="firstName" requiredLabel="true" />
     <s:textfield name="account.pseudo" label="pseudo" requiredLabel="true" />
@@ -24,8 +33,7 @@
               headerKey="-1" headerValue="Choisir Sexe"
               list="{'H', 'F'}"
               name="account.sex"
-              value="0" />
-    <s:textfield name="account.adresseId" label="adresseId" requiredLabel="false" />
+              value="0" requiredLabel="true"/>
 
     <s:a action="addaddress">
         <s:checkbox name="addAdress" fieldValue="true" label="Associer une adresse"/>
@@ -46,6 +54,8 @@
     </s:if>
     <s:submit value="Valider l'inscription"/>
 </s:form>
+
+</s:else>
 
 <footer>
     <%@ include file="../blocktype/footer.jsp" %>
