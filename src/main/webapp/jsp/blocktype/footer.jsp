@@ -4,7 +4,7 @@
     <div>
         <div class ="Space"></div>
         <div>
-        <a href="http://localhost:8080/accueil" target="_blank"> <input type="button" name="share"  value="partager une information" class ="ButMenu"> </a>
+            <s:a action="infolist"> <input type="button" name="info" value="Info" class ="ButMenu"> </s:a>
         </div>
         <div class ="Space"></div>
     </div>

@@ -22,12 +22,13 @@ public class ConnexionController extends ActionSupport implements SessionAware {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AccountDAO accountDAO;
-    private Account account;
+    private Account account=null;
     private Adress adress;
 
-    String pseudo=null;
-    String password=null;
-    List<Account> listAccount;
+    private Boolean addAdress ;
+    private String pseudo = null;
+    private String password = null;
+    private List<Account> listAccount;
 
     public String getPseudo() {
         return pseudo;
@@ -59,6 +60,12 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     public void setAccount(Account account) {
         this.account = account;
     }
+    public Boolean getAddAdress() {
+        return addAdress;
+    }
+    public void setAddAdress(Boolean addAdress) {
+        this.addAdress = addAdress;
+    }
 
     public String doConnectControl() throws NotFoundException {
         this.accountDAO=daoFactory.getAccountDAO();
@@ -82,15 +89,26 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         return ActionSupport.SUCCESS;
     }
 
+    public String doAddAdress (){
+        // Suppression de l'utilisateur en session
+        if (addAdress==null){
+            addAdress=true;
+        }else{
+            addAdress=true;
+        }
+        return ActionSupport.SUCCESS;
+    }
+
     public String doCreateAccount (){
         // Suppression de l'utilisateur en session
+        if (addAdress==null){
+            addAdress=true;
+        }
+
         this.accountDAO=daoFactory.getAccountDAO();
-
-
-
-
-        accountDAO.add(account);
-
+        if (account!=null){
+            accountDAO.add(account);
+        }
         return ActionSupport.SUCCESS;
     }
 

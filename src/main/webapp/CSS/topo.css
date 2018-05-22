@@ -123,9 +123,16 @@ header{
 }
 
 .Delete {
-    background-image: url("picture/Delete.JPG");
-    background-size: 10px 10px;
-    background-repeat: no-repeat;
     width: 10px;
     height: 10px;
+}
+
+.titre{
+    width: 10px;
+    height: 300px;
+}
+
+.Texte{
+    width: 10px;
+    height: 300px;
 }

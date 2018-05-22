@@ -6,7 +6,7 @@
 <html class = fonds>
 <head>
     <meta charset="UTF-8">
-    <title>Topos</title>
+    <title>Choisir un Site</title>
     <link type="text/css" rel="stylesheet" href="CSS/topo.css" />
 </head>
 <body>
@@ -63,7 +63,7 @@
         <s:a action="deleteCom">
             <s:param name="commentaire.topoId" value="%{topoid}" />
             <s:param name="commentaire.siteId" value="%{siteid}" />
-            <s:property value="comId" />
+            <img src="../CSS/picture/Delete.JPG"  height="10" width="10"/>
             <s:param name="id"><s:property value="comId" /> </s:param>
         </s:a>
     </div>

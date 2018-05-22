@@ -39,20 +39,19 @@ public class DaoFactory {
     public SiteDAO getSiteDAO(){
         return new SiteDaoImpl(this);
     }
-
     public TopoDAO getTopoDAO(){
         return new TopoDaoImpl(this);
     }
-
     public CommentaireDAO getCommentaireDAO() {
         return new CommentaireDaoImpl(this);
     }
-
     public AccountDAO getAccountDAO(){
         return new AccountDaoImpl(this);
     }
-
     public AddressDAO getAdressDAO(){
         return new AdressDaoImpl(this);
+    }
+    public InfoDAO getInfoDAO () {
+        return new InformationDaoImpl(this);
     }
 }
