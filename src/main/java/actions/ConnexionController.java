@@ -3,6 +3,7 @@ package actions;
 import beans.Account;
 import beans.Adress;
 import com.opensymphony.xwork2.ActionSupport;
+import control.Cryptor;
 import dao.AdressDaoImpl;
 import dao.DaoFactory;
 import dao.list.AccountDAO;
@@ -119,6 +120,9 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         adress.setAdressId(account.getId());
         System.out.println(account.getId()+" ; "+account.getSex()+" ; "+" ; "+account.getPseudo()+" ; "+account.getPassword()+" ; "+account.getName()+" ; "+account.getFirstName()+" ; "+account.getAdresseId());
         System.out.println(adress.getCity()+" ; "+adress.getAdressId()+" ; "+adress.getCode()+" ; "+adress.getInfoSub()+" ; "+adress.getNbStreet()+" ; "+adress.getPostalCode()+" ; "+adress.getPrincipalAdress()+" ; "+adress.getStreet());
+        System.out.println(account.getPassword());
+        /*System.out.println(Cryptor.encrypt (account.getPassword(),"Haschage")) ;
+        System.out.println(Cryptor.decrypt(Cryptor.encrypt (account.getPassword(),"Haschage"),"Haschage"));*/
 
         if(account.getName().equals("")){
             this.addActionError(getText("error.emptyName"));
@@ -135,11 +139,11 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         if(account.getSex().equals("-1")){
             this.addActionError(getText("error.emptySex"));
         }
-        if (!this.hasErrors()){
+        /*if (!this.hasErrors()){
             this.adressDao.add(adress);
             this.accountDAO.add(account);
             this.session.put("user",account);
-        }
+        }*/
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

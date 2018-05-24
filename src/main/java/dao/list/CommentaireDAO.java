@@ -12,4 +12,5 @@ public interface CommentaireDAO {
     List <Commentaire> readTopo(int id);
     List <Commentaire> readWay(int id);
     void delete (int id);
+    void deleteTime (int id);
 }

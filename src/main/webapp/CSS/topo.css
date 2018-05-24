@@ -6,8 +6,9 @@ body{
 }
 
 
-body, p, legend, label, input {
+body, a, p, legend, label, input {
     font: normal 8pt verdana, helvetica, sans-serif;
+    text-decoration: none;
 }
 
 
@@ -18,6 +19,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 
 .fonds {
     background-color: aliceblue;
@@ -61,17 +63,14 @@ header{
     text-decoration: none;
     font-family: Arial,sans-serif;
     font-size: 1.6em;
-    width: 100%;
+    width: 200px;
     height: 43px;
     padding-top: 7px; /*permet le centrage vertical*/
     text-align: center;
     vertical-align:middle;
-    color: white;
-    border-radius: 8px;
-    background: #39b0f8;
-    background: linear-gradient( #65b7e8, #009fff);
+    color: gray();
     text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
-    box-shadow: 0 0 5px #009fff,
+    box-shadow: 0 0 2px #009fff,
     0 -1px 0 #65b7e8;
 }
 

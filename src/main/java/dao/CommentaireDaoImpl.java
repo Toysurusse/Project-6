@@ -4,6 +4,7 @@ import beans.Commentaire;
 import dao.list.CommentaireDAO;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +17,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
 
     public int lastIDCom (List <Commentaire> com){
         int comnb=0;
-
         for (int i=0; i<=com.size()-2;i++){
-            System.out.println(com.get(i).getComId()+" ; "+com.get(i+1).getComId());
             if (com.get(i).getComId()==com.get(i+1).getComId()-1){
                 comnb =com.get(i).getComId()+1;
             }
@@ -39,15 +38,31 @@ public class CommentaireDaoImpl implements CommentaireDAO {
     @Override
     public List<Commentaire> readTopo(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0  ORDER BY comid;");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE topoid ="+id+" AND siteid=0 AND deleteat IS NULL  ORDER BY comid;");
         return commentaires;
     }
 
     @Override
     public List<Commentaire> readWay(int id) {
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
-        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE siteid ="+id+" ORDER BY comid;");
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE siteid ="+id+" AND deleteat IS NULL ORDER BY comid;");
         return commentaires;
+    }
+
+    @Override
+    public void deleteTime(int id) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        Date date = new Date();
+        Timestamp heure = new Timestamp(date.getTime());
+        System.out.println(heure);
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = connexion.prepareStatement("UPDATE commentaires SET deleteat = CURRENT_TIMESTAMP WHERE com_id = "+id+";");
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -56,6 +71,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getConnection();
+
             preparedStatement = connexion.prepareStatement("DELETE FROM page_index WHERE comid = "+id+";");
             preparedStatement.executeUpdate();
             preparedStatement = connexion.prepareStatement("DELETE FROM commentaires WHERE com_id = "+id+";");
@@ -72,11 +88,12 @@ public class CommentaireDaoImpl implements CommentaireDAO {
         try {
             connexion = daoFactory.getConnection();
 
-            preparedStatement = connexion.prepareStatement("INSERT INTO public.commentaires(com_id, compte_id, titre, commentaire)VALUES (?, ?, ?, ?);");
+            preparedStatement = connexion.prepareStatement("INSERT INTO public.commentaires(com_id, compte_id, titre, commentaire, createat)VALUES (?, ?, ?, ? ,?);");
             preparedStatement.setInt(1,  commentaire.getComId());
             preparedStatement.setInt(2, commentaire.getAccount());
             preparedStatement.setString(3, commentaire.getTitle());
             preparedStatement.setString(4, commentaire.getCommentary());
+            preparedStatement.setTimestamp(5, commentaire.getCreateAt());
             preparedStatement.executeUpdate();
 
             preparedStatement = connexion.prepareStatement("INSERT INTO public.page_index(page_id, comid, siteid, topoid)VALUES (?, ?, ?, ?);");

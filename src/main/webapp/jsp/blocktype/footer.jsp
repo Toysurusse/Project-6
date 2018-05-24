@@ -4,7 +4,7 @@
     <div>
         <div class ="Space"></div>
         <div>
-            <s:a action="infolist"> <input type="button" name="info" value="Info" class ="ButMenu"> </s:a>
+            <s:a action="infolist"> <input type="button" name="info" value="Info" class ="ButMenu" style="text-decoration: "> </s:a>
         </div>
         <div class ="Space"></div>
     </div>

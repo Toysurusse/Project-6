@@ -7,6 +7,9 @@ import dao.list.CommentaireDAO;
 import dao.list.SiteDAO;
 import dao.list.TopoDAO;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class CommentaireController extends ActionSupport {
 
     public Integer topoid;
@@ -69,14 +72,22 @@ public class CommentaireController extends ActionSupport {
     }
 
     public String addcom() {
+        Date date = new Date();
         this.commentaireDAO = daoFactory.getCommentaireDAO();
         commentaire.setComId(this.commentaireDAO.lastIDCom(this.commentaireDAO.read())+1);
+        commentaire.setCreateAt(new Timestamp(date.getTime()));
         commentaire.setPageId(commentaire.getComId());
         this.commentaireDAO.add(commentaire);
         return ActionSupport.SUCCESS;
     }
 
     public String deletecom() {
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        this.commentaireDAO.deleteTime(id);
+        return ActionSupport.SUCCESS;
+    }
+
+    public String deleteadmincom() {
         this.commentaireDAO=daoFactory.getCommentaireDAO();
         this.commentaireDAO.delete(id);
         return ActionSupport.SUCCESS;

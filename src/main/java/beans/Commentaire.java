@@ -1,5 +1,7 @@
 package beans;
 
+import java.sql.Timestamp;
+
 public class Commentaire {
 
     private int account;
@@ -9,6 +11,9 @@ public class Commentaire {
     private int pageId;
     private int siteId;
     private int topoId;
+    private Timestamp createAt;
+
+    private Timestamp deleteAt;
 
     public int getComId() {
         return comId;
@@ -57,5 +62,19 @@ public class Commentaire {
     }
     public void setTopoId(int topoId) {
         this.topoId = topoId;
+    }
+
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
+    public Timestamp getDeleteAt() {
+        return deleteAt;
+    }
+    public void setDeleteAt(Timestamp deleteAt) {
+        this.deleteAt = deleteAt;
     }
 }

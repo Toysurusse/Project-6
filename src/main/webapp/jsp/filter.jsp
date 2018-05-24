@@ -20,11 +20,17 @@
                   list="listTopo" listKey="identifiant" listValue="location"
                   emptyOption="true"
                   requiredLabel="true"/>
+        <s:hidden name="siteid" value="0"/>
+        <s:submit value="Rechercher ce topo"/>
+    </s:form>
+</ul>
+<ul>
+    <s:form action="topo_detail">
         <s:select name="siteid" label="site"
               list="listSite" listKey="identifiant" listValue="way"
               emptyOption="true"
               requiredLabel="true"/>
-    <s:submit value="Rechercher"/>
+    <s:submit value="Rechercher ce site"/>
     </s:form>
 </ul>
 

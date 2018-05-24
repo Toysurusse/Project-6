@@ -44,7 +44,7 @@
         </s:form>
     </s:if>
     <s:else>
-        <s:a action="connectinit"><input type="button" name="accueil" value="Connectez vous pour ajouter un commentaire" class ="ButMenu"> </s:a>
+        <s:a action="connectinit"><input type="button" name="accueil" value="Connectez vous pour ajouter un commentaire"> </s:a>
     </s:else>
 
 </div>

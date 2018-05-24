@@ -5,6 +5,7 @@
 
 <head>
     <title>Accueil</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="CSS\index.css" />
 </head>
 
