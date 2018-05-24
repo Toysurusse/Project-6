@@ -49,27 +49,27 @@
 
 </div>
 
-<s:iterator var="Commentaire" value="listCommentaire">
-<div class = "ComFrame">
+<s:iterator value="hashMap">
+    </br>
+    <s:property value="key.title"/>
+    <div class = "ComFrame">
     <div>
-    <p>
-        <s:property value="title" />
-    </p>
-    <p>
-        <s:property value="commentary" />
-    </p>
+        Le <s:property value="key.createAt"/> </br>
+        Ecrit par : <s:property value="value.pseudo"/> </br>
+    </div>
+    <div>
+        <s:property value="key.commentary"/>
     </div>
     <div class = Delete>
         <s:a action="deleteCom">
             <s:param name="commentaire.topoId" value="%{topoid}" />
             <s:param name="commentaire.siteId" value="%{siteid}" />
             <img src="../CSS/picture/Delete.JPG"  height="10" width="10"/>
-            <s:param name="id"><s:property value="comId" /> </s:param>
+            <s:param name="id"><s:property value="key.comId" /> </s:param>
         </s:a>
     </div>
 </div>
 </s:iterator>
-
 <footer>
     <%@ include file="blocktype/footer.jsp" %>
 </footer>

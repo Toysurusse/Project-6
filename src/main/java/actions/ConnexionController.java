@@ -12,6 +12,7 @@ import dao.list.CommentaireDAO;
 import javassist.NotFoundException;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,14 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     private List<Account> listAccount;
 
     private List<Commentaire> listCommentaire;
+
+    private HashMap<Commentaire, Account> hashMap= new HashMap<>();
+    public HashMap<Commentaire, Account> getHashMap() {
+        return hashMap;
+    }
+    public void setHashMap(HashMap<Commentaire, Account> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public String getPseudo() {
         return pseudo;
@@ -99,8 +108,13 @@ public class ConnexionController extends ActionSupport implements SessionAware {
 
     public String dopersoInfo (){
         this.commentaireDAO=daoFactory.getCommentaireDAO();
+        this.accountDAO=daoFactory.getAccountDAO();
         account = (Account) this.session.get("user");
         listCommentaire=this.commentaireDAO.readCompteId(account.getId());
+        for (int i =0; i<listCommentaire.size();i++){
+            hashMap.put(listCommentaire.get(i),this.accountDAO.findAccount (listCommentaire.get(i).getAccount()));
+        }
+
         return ActionSupport.SUCCESS;
     }
 

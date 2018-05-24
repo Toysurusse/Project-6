@@ -1,15 +1,18 @@
 package actions;
 
+import beans.Account;
 import beans.Commentaire;
 import beans.Site;
 import beans.Topo;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
+import dao.list.AccountDAO;
 import dao.list.CommentaireDAO;
 import dao.list.SiteDAO;
 import dao.list.TopoDAO;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 public class TopoController extends ActionSupport {
@@ -21,7 +24,7 @@ public class TopoController extends ActionSupport {
     private TopoDAO topoDAO;
     private SiteDAO siteDAO;
     private CommentaireDAO commentaireDAO;
-
+    private AccountDAO accountDAO;
 
     public Integer getId() {
         return id;
@@ -62,6 +65,22 @@ public class TopoController extends ActionSupport {
         this.listCommentaire = listCommentaire;
     }
 
+    private Account account;
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    private HashMap<Commentaire, Account> hashMap= new HashMap<>();
+    public HashMap<Commentaire, Account> getHashMap() {
+        return hashMap;
+    }
+    public void setHashMap(HashMap<Commentaire, Account> hashMap) {
+        this.hashMap = hashMap;
+    }
+
     public String doList() {
         this.topoDAO = daoFactory.getTopoDAO();
         listTopo = this.topoDAO.read();
@@ -71,16 +90,22 @@ public class TopoController extends ActionSupport {
     }
 
     public String doFindSiteTopo() {
+        this.siteDAO = daoFactory.getSiteDAO();
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        this.accountDAO=daoFactory.getAccountDAO();
+
         if (siteid==0){
-            this.siteDAO = daoFactory.getSiteDAO();
             listSite = this.siteDAO.topoSiteSelect(topoid);
-            this.commentaireDAO=daoFactory.getCommentaireDAO();
             listCommentaire=this.commentaireDAO.readTopo(topoid);
+            for (int i =0; i<listCommentaire.size();i++){
+                hashMap.put(listCommentaire.get(i),this.accountDAO.findAccount (listCommentaire.get(i).getAccount()));
+            }
         }else{
-            this.siteDAO = daoFactory.getSiteDAO();
             listSite = this.siteDAO.siteTopoSelect(siteid);
-            this.commentaireDAO=daoFactory.getCommentaireDAO();
             listCommentaire=this.commentaireDAO.readWay(siteid);
+            for (int i =0; i<listCommentaire.size();i++){
+                hashMap.put(listCommentaire.get(i),this.accountDAO.findAccount (listCommentaire.get(i).getAccount()));
+            }
         }
         return ActionSupport.SUCCESS;
     }

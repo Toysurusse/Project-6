@@ -135,6 +135,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
                 int account = resultat.getInt(6);
                 String title= resultat.getString(7);
                 String commentary= resultat.getString(8);
+                Timestamp createAt= resultat.getTimestamp(9);
 
                 Commentaire commentaire = new Commentaire();
                 commentaire.setAccount(account);
@@ -144,6 +145,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
                 commentaire.setPageId(pageId);
                 commentaire.setSiteId(siteId);
                 commentaire.setTopoId(topoId);
+                commentaire.setCreateAt(createAt);
                 System.out.println(commentaire.getComId());
                 commentaires.add(commentaire);
             }

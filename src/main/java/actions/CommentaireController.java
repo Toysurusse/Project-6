@@ -1,5 +1,6 @@
 package actions;
 
+import beans.Account;
 import beans.Commentaire;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
@@ -7,6 +8,7 @@ import dao.list.CommentaireDAO;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 
 public class CommentaireController extends ActionSupport {
 

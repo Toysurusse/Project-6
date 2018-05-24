@@ -51,9 +51,23 @@ public class AccountDaoImpl implements AccountDAO {
         return account;
     }
 
+    @Override
+    public Account findAccount (int id) {
+        List<Account> accounts = new ArrayList<Account>();
+        accounts = extract("SELECT * FROM public.compte WHERE id ="+id+" order by id");
+        Account account = accounts.get(0);
+        return account;
+    }
 
     @Override
     public List<Account> read() {
+        List<Account> accounts = new ArrayList<Account>();
+        accounts = extract("SELECT * FROM public.compte order by id");
+        return accounts;
+    }
+
+
+    public List<Account> extract(String request) {
         List<Account> accounts = new ArrayList<Account>();
         Statement statement =null ;
         ResultSet resultat =null ;
@@ -63,7 +77,7 @@ public class AccountDaoImpl implements AccountDAO {
 
             connexion =daoFactory.getConnection();
             statement=connexion.createStatement();
-            resultat = statement.executeQuery("SELECT * FROM public.compte order by id");
+            resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
 

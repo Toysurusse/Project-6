@@ -8,6 +8,7 @@ import java.util.List;
 public interface AccountDAO {
     void add(Account account);
     List <Account> read();
+    Account findAccount (int id);
     int lastIDCom (List <Account> com);
     Account control(String pseudo, String password,List <Account> accountDAO);
 }
