@@ -13,8 +13,6 @@ public class Commentaire {
     private int topoId;
     private Timestamp createAt;
 
-    private Timestamp deleteAt;
-
     public int getComId() {
         return comId;
     }
@@ -69,12 +67,5 @@ public class Commentaire {
     }
     public void setCreateAt(Timestamp createAt) {
         this.createAt = createAt;
-    }
-
-    public Timestamp getDeleteAt() {
-        return deleteAt;
-    }
-    public void setDeleteAt(Timestamp deleteAt) {
-        this.deleteAt = deleteAt;
     }
 }

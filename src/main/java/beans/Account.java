@@ -9,6 +9,7 @@ public class Account {
     private String password;
     private String sex;
     private int adressId;
+    private int accessLevel;
 
     public int getId() {
         return id;
@@ -46,10 +47,16 @@ public class Account {
     public void setSex(String sex) {
         this.sex = sex;
     }
-    public int getAdresseId() {
+    public int getAdressId() {
         return adressId;
     }
-    public void setAdresseId(int adresseId) {
+    public void setAdressId(int adresseId) {
         this.adressId = adresseId;
+    }
+    public int getAccessLevel() {
+        return accessLevel;
+    }
+    public void setAccessLevel(int accessLevel) {
+        this.accessLevel = accessLevel;
     }
 }

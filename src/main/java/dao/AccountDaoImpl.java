@@ -21,14 +21,15 @@ public class AccountDaoImpl implements AccountDAO {
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = connexion.prepareStatement("INSERT INTO public.compte(id, nom, prenom, pseudo, mot_de_passe, sexe, adresse_id)VALUES (?, ?, ?, ?, ?, ?, ?);");
+            preparedStatement = connexion.prepareStatement("INSERT INTO public.compte(id, nom, prenom, pseudo, mot_de_passe, sexe, adresse_id, accessuser)VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
             preparedStatement.setInt(1, account.getId());
             preparedStatement.setString(2, account.getName());
             preparedStatement.setString(3, account.getFirstName());
             preparedStatement.setString(4, account.getPseudo());
             preparedStatement.setString(5, account.getPassword());
             preparedStatement.setString(6, account.getSex());
-            preparedStatement.setInt(7, account.getAdresseId());
+            preparedStatement.setInt(7, account.getAdressId());
+            preparedStatement.setInt(8, account.getAccessLevel());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,6 +74,7 @@ public class AccountDaoImpl implements AccountDAO {
                 String password = resultat.getString(5);
                 String sex = resultat.getString(6);
                 int adresseId = resultat.getInt(7);
+                int accessUser = resultat.getInt(8);
 
                 Account account = new Account();
                 account.setId(id);
@@ -81,7 +83,8 @@ public class AccountDaoImpl implements AccountDAO {
                 account.setPseudo(pseudo);
                 account.setPassword(password);
                 account.setSex(sex);
-                account.setAdresseId(adresseId);
+                account.setAdressId(adresseId);
+                account.setAccessLevel(accessUser);
 
                 accounts.add(account);
             }

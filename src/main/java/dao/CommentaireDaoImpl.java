@@ -50,6 +50,13 @@ public class CommentaireDaoImpl implements CommentaireDAO {
     }
 
     @Override
+    public List<Commentaire> readCompteId(int id) {
+        List<Commentaire> commentaires = new ArrayList<Commentaire>();
+        commentaires = extract("SELECT * FROM page_index INNER JOIN commentaires ON comid = com_id WHERE compte_id = "+id+" ORDER BY comid;");
+        return commentaires;
+    }
+
+    @Override
     public void deleteTime(int id) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -137,7 +144,7 @@ public class CommentaireDaoImpl implements CommentaireDAO {
                 commentaire.setPageId(pageId);
                 commentaire.setSiteId(siteId);
                 commentaire.setTopoId(topoId);
-
+                System.out.println(commentaire.getComId());
                 commentaires.add(commentaire);
             }
         } catch (SQLException e) {

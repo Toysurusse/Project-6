@@ -2,11 +2,13 @@ package actions;
 
 import beans.Account;
 import beans.Adress;
+import beans.Commentaire;
 import com.opensymphony.xwork2.ActionSupport;
 import control.Cryptor;
 import dao.AdressDaoImpl;
 import dao.DaoFactory;
 import dao.list.AccountDAO;
+import dao.list.CommentaireDAO;
 import javassist.NotFoundException;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -24,6 +26,7 @@ public class ConnexionController extends ActionSupport implements SessionAware {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AccountDAO accountDAO;
+    private CommentaireDAO commentaireDAO;
     private AdressDaoImpl adressDao;
     private Account account=new Account();
     private Adress adress = new Adress();
@@ -32,6 +35,8 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     private String pseudo = null;
     private String password = null;
     private List<Account> listAccount;
+
+    private List<Commentaire> listCommentaire;
 
     public String getPseudo() {
         return pseudo;
@@ -69,6 +74,12 @@ public class ConnexionController extends ActionSupport implements SessionAware {
     public void setAddAdress(Boolean addAdress) {
         this.addAdress = addAdress;
     }
+    public List<Commentaire> getListCommentaire() {
+        return listCommentaire;
+    }
+    public void setListCommentaire(List<Commentaire> listCommentaire) {
+        this.listCommentaire = listCommentaire;
+    }
 
     public String doConnectControl() throws NotFoundException {
         this.accountDAO=daoFactory.getAccountDAO();
@@ -85,6 +96,14 @@ public class ConnexionController extends ActionSupport implements SessionAware {
             }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
+
+    public String dopersoInfo (){
+        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        account = (Account) this.session.get("user");
+        listCommentaire=this.commentaireDAO.readCompteId(account.getId());
+        return ActionSupport.SUCCESS;
+    }
+
 
     public String doLogOut (){
         // Suppression de l'utilisateur en session
@@ -116,9 +135,10 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         listAccount=this.accountDAO.read();
         System.out.println(this.accountDAO.lastIDCom(listAccount)+"int");
         account.setId(this.accountDAO.lastIDCom(listAccount));
-        account.setAdresseId(account.getId());
+        account.setAdressId(account.getId());
+        account.setAccessLevel(1);
         adress.setAdressId(account.getId());
-        System.out.println(account.getId()+" ; "+account.getSex()+" ; "+" ; "+account.getPseudo()+" ; "+account.getPassword()+" ; "+account.getName()+" ; "+account.getFirstName()+" ; "+account.getAdresseId());
+        System.out.println(account.getId()+" ; "+account.getSex()+" ; "+" ; "+account.getPseudo()+" ; "+account.getPassword()+" ; "+account.getName()+" ; "+account.getFirstName()+" ; "+account.getAdressId());
         System.out.println(adress.getCity()+" ; "+adress.getAdressId()+" ; "+adress.getCode()+" ; "+adress.getInfoSub()+" ; "+adress.getNbStreet()+" ; "+adress.getPostalCode()+" ; "+adress.getPrincipalAdress()+" ; "+adress.getStreet());
         System.out.println(account.getPassword());
         /*System.out.println(Cryptor.encrypt (account.getPassword(),"Haschage")) ;
@@ -139,11 +159,11 @@ public class ConnexionController extends ActionSupport implements SessionAware {
         if(account.getSex().equals("-1")){
             this.addActionError(getText("error.emptySex"));
         }
-        /*if (!this.hasErrors()){
+        if (!this.hasErrors()){
             this.adressDao.add(adress);
             this.accountDAO.add(account);
             this.session.put("user",account);
-        }*/
+        }
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

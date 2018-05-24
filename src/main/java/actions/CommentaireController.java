@@ -4,8 +4,6 @@ import beans.Commentaire;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DaoFactory;
 import dao.list.CommentaireDAO;
-import dao.list.SiteDAO;
-import dao.list.TopoDAO;
 
 import java.sql.Timestamp;
 import java.util.Date;

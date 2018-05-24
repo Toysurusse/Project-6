@@ -11,6 +11,7 @@ public interface CommentaireDAO {
     int lastIDCom (List <Commentaire> com);
     List <Commentaire> readTopo(int id);
     List <Commentaire> readWay(int id);
+    List <Commentaire> readCompteId(int id);
     void delete (int id);
     void deleteTime (int id);
 }
