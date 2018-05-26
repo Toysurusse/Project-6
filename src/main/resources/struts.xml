@@ -5,152 +5,18 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <package name="default" extends="struts-default">
 
+    <package name="default" namespace="/" extends="struts-default">
 
-        <!--==================================Accueil=============================================-->
-        <!-- Action par défaut -->
-        <default-action-ref name="accueil" />
-        <!-- Action "index" -->
-        <action name="accueil">
-            <result>/jsp/accueil.jsp</result>
+        <action name="userAction"
+                class="userAction">
+            <result name="success">/jsp/pages/user.jsp</result>
         </action>
 
-        <!--==================================Topo/voies=============================================-->
-        <!-- Action listant les topos -->
-        <action name="list_topo"
-                class="actions.TopoController"
-                method="doList">
-            <result>/jsp/topo.jsp</result>
-        </action>
-
-        <!-- Action affichant le détail d'un projet -->
-        <action name="topo_detail"
-                class="actions.TopoController"
-                method="doFindSiteTopo">
-            <result name="success">/jsp/site.jsp</result>
-        </action>
-
-        <!-- Action affichant le filtre -->
-        <action name="filter"
-                class="actions.TopoController"
-                method="doList">
-            <result name="success">/jsp/filter.jsp</result>
-        </action>
-
-        <!--==================================Commentaires=============================================-->
-
-        <action name="deleteComDATA"
-                class="actions.CommentaireController"
-                method="deleteadmincom">
-            <result name="success" type="redirectAction">
-                <param name="actionName">connected</param>
-            </result>
-        </action>
-
-        <action name="deleteCom"
-                class="actions.CommentaireController"
-                method="deletecom">
-            <result name="success" type="redirectAction">
-                <param name="actionName">topo_detail</param>
-                <param name="topoid">${commentaire.topoId}</param>
-                <param name="siteid">${commentaire.siteId}</param>
-            </result>
-        </action>
-
-        <action name="addcom"
-                class="actions.CommentaireController"
-                method="addcom">
-            <result name="input">/jsp/site.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">topo_detail</param>
-                <param name="topoid">${commentaire.topoId}</param>
-                <param name="siteid">${commentaire.siteId}</param>
-            </result>
-        </action>
-
-        <!--==================================Info=============================================-->
-
-        <!-- Action affichant la confirmation de connection -->
-        <action name="infolist"
-                class="actions.InfoController"
-                method="doListInfo">
-            <result name="success">/jsp/info.jsp</result>
-        </action>
-
-        <action name="infoadd"
-                class="actions.InfoController"
-                method="doAddInfo">
-            <result name="success">/jsp/info.jsp</result>
-        </action>
-
-
-        <!--==================================Login=============================================-->
-
-        <!-- Action affichant la confirmation de connection -->
-        <action name="connectinit">
-            <result name="success">/jsp/connect/connect.jsp</result>
-        </action>
-
-        <!-- Action affichant la confirmation de connection -->
-        <action name="disconnect"
-                class="actions.ConnexionController"
-                method="doLogOut">
-            <result name="success">/jsp/accueil.jsp</result>
-        </action>
-
-        <!-- Action affichant la confirmation de connection -->
-        <action name="connected"
-                class="actions.ConnexionController"
-                method="dopersoInfo">
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
-
-            <result name="success">/jsp/connect/connectSuccess.jsp</result>
-        </action>
-
-        <!-- Actions permettant de se connecter -->
-        <action name="connecttry"
-                class="actions.ConnexionController"
-                method="doConnectControl">
-
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
-
-            <result name="input">/jsp/connect/connect.jsp</result>
-            <result name="success" type="redirectAction">
-            <param name="actionName">connected</param>
-        </result>
-            <result name="error">/jsp/connect/connect.jsp</result>
-        </action>
-
-        <!-- Actions permettant de se connecter -->
-        <action name="createaccount"
-                class="actions.ConnexionController"
-                method="doAddAccount">
-            <result name="input">/jsp/connect/createAccount.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">accueil</param>
-            </result>
-            <result name="error">/jsp/connect/createAccount.jsp</result>
-        </action>
-
-        <!-- Actions permettant de se connecter -->
-        <action name="addaddress"
-                class="actions.ConnexionController"
-                method="doAddAdress">
-            <result name="success">/jsp/connect/createAccount.jsp</result>
-        </action>
-
-        <!-- Actions permettant de se connecter -->
-        <action name="newaccount"
-                class="actions.ConnexionController"
-                method="doCreateAccount">
-            <result name="success">/jsp/connect/createAccount.jsp</result>
+        <action name="userSpringAction"
+                class="userSpringAction" >
+            <result name="success">/jsp/pages/user.jsp</result>
         </action>
     </package>
+
 </struts>
