@@ -5,11 +5,11 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
         <bean id="userBo" class="resources.UserBoImpl" />
 
-        <bean id="userSpringAction" class="resources.UserSpringAction">
+        <bean id="userSpringAction" class="action.UserSpringAction">
             <property name="userBo" ref="userBo" />
         </bean>
 
-        <bean id="userAction" class="resources.UserAction">
+        <bean id="userAction" class="action.UserAction">
             <property name="userBo" ref="userBo" />
         </bean>
     </beans>

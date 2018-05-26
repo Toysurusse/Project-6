@@ -1,6 +1,6 @@
-package resources;
+package action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import resources.UserBo;
 
 public class UserAction {
 

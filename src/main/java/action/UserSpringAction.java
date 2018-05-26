@@ -1,4 +1,6 @@
-package resources;
+package action;
+
+import resources.UserBo;
 
 public class UserSpringAction{
 

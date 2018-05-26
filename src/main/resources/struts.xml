@@ -10,13 +10,40 @@
 
         <action name="userAction"
                 class="userAction">
-            <result name="success">/jsp/pages/user.jsp</result>
+            <result name="success">/jsp/user.jsp</result>
         </action>
 
         <action name="userSpringAction"
                 class="userSpringAction" >
-            <result name="success">/jsp/pages/user.jsp</result>
+            <result name="success">/jsp/user.jsp</result>
+        </action>
+
+
+        <!-- ======================Menu========================-->
+
+        <action name="infoList"
+                class="action.menu.ActionMenu" >
+            <result name="success">/jsp/user.jsp</result>
+        </action>
+
+        <action name="filter"
+                class="action.menu.ActionMenu" >
+            <result name="success">/jsp/user.jsp</result>
+        </action>
+
+        <action name="listTopo"
+                class="action.menu.ActionMenu" >
+            <result name="success">/jsp/user.jsp</result>
+        </action>
+
+        <action name="rentTopo"
+                class="action.menu.ActionMenu" >
+            <result name="success">/jsp/user.jsp</result>
+        </action>
+
+        <action name="connect"
+                class="action.menu.ActionMenu" >
+            <result name="success">/jsp/user.jsp</result>
         </action>
     </package>
-
 </struts>
