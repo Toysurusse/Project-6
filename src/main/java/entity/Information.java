@@ -1,4 +1,4 @@
-package beans;
+package entity;
 
 public class Information {
     private int id;

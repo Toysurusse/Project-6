@@ -7,7 +7,7 @@
     <s:a href="#filter">Filtrer</s:a>
 </li>
 <li>
-    <s:a href="#listTopo">Topos</s:a>
+    <s:a href="listTopo">Topos</s:a>
 </li>
 <li>
     <s:a href="#rentTopo">Louer un topo</s:a>

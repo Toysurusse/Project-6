@@ -4,7 +4,6 @@
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
         <bean id="userBo" class="resources.UserBoImpl" />
-
         <bean id="userSpringAction" class="action.UserSpringAction">
             <property name="userBo" ref="userBo" />
         </bean>
@@ -12,5 +11,30 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="userAction" class="action.UserAction">
             <property name="userBo" ref="userBo" />
         </bean>
+
+        <!-- ======================Dao Beans========================-->
+
+        <bean id="daoFactory" class="resources.dao.DaoFactory">
+            <constructor-arg index="0" value="jdbc:postgresql://localhost:5432/PJ6"/>
+            <constructor-arg index="1" value="postgres"/>
+            <constructor-arg index="2" value="Toysrusse"/>
+        </bean>
+        <bean id="topoDao" class="resources.dao.TopoDaoImpl"/>
+        <bean id="siteDao" class="resources.dao.SiteDaoImpl"/>
+
+
+        <!-- ======================Actions Beans========================-->
+
+        <bean id="topoShow" class="action.menu.TopoShow">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="topoDao" ref="topoDao" />
+        </bean>
+
+        <bean id="siteShow" class="action.menu.SiteShow">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="siteDao" ref="siteDao" />
+        </bean>
+
+
     </beans>
 
