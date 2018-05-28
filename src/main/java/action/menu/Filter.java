@@ -3,15 +3,14 @@ package action.menu;
 import entity.Site;
 import entity.Topo;
 import resources.dao.DaoFactory;
-import resources.dao.TopoDaoImpl;
 import resources.dao.beans.SiteDao;
 import resources.dao.beans.TopoDao;
 
 import java.util.List;
 
-public class SiteShow {
-    private DaoFactory daoFactory;
+public class Filter {
 
+    private DaoFactory daoFactory;
     public DaoFactory getDaoFactory() {
         return daoFactory;
     }
@@ -70,12 +69,10 @@ public class SiteShow {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
         topolist=topoDao.read();
-        if (siteid==0){
-            sitelist = this.siteDao.topoSiteSelect(topoid);
-        }else{
-            sitelist = this.siteDao.siteTopoSelect(siteid);
-        }
+        sitelist=siteDao.read();
         return "success";
     }
+
+
 
 }

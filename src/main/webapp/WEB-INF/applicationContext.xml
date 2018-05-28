@@ -32,9 +32,15 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
         <bean id="siteShow" class="action.menu.SiteShow">
             <property name="daoFactory" ref="daoFactory" />
+            <property name="topoDao" ref="topoDao" />
             <property name="siteDao" ref="siteDao" />
         </bean>
 
+        <bean id="filter" class="action.menu.Filter">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="topoDao" ref="topoDao" />
+            <property name="siteDao" ref="siteDao" />
+        </bean>
 
     </beans>
 

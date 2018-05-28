@@ -4,7 +4,7 @@
     <s:a href="#infoList">Info</s:a>
 </li>
 <li>
-    <s:a href="#filter">Filtrer</s:a>
+    <s:a href="filter">Filtrer</s:a>
 </li>
 <li>
     <s:a href="listTopo">Topos</s:a>
