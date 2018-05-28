@@ -26,6 +26,23 @@
 </div>
 </div>
 
+<div class =  "container-fluid">
+
+    <s:if test="#session.user">
+        <s:form action="addcom">
+            <s:hidden name="commentaire.topoId" value="%{topoid}" />
+            <s:hidden name="commentaire.siteId" value="%{siteid}" />
+            <s:hidden name="commentaire.account" value="%{#session.user.id}" />
+            <s:textfield name="commentaire.title" label="title" requiredLabel="true" />
+            <s:textfield name="commentaire.commentary" label="commentaire" requiredLabel="true" />
+            <s:submit value="OK"/>
+        </s:form>
+    </s:if>
+    <s:else>
+        <s:a action="connectinit"><input type="button" name="accueil" value="Connectez vous pour ajouter un commentaire"> </s:a>
+    </s:else>
+
+</div>
 <div class="container">
     <div class="starter-template">
 

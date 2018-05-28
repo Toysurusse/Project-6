@@ -40,14 +40,55 @@
         </action>
 
         <action name="connect"
-                class="action.menu.TopoShow" >
-            <result name="success">/jsp/user.jsp</result>
+                class="connect">
+            <result name="success">/jsp/connect/connect.jsp</result>
         </action>
 
         <!-- ======================Site========================-->
         <action name="listSite"
                 class="siteShow" >
             <result name="success">/jsp/site.jsp</result>
+        </action>
+
+        <action name="addcom"
+                class="siteShow"
+                method ="addcom">
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
+        <!-- ======================Login========================-->
+
+
+        <action name="connectTry"
+                class="connectTry"
+                method="input">
+
+            <result name="input">/jsp/connect/connect.jsp</result>
+        <result name="success" type="redirectAction">
+            <param name="actionName">connected</param>
+        </result>
+        <result name="error">/jsp/connect/connect.jsp</result>
+        </action>
+
+        <action name="connected"
+                class="connected">
+            <result name="success">/jsp/connect/connectSuccess.jsp</result>
+        </action>
+
+        <!-- Actions permettant de se connecter -->
+        <action name="loadaccount"
+                class="create">
+            <result name="success">/jsp/connect/createAccount.jsp</result>
+        </action>
+
+        <action name="createaccount"
+                class="create"
+                method ="input">
+            <result name="input">/jsp/connect/connect.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/connect.jsp</result>
         </action>
 
     </package>

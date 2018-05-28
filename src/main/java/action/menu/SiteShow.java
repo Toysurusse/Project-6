@@ -3,13 +3,13 @@ package action.menu;
 import entity.Commentaire;
 import entity.Site;
 import entity.Topo;
-import resources.dao.CommentaireDaoImpl;
 import resources.dao.DaoFactory;
-import resources.dao.TopoDaoImpl;
 import resources.dao.beans.CommentaireDao;
 import resources.dao.beans.SiteDao;
 import resources.dao.beans.TopoDao;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class SiteShow {
@@ -85,10 +85,20 @@ public class SiteShow {
         this.siteid = siteid;
     }
 
+    public Commentaire getCommentaire() {
+        return commentaire;
+    }
+    public void setCommentaire(Commentaire commentaire) {
+        this.commentaire = commentaire;
+    }
+    private Commentaire commentaire;
+
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
         this.commentaireDao = this.daoFactory.getCommentaireDAO();
+
+
 
         topolist=topoDao.read();
         if (siteid==0){
@@ -100,6 +110,17 @@ public class SiteShow {
         }
         return "success";
     }
+
+    public String addcom(){
+        Date date = new Date();
+        this.commentaireDao = daoFactory.getCommentaireDAO();
+        commentaire.setComId(this.commentaireDao.lastIDCom(this.commentaireDao.read())+1);
+        commentaire.setCreateAt(new Timestamp(date.getTime()));
+        commentaire.setPageId(commentaire.getComId());
+        this.commentaireDao.add(commentaire);
+        return "success";
+    }
+
 
 
 }

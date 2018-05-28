@@ -22,6 +22,8 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="topoDao" class="resources.dao.TopoDaoImpl"/>
         <bean id="siteDao" class="resources.dao.SiteDaoImpl"/>
         <bean id="commentaireDao" class="resources.dao.CommentaireDaoImpl"/>
+        <bean id="accountDao" class="resources.dao.AccountDaoImpl"/>
+        <bean id="addressDao" class="resources.dao.AdressDaoImpl"/>
 
         <!-- ======================Actions Beans========================-->
 
@@ -42,6 +44,29 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="topoDao" ref="topoDao" />
             <property name="siteDao" ref="siteDao" />
         </bean>
+
+        <bean id="connectTry" class="action.menu.connect.ConnectTry">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="commentaireDAO" ref="commentaireDao" />
+        </bean>
+
+        <bean id="connect" class="action.menu.connect.Connect">
+        </bean>
+
+        <bean id="create" class="action.menu.connect.Create">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="adressDao" ref="addressDao" />
+            <property name="commentaireDAO" ref="commentaireDao" />
+        </bean>
+
+        <bean id="connected" class="action.menu.connect.Connected">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="commentaireDAO" ref="commentaireDao" />
+        </bean>
+
 
     </beans>
 

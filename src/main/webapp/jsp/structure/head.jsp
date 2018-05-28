@@ -13,6 +13,14 @@
     <s:a href="#rentTopo">Louer un topo</s:a>
 </li>
 <li>
-    <s:a href="#connect">Se Connecter</s:a>
+    <s:if test="#session.user">
+        Utilisateur connecté :
+        <s:property value="#session.user.pseudo" /></br>
+        <s:a action="disconnect">Déconnexion</s:a>
+    </s:if>
+    <s:else>
+        <s:a href="connectTry">Se Connecter</s:a>
+    </s:else>
+
 </li>
 
