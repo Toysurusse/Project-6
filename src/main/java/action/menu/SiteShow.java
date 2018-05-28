@@ -1,9 +1,12 @@
 package action.menu;
 
+import entity.Commentaire;
 import entity.Site;
 import entity.Topo;
+import resources.dao.CommentaireDaoImpl;
 import resources.dao.DaoFactory;
 import resources.dao.TopoDaoImpl;
+import resources.dao.beans.CommentaireDao;
 import resources.dao.beans.SiteDao;
 import resources.dao.beans.TopoDao;
 
@@ -35,6 +38,14 @@ public class SiteShow {
         return topoDao;
     }
 
+    private CommentaireDao commentaireDao;
+    public void setCommentaireDao(CommentaireDao commentaireDao) {
+        this.commentaireDao = commentaireDao;
+    }
+    public CommentaireDao getCommentaireDao() {
+        return commentaireDao;
+    }
+
     private List<Topo> topolist;
     public List<Topo> getTopolist() {
         return topolist;
@@ -49,6 +60,14 @@ public class SiteShow {
     }
     public void setSitelist(List<Site> sitelist) {
         this.sitelist = sitelist;
+    }
+
+    private List<Commentaire> commentaireList;
+    public List<Commentaire> getCommentaireList() {
+        return commentaireList;
+    }
+    public void setCommentaireList(List<Commentaire> commentaireList) {
+        this.commentaireList = commentaireList;
     }
 
     public Integer topoid;
@@ -69,13 +88,18 @@ public class SiteShow {
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
+        this.commentaireDao = this.daoFactory.getCommentaireDAO();
+
         topolist=topoDao.read();
         if (siteid==0){
             sitelist = this.siteDao.topoSiteSelect(topoid);
+            commentaireList=this.commentaireDao.readTopo(topoid);
         }else{
             sitelist = this.siteDao.siteTopoSelect(siteid);
+            commentaireList=this.commentaireDao.readWay(siteid);
         }
         return "success";
     }
+
 
 }

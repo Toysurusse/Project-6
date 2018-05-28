@@ -1,5 +1,6 @@
 package resources.dao;
 
+import resources.dao.beans.CommentaireDao;
 import resources.dao.beans.SiteDao;
 import resources.dao.beans.TopoDao;
 
@@ -46,10 +47,10 @@ public class DaoFactory {
         public TopoDao getTopoDAO(){
             return new TopoDaoImpl(this);
         }
-        /*public CommentaireDAO getCommentaireDAO() {
+        public CommentaireDao getCommentaireDAO() {
             return new CommentaireDaoImpl(this);
         }
-        public AccountDAO getAccountDAO(){
+        /*public AccountDAO getAccountDAO(){
             return new AccountDaoImpl(this);
         }
         public AdressDaoImpl getAdressDAO(){

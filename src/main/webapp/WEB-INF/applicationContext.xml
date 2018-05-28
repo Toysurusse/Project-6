@@ -21,7 +21,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         </bean>
         <bean id="topoDao" class="resources.dao.TopoDaoImpl"/>
         <bean id="siteDao" class="resources.dao.SiteDaoImpl"/>
-
+        <bean id="commentaireDao" class="resources.dao.CommentaireDaoImpl"/>
 
         <!-- ======================Actions Beans========================-->
 
@@ -34,6 +34,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="daoFactory" ref="daoFactory" />
             <property name="topoDao" ref="topoDao" />
             <property name="siteDao" ref="siteDao" />
+            <property name="commentaireDao" ref="commentaireDao" />
         </bean>
 
         <bean id="filter" class="action.menu.Filter">

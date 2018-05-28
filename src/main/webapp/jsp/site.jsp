@@ -26,5 +26,13 @@
 </div>
 </div>
 
+<div class="container">
+    <div class="starter-template">
+
+    </div>
+</div>
+
+
+
 
 <%@ include file="structure/foot.jsp" %>
