@@ -28,4 +28,11 @@ public class ConnectTry extends Connect {
         this.accountDAO=null;
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
+
+
+    public String disconnect() {
+        this.session.remove("user");
+        return ActionSupport.SUCCESS;
+    }
+
 }

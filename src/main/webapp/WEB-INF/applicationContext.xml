@@ -37,6 +37,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="topoDao" ref="topoDao" />
             <property name="siteDao" ref="siteDao" />
             <property name="commentaireDao" ref="commentaireDao" />
+            <property name="accountDAO" ref="accountDao" />
         </bean>
 
         <bean id="filter" class="action.menu.Filter">

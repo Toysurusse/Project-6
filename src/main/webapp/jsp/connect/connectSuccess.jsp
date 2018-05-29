@@ -31,8 +31,8 @@ Liste de vos commentaires :
             <s:property value="key.commentary"/>
         </div>
         <div class = Delete>
-            <s:a action="deleteComDATA">
-                <img src="../CSS/picture/Delete.JPG"  height="10" width="10"/>
+            <s:a action="deleteadminCom">
+                <img src="../../picture/Delete.JPG"  height="10" width="10"/>
                 <s:param name="id"><s:property value="key.comId" /> </s:param>
             </s:a>
         </div>

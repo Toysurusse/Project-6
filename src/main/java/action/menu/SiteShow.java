@@ -1,15 +1,18 @@
 package action.menu;
 
+import entity.Account;
 import entity.Commentaire;
 import entity.Site;
 import entity.Topo;
 import resources.dao.DaoFactory;
+import resources.dao.beans.AccountDao;
 import resources.dao.beans.CommentaireDao;
 import resources.dao.beans.SiteDao;
 import resources.dao.beans.TopoDao;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class SiteShow {
@@ -46,6 +49,14 @@ public class SiteShow {
         return commentaireDao;
     }
 
+    private AccountDao accountDAO;
+    public AccountDao getAccountDAO() {
+        return accountDAO;
+    }
+    public void setAccountDAO(AccountDao accountDAO) {
+        this.accountDAO = accountDAO;
+    }
+
     private List<Topo> topolist;
     public List<Topo> getTopolist() {
         return topolist;
@@ -72,6 +83,13 @@ public class SiteShow {
 
     public Integer topoid;
     public Integer siteid;
+    public int id;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public Integer getTopoid() {
         return topoid;
     }
@@ -93,20 +111,42 @@ public class SiteShow {
     }
     private Commentaire commentaire;
 
+    private Account account;
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    private HashMap<Commentaire, Account> hashMap= new HashMap<>();
+    public HashMap<Commentaire, Account> getHashMap() {
+        return hashMap;
+    }
+    public void setHashMap(HashMap<Commentaire, Account> hashMap) {
+        this.hashMap = hashMap;
+    }
+
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
         this.commentaireDao = this.daoFactory.getCommentaireDAO();
-
-
-
+        this.accountDAO = this.daoFactory.getAccountDAO();
+        hashMap.clear();
         topolist=topoDao.read();
         if (siteid==0){
             sitelist = this.siteDao.topoSiteSelect(topoid);
             commentaireList=this.commentaireDao.readTopo(topoid);
-        }else{
+            for (int i =0; i<commentaireList.size();i++){
+                hashMap.put(commentaireList.get(i),this.accountDAO.findAccount (commentaireList.get(i).getAccount()));
+            }
+        }
+        else{
             sitelist = this.siteDao.siteTopoSelect(siteid);
             commentaireList=this.commentaireDao.readWay(siteid);
+            for (int i =0; i<commentaireList.size();i++){
+                hashMap.put(commentaireList.get(i),this.accountDAO.findAccount (commentaireList.get(i).getAccount()));
+            }
         }
         return "success";
     }
@@ -121,6 +161,10 @@ public class SiteShow {
         return "success";
     }
 
-
+    public String deletecom() {
+        this.commentaireDao=daoFactory.getCommentaireDAO();
+        this.commentaireDao.deleteTime(id);
+        return "success";
+    }
 
 }

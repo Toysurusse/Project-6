@@ -8,7 +8,7 @@
 
     <package name="default" namespace="/" extends="struts-default">
 
-        <action name="userAction" class="userSpringAction">
+        <action name="accueil" class="userSpringAction">
             <result name="success">/jsp/user.jsp</result>
         </action>
 
@@ -53,7 +53,17 @@
         <action name="addcom"
                 class="siteShow"
                 method ="addcom">
-            <result name="success">/jsp/site.jsp</result>
+            <result name="success"  type="redirectAction">
+                <param name="actionName">listSite</param>
+            </result>
+        </action>
+
+        <action name="deleteCom"
+                class="siteShow"
+                method ="deletecom">
+            <result name="success"  type="redirectAction">
+                <param name="actionName">listSite</param>
+            </result>
         </action>
 
         <!-- ======================Login========================-->
@@ -75,10 +85,26 @@
             <result name="success">/jsp/connect/connectSuccess.jsp</result>
         </action>
 
+        <action name="deleteadminCom"
+                class="connected"
+                method="deleteadmincom">
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+        </action>
+
         <!-- Actions permettant de se connecter -->
         <action name="loadaccount"
                 class="create">
             <result name="success">/jsp/connect/createAccount.jsp</result>
+        </action>
+
+        <action name="disconnect"
+                class="connectTry"
+                method ="disconnect">
+            <result name="success" type="redirectAction">
+                <param name="actionName">accueil</param>
+            </result>
         </action>
 
         <action name="createaccount"
