@@ -1,7 +1,7 @@
-package resources.dao;
+package dao;
 
 import entity.Adress;
-import resources.dao.beans.AdressDao;
+import dao.beans.AdressDao;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package resources.dao.beans;
+package dao.beans;
 
 import entity.Account;
 
@@ -11,4 +11,5 @@ public interface AccountDao {
     Account findAccount(int id);
     int lastIDCom(List<Account> com);
     Account control(String pseudo, String password, List<Account> accountDAO);
+    boolean controlUnique(String pseudo, List<Account> accountDAO);
 }

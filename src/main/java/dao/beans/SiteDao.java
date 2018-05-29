@@ -1,4 +1,4 @@
-package resources.dao.beans;
+package dao.beans;
 
 import entity.Site;
 
@@ -9,4 +9,5 @@ public interface SiteDao {
     List <Site> read();
     List <Site> topoSiteSelect(int siteid);
     List <Site> siteTopoSelect(int topoid);
+    void delete(Site site);
 }

@@ -1,9 +1,8 @@
 package action.menu;
 
 import entity.Topo;
-import resources.dao.DaoFactory;
-import resources.dao.TopoDaoImpl;
-import resources.dao.beans.TopoDao;
+import dao.DaoFactory;
+import dao.beans.TopoDao;
 
 import java.util.List;
 

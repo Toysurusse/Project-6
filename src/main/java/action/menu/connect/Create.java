@@ -18,6 +18,10 @@ public class Create extends Connect {
 
         controlMDP(account);
 
+        if(this.accountDAO.controlUnique(account.getPseudo(),this.accountDAO.read())){
+            this.addActionError(getText("error.PseudoExist"));
+        }
+
         if (!this.hasErrors()){
             this.adressDao.add(adress);
             this.accountDAO.add(account);
@@ -36,6 +40,9 @@ public class Create extends Connect {
         account.setId(id.getId());
 
         controlMDP(account);
+        if(this.accountDAO.controlUnique(account.getPseudo(),this.accountDAO.read())){
+            this.addActionError(getText("error.PseudoExist"));
+        }
 
         if (!this.hasErrors()){
             this.accountDAO.update(account);

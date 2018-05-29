@@ -1,6 +1,6 @@
-package resources.dao;
+package dao;
 
-import resources.dao.beans.*;
+import dao.beans.*;
 
 import java.sql.*;
 

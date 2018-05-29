@@ -4,13 +4,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 import entity.Adress;
 import entity.Commentaire;
-import javassist.NotFoundException;
 import org.apache.struts2.interceptor.SessionAware;
-import resources.dao.AdressDaoImpl;
-import resources.dao.DaoFactory;
-import resources.dao.beans.AccountDao;
-import resources.dao.beans.AdressDao;
-import resources.dao.beans.CommentaireDao;
+import dao.DaoFactory;
+import dao.beans.AccountDao;
+import dao.beans.AdressDao;
+import dao.beans.CommentaireDao;
 
 import java.util.HashMap;
 import java.util.List;

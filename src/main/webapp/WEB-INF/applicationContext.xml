@@ -3,27 +3,18 @@
            xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-        <bean id="userBo" class="resources.UserBoImpl" />
-        <bean id="userSpringAction" class="action.UserSpringAction">
-            <property name="userBo" ref="userBo" />
-        </bean>
-
-        <bean id="userAction" class="action.UserAction">
-            <property name="userBo" ref="userBo" />
-        </bean>
-
         <!-- ======================Dao Beans========================-->
 
-        <bean id="daoFactory" class="resources.dao.DaoFactory">
+        <bean id="daoFactory" class="dao.DaoFactory">
             <constructor-arg index="0" value="jdbc:postgresql://localhost:5432/PJ6"/>
             <constructor-arg index="1" value="postgres"/>
             <constructor-arg index="2" value="Toysrusse"/>
         </bean>
-        <bean id="topoDao" class="resources.dao.TopoDaoImpl"/>
-        <bean id="siteDao" class="resources.dao.SiteDaoImpl"/>
-        <bean id="commentaireDao" class="resources.dao.CommentaireDaoImpl"/>
-        <bean id="accountDao" class="resources.dao.AccountDaoImpl"/>
-        <bean id="addressDao" class="resources.dao.AdressDaoImpl"/>
+        <bean id="topoDao" class="dao.TopoDaoImpl"/>
+        <bean id="siteDao" class="dao.SiteDaoImpl"/>
+        <bean id="commentaireDao" class="dao.CommentaireDaoImpl"/>
+        <bean id="accountDao" class="dao.AccountDaoImpl"/>
+        <bean id="addressDao" class="dao.AdressDaoImpl"/>
 
         <!-- ======================Actions Beans========================-->
 

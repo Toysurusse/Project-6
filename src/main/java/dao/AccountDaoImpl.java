@@ -1,7 +1,7 @@
-package resources.dao;
+package dao;
 
 import entity.Account;
-import resources.dao.beans.AccountDao;
+import dao.beans.AccountDao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -43,6 +43,16 @@ public class AccountDaoImpl implements AccountDao {
             }
         }
         return account;
+    }
+
+    public boolean controlUnique(String pseudo, List<Account> accountDAO){
+        boolean test=false;
+        for (Account anAccountDAO : accountDAO) {
+            if (pseudo.equals(anAccountDAO.getPseudo())) {
+                test = true;
+            }
+        }
+        return test;
     }
 
     @Override

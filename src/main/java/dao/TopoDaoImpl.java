@@ -1,7 +1,7 @@
-package resources.dao;
+package dao;
 
 import entity.Topo;
-import resources.dao.beans.TopoDao;
+import dao.beans.TopoDao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,8 +18,9 @@ public class TopoDaoImpl implements TopoDao {
     public TopoDaoImpl() {
     }
 
+
     @Override
-    public void add(Topo topo) {
+    public void delete(Topo topo) {
         System.out.println("essai1");
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -36,7 +37,20 @@ public class TopoDaoImpl implements TopoDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    public void add(Topo topo) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.topo WHERE topo_id ="+topo.getIdentifiant()+";");
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

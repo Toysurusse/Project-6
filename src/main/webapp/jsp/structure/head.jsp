@@ -15,12 +15,11 @@
 <li>
     <s:if test="#session.user">
         Utilisateur connecté :
-        <s:property value="#session.user.pseudo" /></br>
+        <s:property value="#session.user.pseudo" />
         <s:a action="disconnect">Déconnexion</s:a>
     </s:if>
     <s:else>
         <s:a href="connectTry">Se Connecter</s:a>
     </s:else>
-
 </li>
 

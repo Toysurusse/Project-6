@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 import entity.Commentaire;
 import entity.Topo;
-import resources.dao.beans.TopoDao;
+import dao.beans.TopoDao;
 
 public class Connected extends Connect {
 

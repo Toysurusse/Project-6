@@ -4,11 +4,11 @@ import entity.Account;
 import entity.Commentaire;
 import entity.Site;
 import entity.Topo;
-import resources.dao.DaoFactory;
-import resources.dao.beans.AccountDao;
-import resources.dao.beans.CommentaireDao;
-import resources.dao.beans.SiteDao;
-import resources.dao.beans.TopoDao;
+import dao.DaoFactory;
+import dao.beans.AccountDao;
+import dao.beans.CommentaireDao;
+import dao.beans.SiteDao;
+import dao.beans.TopoDao;
 
 import java.sql.Timestamp;
 import java.util.Date;

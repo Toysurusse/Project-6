@@ -1,7 +1,7 @@
-package resources.dao;
+package dao;
 
 import entity.Commentaire;
-import resources.dao.beans.CommentaireDao;
+import dao.beans.CommentaireDao;
 
 import java.sql.*;
 import java.util.Date;

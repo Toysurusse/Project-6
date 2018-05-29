@@ -1,7 +1,7 @@
-package resources.dao;
+package dao;
 
 import entity.Site;
-import resources.dao.beans.SiteDao;
+import dao.beans.SiteDao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,6 +16,20 @@ public class SiteDaoImpl implements SiteDao {
     private DaoFactory daoFactory;
 
     public SiteDaoImpl() {
+    }
+
+    @Override
+    public void delete(Site site) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.site WHERE site_id ="+site.getIdentifiant()+";");
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

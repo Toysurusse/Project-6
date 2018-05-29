@@ -1,4 +1,4 @@
-package resources.dao.beans;
+package dao.beans;
 
 import entity.Adress;
 

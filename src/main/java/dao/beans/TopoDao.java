@@ -1,4 +1,4 @@
-package resources.dao.beans;
+package dao.beans;
 
 import entity.Topo;
 
@@ -8,4 +8,5 @@ public interface TopoDao {
     void add (Topo topo);
     List<Topo> read();
     Topo topoSelect (int topoid);
+    void delete(Topo topo);
 }
