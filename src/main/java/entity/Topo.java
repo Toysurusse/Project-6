@@ -5,6 +5,14 @@ public class Topo {
     private int identifiant;
     private String location;
     private String resume;
+        private int accountid;
+
+    public int getAccountid() {
+        return accountid;
+    }
+    public void setAccountid(int accountid) {
+        this.accountid = accountid;
+    }
 
     public int getIdentifiant() {
         return identifiant;

@@ -3,10 +3,7 @@ package resources.dao;
 import entity.Topo;
 import resources.dao.beans.TopoDao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +20,22 @@ public class TopoDaoImpl implements TopoDao {
 
     @Override
     public void add(Topo topo) {
+        System.out.println("essai1");
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            preparedStatement = connexion.prepareStatement("INSERT INTO public.topo(\n" +
+                    "\ttopo_titre, topo_texte, account)\n" +
+                    "\tVALUES ( ?, ?, ?);");
+            preparedStatement.setString(1,topo.getLocation());
+            preparedStatement.setString(2, topo.getResume());
+            preparedStatement.setInt(3, topo.getAccountid());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -66,6 +66,16 @@
             </result>
         </action>
 
+        <action name="addTopo"
+                class="connected"
+                method="addTopo">
+            <result name="input">/jsp/connect/connectSuccess.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/connectSuccess.jsp</result>
+        </action>
+
         <!-- ======================Login========================-->
 
 
@@ -111,6 +121,16 @@
                 class="create"
                 method ="input">
             <result name="input">/jsp/connect/connect.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/connect.jsp</result>
+        </action>
+
+        <action name="updateaccount"
+                class="create"
+                method ="doUpdateAccount">
+            <result name="input">/jsp/connect/connectSuccess.jsp</result>
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>

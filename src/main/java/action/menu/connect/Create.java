@@ -31,7 +31,9 @@ public class Create extends Connect {
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         listAccount=this.accountDAO.read();
-        account = (Account) this.session.get("user");
+
+        Account id = (Account) this.session.get("user");
+        account.setId(id.getId());
 
         controlMDP(account);
 

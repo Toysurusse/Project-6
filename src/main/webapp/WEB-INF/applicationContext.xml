@@ -68,6 +68,17 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="commentaireDAO" ref="commentaireDao" />
         </bean>
 
+        <bean id="doUpdateAccount" class="action.menu.connect.Create">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="commentaireDAO" ref="commentaireDao" />
+        </bean>
 
+        <bean id="addTopo" class="action.menu.connect.Connected">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="topoDao" ref="topoDao" />
+            <property name="commentaireDAO" ref="commentaireDao" />
+        </bean>
     </beans>
 

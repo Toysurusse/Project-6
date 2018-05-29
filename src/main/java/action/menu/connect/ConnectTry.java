@@ -20,6 +20,8 @@ public class ConnectTry extends Connect {
                 this.addActionError(getText("error.connectError"));
             }else {
                 this.session.put("user",account);
+                pseudo = null;
+                password = null;
             }
         }
         else {
@@ -28,7 +30,6 @@ public class ConnectTry extends Connect {
         this.accountDAO=null;
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
-
 
     public String disconnect() {
         this.session.remove("user");

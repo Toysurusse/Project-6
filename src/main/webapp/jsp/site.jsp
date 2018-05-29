@@ -55,7 +55,6 @@
             Ecrit par : <s:property value="value.pseudo"/> </br>
         </div>
 
-
         <div class="col-sm-7">
             <p>
                 <s:property value="key.title"/>
@@ -65,12 +64,14 @@
             </p>
         </div>
         <div class="col-sm-1">
-            <s:a action="deleteCom">
+            <s:if test="%{#session.user.id==key.account}">
+                <s:a action="deleteCom">
                 <s:param name="commentaire.topoId" value="%{topoid}"/>
                 <s:param name="commentaire.siteId" value="%{siteid}"/>
                 <img src="../picture/Delete.JPG" height="10" width="10"/>
                 <s:param name="id"><s:property value="key.comId"/> </s:param>
             </s:a>
+            </s:if>
         </div>
         <div class="col-sm-1"></div>
     </div>
