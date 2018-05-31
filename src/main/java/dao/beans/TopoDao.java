@@ -7,6 +7,8 @@ import java.util.List;
 public interface TopoDao {
     void add (Topo topo);
     List<Topo> read();
-    Topo topoSelect (int topoid);
-    void delete(Topo topo);
+    List<Topo> topoSelect(int accountid);
+    Topo topoSelectbyid(int id);
+    void delete(int id);
+    int lastId (List <Topo> topo);
 }

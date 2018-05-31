@@ -2,6 +2,7 @@ package dao;
 
 import entity.Site;
 import dao.beans.SiteDao;
+import entity.Topo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,12 +20,12 @@ public class SiteDaoImpl implements SiteDao {
     }
 
     @Override
-    public void delete(Site site) {
+    public void delete(int id) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("DELETE FROM public.site WHERE site_id ="+site.getIdentifiant()+";");
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE site_id ="+id+";");
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -33,16 +34,37 @@ public class SiteDaoImpl implements SiteDao {
     }
 
     @Override
+    public void deleteByTopo(int id) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE topo ="+id+";");
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Site> siteIDSelect (int accountid) {
+        List<Site> sites = new ArrayList<Site>();
+        sites = extract("SELECT * FROM site_de_grimpe WHERE accountid = "+accountid+" AND site_id <> '0' ORDER BY site_id;");
+        return sites;
+    }
+
+    @Override
     public List<Site> siteTopoSelect (int siteid) {
             List<Site> sites = new ArrayList<Site>();
-            sites = extract("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+" AND site_id <> '0';");
+            sites = extract("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+" AND site_id <> '0' ORDER BY site_id;");
             return sites;
     }
 
     @Override
     public List<Site> topoSiteSelect(int topoid) {
             List<Site> sites = new ArrayList<Site>();
-            sites = extract("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+" AND site_id <> '0';");
+            sites = extract("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+" AND site_id <> '0' ORDER BY site_id;");
             return sites;
     }
 
@@ -50,7 +72,7 @@ public class SiteDaoImpl implements SiteDao {
     @Override
     public List<Site> read() {
         List<Site> sites = new ArrayList<Site>();
-        sites = extract("SELECT * FROM site_de_grimpe WHERE site_id <> '0';");
+        sites = extract("SELECT * FROM site_de_grimpe WHERE site_id <> '0' ORDER BY site_id;");
         return sites;
     }
 
@@ -60,7 +82,7 @@ public class SiteDaoImpl implements SiteDao {
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("INSERT INTO public.site_de_grimpe(site_id, secteur, voie, hauteur, cotation, nb_points, topo)VALUES (?, ?, ?, ?, ?, ?, ?);");
+            preparedStatement = connexion.prepareStatement("INSERT INTO public.site_de_grimpe(site_id, secteur, voie, hauteur, cotation, nb_points, topo,accountid)VALUES (?, ?, ?, ?, ?, ?, ?,?);");
             preparedStatement.setInt(1, site.getIdentifiant());
             preparedStatement.setString(2, site.getLocation());
             preparedStatement.setString(3, site.getWay());
@@ -68,6 +90,8 @@ public class SiteDaoImpl implements SiteDao {
             preparedStatement.setString(5, site.getHardness());
             preparedStatement.setString(6, site.getPoints_nb());
             preparedStatement.setInt(7, site.getTopos());
+            preparedStatement.setInt(8, site.getAccountid());
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,13 +125,27 @@ public class SiteDaoImpl implements SiteDao {
                 site.setHardness(hardness);
                 site.setPoints_nb(points_nb);
                 site.setTopos(topos);
-
+                //System.out.println(id);
                 sites.add(site);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return sites;
+    }
+
+    public int lastID (List <Site> site){
+        int comnb=0;
+        for (int i=0; i<=site.size()-2;i++){
+            //System.out.println(site.get(i).getIdentifiant());
+            if (site.get(i).getIdentifiant()==site.get(i+1).getIdentifiant()-1){
+                comnb =site.get(i).getIdentifiant()+1;
+            }
+        }
+        if (comnb==0){
+            comnb = site.get(site.size()).getIdentifiant();
+        }
+        return comnb;
     }
 
 }

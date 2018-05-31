@@ -9,7 +9,11 @@ public class Site {
     private String hardness;
     private String points_nb;
     private int topos;
+    private int accountid;
 
+    public int getAccountid() {
+        return accountid;
+    }
     public int getIdentifiant() {
         return identifiant;
     }
@@ -32,6 +36,9 @@ public class Site {
         return topos;
     }
 
+    public void setAccountid(int accountid) {
+        this.accountid = accountid;
+    }
     public void setId(int identifiant) {
         this.identifiant = identifiant;
     }

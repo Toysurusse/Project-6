@@ -14,8 +14,8 @@
     </div>
         <div class="col-sm-4"></div>
     </div>
-    <div clas="col-sm-12">
-        <div class="starter-template container-fluid">
+    <div clas="starter-template">
+        <div class="border border-info">
             <s:form cssClass="form-group" action="createaccount">
                 <div class="row">
                     <div class="col-sm-4"></div>

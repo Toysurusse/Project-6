@@ -1,5 +1,6 @@
 package action.menu;
 
+import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 import entity.Commentaire;
 import entity.Site;
@@ -9,11 +10,13 @@ import dao.beans.AccountDao;
 import dao.beans.CommentaireDao;
 import dao.beans.SiteDao;
 import dao.beans.TopoDao;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SiteShow {
     private DaoFactory daoFactory;
@@ -73,6 +76,14 @@ public class SiteShow {
         this.sitelist = sitelist;
     }
 
+    private Site site;
+    public Site getSite() {
+        return site;
+    }
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
     private List<Commentaire> commentaireList;
     public List<Commentaire> getCommentaireList() {
         return commentaireList;
@@ -127,6 +138,14 @@ public class SiteShow {
         this.hashMap = hashMap;
     }
 
+    public Topo topo;
+    public Topo getTopo() {
+        return topo;
+    }
+    public void setTopo(Topo topo) {
+        this.topo = topo;
+    }
+
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
@@ -166,5 +185,6 @@ public class SiteShow {
         this.commentaireDao.deleteTime(id);
         return "success";
     }
+
 
 }

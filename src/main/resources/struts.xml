@@ -6,7 +6,6 @@
 
 <struts>
     <constant name="struts.ui.theme" value="simple"/>
-
     <package name="default" namespace="/" extends="struts-default">
 
         <action name="accueil">
@@ -62,14 +61,58 @@
             </result>
         </action>
 
+        <action name="newTopo"
+                class="connected">
+            <result name="success">
+                /jsp/connect/AddInformation/addTopo.jsp
+            </result>
+        </action>
+
+        <action name="newSite"
+                class="connected">
+            <result name="success">
+                /jsp/connect/AddInformation/addSite.jsp
+            </result>
+        </action>
+
         <action name="addTopo"
                 class="connected"
                 method="addTopo">
-            <result name="input">/jsp/connect/connectSuccess.jsp</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/connectSuccess.jsp</result>
+            <result name="error">/jsp/connect/AddInformation/addTopo.jsp</result>
+        </action>
+
+        <action name="addSite"
+                class="connected"
+                method="addSite">
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/AddInformation/addSite.jsp</result>
+        </action>
+
+        <action name="deleteSite"
+                class="connected"
+                method="deleteSite">
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+        </action>
+
+        <action name="deleteTopo"
+                class="connected"
+                method="deleteTopo">
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
         </action>
 
         <!-- ======================Login========================-->

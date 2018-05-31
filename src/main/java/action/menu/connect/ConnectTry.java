@@ -25,7 +25,7 @@ public class ConnectTry extends Connect {
             }
         }
         else {
-            this.addActionError(getText("error.connectEmpty"));
+            this.addFieldError("pseudo",getText("error.connectEmpty"));
         }
         this.accountDAO=null;
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;

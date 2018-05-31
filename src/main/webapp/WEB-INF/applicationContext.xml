@@ -56,6 +56,8 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="connected" class="action.menu.connect.Connected">
             <property name="daoFactory" ref="daoFactory" />
             <property name="accountDAO" ref="accountDao" />
+            <property name="topoDao" ref="topoDao" />
+            <property name="siteDao" ref="siteDao" />
             <property name="commentaireDAO" ref="commentaireDao" />
         </bean>
 
@@ -69,6 +71,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="daoFactory" ref="daoFactory" />
             <property name="accountDAO" ref="accountDao" />
             <property name="topoDao" ref="topoDao" />
+            <property name="siteDao" ref="siteDao" />
             <property name="commentaireDAO" ref="commentaireDao" />
         </bean>
     </beans>

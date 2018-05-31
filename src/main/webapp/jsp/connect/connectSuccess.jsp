@@ -14,14 +14,100 @@ Liste de vos informations personnelles :
     <s:submit value="Valider la modification"/>
 </s:form>
 
-<p>Souhaitez vous ajouter un topo ?</p>
 
-<s:actionerror />
-<s:form action="addTopo">
-    <s:textfield name="topo.location" label="Lieu du Topo" requiredLabel="true"/>
-    <s:textfield name="topo.resume" label="Information sur le topo" requiredLabel="true" />
-    <s:submit value="créer le topo"/>
-</s:form>
+
+<p>
+    Liste de vos Topos :
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9">
+            <p>Topos :</p>
+        </div>
+        <div class="col-sm-1">
+            <p>Ajouter Site</p>
+        </div>
+        <div class="col-sm-1">
+            <p>Suppr</p>
+        </div>
+    </div>
+            <s:iterator value="topolist">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-9">
+                    <s:a action="listSite">
+                        <s:param name="topoid"><s:property value="identifiant"/> </s:param>
+                        <s:param name="siteid">0</s:param>
+                        <s:property value="location"/>
+                    </s:a>
+                </div>
+                <div class="col-sm-1">
+                    <s:a action="newSite">
+                        <img src="../../picture/add.jpg" height="10" width="10"/>
+                        <s:param name="id"><s:property value="identifiant"/> </s:param>
+                    </s:a>
+                </div>
+                <div class="col-sm-1">
+                        <s:a action="deleteTopo">
+                            <img src="../../picture/Delete.JPG" height="10" width="10"/>
+                            <s:param name="id"><s:property value="identifiant"/> </s:param>
+                        </s:a>
+                </div>
+            </div>
+        </s:iterator>
+    <div class="col-sm-1"></div>
+    <s:a action="newTopo">
+        Ajouter un nouveau topo
+    </s:a>
+</div>
+<!-- /.container -->
+
+
+<p>Liste de vos sites</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            Topo
+        </div>
+        <div class="col-sm-2">
+            Secteur
+        </div>
+        <div class="col-sm-2">
+            Voie
+        </div>
+        <div class="col-sm-1">
+            <p>Suppr</p>
+        </div>
+    </div>
+    <s:iterator value="hashMapST">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <s:property value="value.location"/>
+            </div>
+            <div class="col-sm-2">
+                    <s:property value="key.location"/>
+            </div>
+            <div class="col-sm-2">
+                <s:a action="listSite">
+                    <s:param name="topoid"><s:property value="key.topos"/> </s:param>
+                    <s:param name="siteid"><s:property value="key.identifiant"/></s:param>
+                    <s:property value="key.way"/>
+                </s:a>
+            </div>
+            <div class="col-sm-1">
+                <s:a action="deleteSite">
+                    <img src="../../picture/Delete.JPG" height="10" width="10"/>
+                    <s:param name="id"><s:property value="key.identifiant"/> </s:param>
+                </s:a>
+            </div>
+        </div>
+    </s:iterator>
+    <div class="col-sm-1"></div>
+</div>
 
 <p>
     Liste de vos commentaires :

@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row border border-info">
     <div class="col-sm-1"></div>
         <div class="col-sm-10">
     <s:if test="#session.user">
@@ -48,7 +48,7 @@
 
 <div class="col-md-12 center-block"></div>
 <s:iterator value="hashMap">
-    <div class="row">
+    <div class="row border">
         <div class="col-sm-1"></div>
         <div class="col-sm-3">
             Le <s:property value="key.createAt"/> </br>
