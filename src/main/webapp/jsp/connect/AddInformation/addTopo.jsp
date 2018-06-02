@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="../../structure/headboot.jsp" %>
+<%@ include file="../../structure/layout.jsp" %>
 
 <p>
     Ajouter un topo :

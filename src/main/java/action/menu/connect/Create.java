@@ -5,6 +5,16 @@ import entity.Account;
 
 public class Create extends Connect {
 
+    public String initUpdate () {
+        this.clearErrors();
+        this.accountDAO=daoFactory.getAccountDAO();
+        this.adressDao=daoFactory.getAdressDAO();
+        account = (Account) this.session.get("user");
+        adress = this.adressDao.readByAccount(account.getId());
+        return ActionSupport.SUCCESS;
+    }
+
+
     public String input () {
         this.clearErrors();
         this.accountDAO=daoFactory.getAccountDAO();
@@ -32,6 +42,7 @@ public class Create extends Connect {
     }
 
     public String doUpdateAccount () {
+        this.clearErrors();
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         listAccount=this.accountDAO.read();
@@ -40,11 +51,9 @@ public class Create extends Connect {
         account.setId(id.getId());
 
         controlMDP(account);
-        if(this.accountDAO.controlUnique(account.getPseudo(),this.accountDAO.read())){
-            this.addActionError(getText("error.PseudoExist"));
-        }
 
         if (!this.hasErrors()){
+            this.adressDao.update(adress);
             this.accountDAO.update(account);
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;

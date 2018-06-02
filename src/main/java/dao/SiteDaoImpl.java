@@ -47,6 +47,25 @@ public class SiteDaoImpl implements SiteDao {
         }
     }
 
+    public List <String> LocationSelect(){
+        ArrayList <String> location= new ArrayList<String>();
+        Statement statement ;
+        ResultSet resultat ;
+
+        try {
+            statement = daoFactory.getStatement();
+            resultat = statement.executeQuery("SELECT DISTINCT secteur FROM site_de_grimpe WHERE site_id <> '0' ORDER BY secteur;");
+
+            while (resultat.next()) {
+                String Resultlocation = resultat.getString(1);
+                    location.add(Resultlocation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return location;
+    }
+
     @Override
     public List<Site> siteIDSelect (int accountid) {
         List<Site> sites = new ArrayList<Site>();
@@ -68,6 +87,10 @@ public class SiteDaoImpl implements SiteDao {
             return sites;
     }
 
+    public List <Site> siteSelectByString(String location){
+        List<Site> sites = new ArrayList<Site>();
+        sites = extract("SELECT * FROM site_de_grimpe WHERE secteur = '"+location+"' AND site_id <> '0' ORDER BY site_id;");
+        return sites;}
 
     @Override
     public List<Site> read() {

@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="../structure/headboot.jsp" %>
+<%@ include file="../structure/layout.jsp" %>
+<title>Create Account</title>
+<%@ include file="../structure/head.jsp" %>
 
 <s:if test="#session.user">
     Vous êtes déjà connecté en tant que :

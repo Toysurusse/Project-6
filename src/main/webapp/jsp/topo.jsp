@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="structure/headboot.jsp" %>
+<%@ include file="structure/layout.jsp" %>
+<title>Topo</title>
+<%@ include file="structure/head.jsp" %>
 <div class="container">
     <div class="starter-template">
         <div class = "container-fluid">

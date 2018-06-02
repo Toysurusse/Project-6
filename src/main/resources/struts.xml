@@ -9,14 +9,14 @@
     <package name="default" namespace="/" extends="struts-default">
 
         <action name="accueil">
-            <result name="success">/jsp/user.jsp</result>
+            <result name="success">/jsp/accueil.jsp</result>
         </action>
 
         <!-- ======================Menu========================-->
 
         <action name="infoList"
                 class="action.menu.TopoShow" >
-            <result name="success">/jsp/user.jsp</result>
+            <result name="success">/jsp/accueil.jsp</result>
         </action>
 
         <action name="filter"
@@ -31,7 +31,7 @@
 
         <action name="rentTopo"
                 class="action.menu.TopoShow" >
-            <result name="success">/jsp/user.jsp</result>
+            <result name="success">/jsp/accueil.jsp</result>
         </action>
 
         <action name="connect"
@@ -42,6 +42,12 @@
         <!-- ======================Site========================-->
         <action name="listSite"
                 class="siteShow" >
+            <result name="success">/jsp/site.jsp</result>
+        </action>
+
+        <action name="listSiteByLocation"
+                class="siteShow"
+                method ="listeSiteByLocation">
             <result name="success">/jsp/site.jsp</result>
         </action>
 
@@ -142,6 +148,17 @@
             </result>
         </action>
 
+        <action name="updateA"
+                class="create"
+                method="initUpdate">
+            <result name="input">
+                /jsp/connect/updateaccount.jsp
+            </result>
+            <result name="success">
+                /jsp/connect/updateaccount.jsp
+            </result>
+        </action>
+
         <!-- Actions permettant de se connecter -->
         <action name="loadaccount"
                 class="create">
@@ -173,7 +190,33 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/connect.jsp</result>
+            <result name="error">/jsp/connect/connectSuccess.jsp</result>
+        </action>
+
+        <!-- ===============Rent Dao================= -->
+
+        <action name="rent"
+                class="rentTopo">
+            <result name="success">/jsp/rentTopo.jsp</result>
+        </action>
+
+        <action name="rentAdd"
+                class="rentTopo"
+                method="add">
+            <result name="input">/jsp/rentTopo.jsp</result>
+            <result name="success" type="redirectAction">
+            <param name="actionName">rent</param>
+        </result>
+        </action>
+
+        <action name="rentDelete"
+                class="rentTopo"
+                method="delete">
+            <result name="input">/jsp/rentTopo.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">rent</param>
+        </result>
+            <result name="error">/jsp/rentTopo.jsp</result>
         </action>
 
     </package>

@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="structure/headboot.jsp" %>
+<%@ include file="structure/layout.jsp" %>
+<title>Site</title>
+<%@ include file="structure/head.jsp" %>
 
 <div class="container">
 

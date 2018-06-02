@@ -11,6 +11,8 @@ public interface SiteDao {
     List<Site> siteIDSelect (int accountid);
     List <Site> topoSiteSelect(int siteid);
     List <Site> siteTopoSelect(int topoid);
+    List <String> LocationSelect();
+    List <Site> siteSelectByString(String location);
     void delete(int id);
     void deleteByTopo(int id);
     int lastID (List <Site> site);

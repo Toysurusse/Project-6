@@ -83,9 +83,10 @@ public class Connected extends Connect {
         this.commentaireDAO=daoFactory.getCommentaireDAO();
         this.topoDao=this.daoFactory.getTopoDAO();
         this.accountDAO=daoFactory.getAccountDAO();
+        this.adressDao=daoFactory.getAdressDAO();
         this.siteDao=daoFactory.getSiteDAO();
         account = (Account) this.session.get("user");
-        System.out.println(account.getPseudo());
+        adress = this.adressDao.readByAccount(account.getId());
         listsite=siteDao.siteIDSelect(account.getId());
         topolist=topoDao.topoSelect(account.getId());
         listCommentaire=this.commentaireDAO.readCompteId(account.getId());

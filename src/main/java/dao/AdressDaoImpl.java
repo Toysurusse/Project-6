@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Account;
 import entity.Adress;
 import dao.beans.AdressDao;
 
@@ -18,12 +19,24 @@ public class AdressDaoImpl implements AdressDao {
     }
 
     @Override
+    public void update(Adress adress) {
+        insert(adress,"UPDATE public.adresse\n" +
+                "\tSET adres_id=?, numero_rue=?, rue=?, code_postal=?, ville=?, code=?, complement_adresse=?, adresse_principale=?\n" +
+                "\tWHERE "+adress.getAdressId()+";");
+    }
+
+    @Override
     public void add(Adress adress) {
+        insert(adress,"INSERT INTO public.adresse(adres_id, numero_rue, rue, code_postal, ville, code, complement_adresse, adresse_principale)VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+    }
+
+
+     public void insert (Adress adress, String request) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("INSERT INTO public.adresse(adres_id, numero_rue, rue, code_postal, ville, code, complement_adresse, adresse_principale)VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+            preparedStatement = connexion.prepareStatement(request);
             preparedStatement.setInt(1, adress.getAdressId());
             preparedStatement.setInt(2, adress.getNbStreet());
             preparedStatement.setString(3, adress.getStreet());
@@ -39,14 +52,27 @@ public class AdressDaoImpl implements AdressDao {
     }
 
     @Override
+    public Adress readByAccount(int account) {
+        Adress adresss;
+        adresss = extract ("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id WHERE id ="+account+";").get(0);
+        return adresss;
+    }
+
+    @Override
     public List<Adress> read() {
+        List<Adress> adresss = new ArrayList<Adress>();
+        adresss = extract ("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id;");
+        return adresss;
+    }
+
+    private List<Adress> extract(String request){
         List<Adress> adresss = new ArrayList<Adress>();
         Statement statement ;
         ResultSet resultat ;
 
         try {
             statement = daoFactory.getStatement();
-            resultat = statement.executeQuery("SELECT * FROM page_index INNER JOIN Adresss ON comid = com_id;");
+            resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
 

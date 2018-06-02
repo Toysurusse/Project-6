@@ -15,6 +15,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="commentaireDao" class="dao.CommentaireDaoImpl"/>
         <bean id="accountDao" class="dao.AccountDaoImpl"/>
         <bean id="addressDao" class="dao.AdressDaoImpl"/>
+        <bean id="rentDao" class ="dao.RentDaoImpl"/>
 
         <!-- ======================Actions Beans========================-->
 
@@ -74,5 +75,13 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             <property name="siteDao" ref="siteDao" />
             <property name="commentaireDAO" ref="commentaireDao" />
         </bean>
+
+        <bean id="rentTopo" class="action.menu.ActionRentTopo">
+            <property name="daoFactory" ref="daoFactory" />
+            <property name="accountDAO" ref="accountDao" />
+            <property name="adressDao" ref="addressDao" />
+            <property name="rentDao" ref="rentDao" />
+        </bean>
+
     </beans>
 

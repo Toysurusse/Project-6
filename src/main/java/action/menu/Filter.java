@@ -34,6 +34,14 @@ public class Filter {
         return topoDao;
     }
 
+    private List<String> locationlist;
+    public List<String> getLocationlist() {
+        return locationlist;
+    }
+    public void setLocationlist(List<String> locationlist) {
+        this.locationlist = locationlist;
+    }
+
     private List<Topo> topolist;
     public List<Topo> getTopolist() {
         return topolist;
@@ -68,8 +76,11 @@ public class Filter {
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
+
         topolist=topoDao.read();
         sitelist=siteDao.read();
+        locationlist=siteDao.LocationSelect();
+
         return "success";
     }
 

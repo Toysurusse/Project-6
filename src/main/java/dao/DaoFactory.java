@@ -54,6 +54,9 @@ public class DaoFactory {
         public AdressDao getAdressDAO(){
             return new AdressDaoImpl(this);
         }
+        public RentDao getRentDAO(){
+        return new RentDaoImpl(this);
+    }
         /*public InfoDAO getInfoDAO () {
             return new InformationDaoImpl(this);
         }*/
