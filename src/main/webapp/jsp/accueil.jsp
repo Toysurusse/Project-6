@@ -3,6 +3,8 @@
 <title>Accueil</title>
 <%@ include file="structure/head.jsp" %>
 
+
+
 <div class="container">
 
     <div class="starter-template">

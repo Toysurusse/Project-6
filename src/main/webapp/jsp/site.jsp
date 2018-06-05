@@ -53,7 +53,7 @@
             <label for="comment">Comment :</label>
             <s:textarea name="commentaire.commentary" label="commentaire" requiredLabel="true" class="form-control" rows="5" id="comment"/>
         </div>
-            <s:submit value="OK" cssClass="btn-primary"/>
+            <s:submit value="OK" cssClass="btn btn-primary"/>
         </s:form>
     </s:if>
     <s:else>
