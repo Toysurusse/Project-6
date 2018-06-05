@@ -3,18 +3,13 @@
 <title>Update Account</title>
 <%@ include file="../structure/head.jsp" %>
 
-Liste de vos informations personnelles :
+<label class="starter-template center-block text-md-center">Liste de vos informations personnelles :</label>
 
-    <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="starter-template col-sm-4">
     <s:actionerror/>
-    </div>
-    <div class="col-sm-4"></div>
-    </div>
+
     <div clas="starter-template">
     <div class="border border-info">
-    <s:form cssClass="form-group" action="updateaccount">
+    <s:form cssClass="form-group" theme="simple" action="updateaccount">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-2">
@@ -22,7 +17,7 @@ Liste de vos informations personnelles :
             </div>
             <div class="col-sm-2">
                 <s:textfield labelposition="left" name="account.name" label="name" requiredLabel="true"
-                             title="name"/>
+                             title="name"  cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -32,7 +27,7 @@ Liste de vos informations personnelles :
                 <label>Prénom</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield title="firstName" name="account.firstName" label="firstName" requiredLabel="true"/>
+                <s:textfield title="firstName" name="account.firstName" label="firstName" requiredLabel="true" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -42,7 +37,7 @@ Liste de vos informations personnelles :
                 <label>Password :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="account.pseudo" label="pseudo" requiredLabel="true"/>
+                <s:textfield name="account.pseudo" label="pseudo" requiredLabel="true" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -56,7 +51,7 @@ Liste de vos informations personnelles :
                           headerKey="-1" headerValue="%{account.sex}"
                           list="{'H', 'F'}"
                           name="account.sex"
-                          value="0" requiredLabel="true"/>
+                          value="0" requiredLabel="true" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -66,7 +61,7 @@ Liste de vos informations personnelles :
                 <label>Numéro de rue :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.nbStreet" label="nbStreet" requiredLabel="false"/>
+                <s:textfield name="adress.nbStreet" label="nbStreet" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -76,7 +71,7 @@ Liste de vos informations personnelles :
                 <label>Rue :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.street" label="street" requiredLabel="false"/>
+                <s:textfield name="adress.street" label="street" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -86,7 +81,7 @@ Liste de vos informations personnelles :
                 <label>Code Postal :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.postalCode" label="postalCode" requiredLabel="false"/>
+                <s:textfield name="adress.postalCode" label="postalCode" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -96,7 +91,7 @@ Liste de vos informations personnelles :
                 <label>Ville :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.city" label="city" requiredLabel="false"/>
+                <s:textfield name="adress.city" label="city" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -106,7 +101,7 @@ Liste de vos informations personnelles :
                 <label>Code :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.code" label="code" requiredLabel="false"/>
+                <s:textfield name="adress.code" label="code" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -116,7 +111,7 @@ Liste de vos informations personnelles :
                 <label>Info :</label>
             </div>
             <div class="col-sm-2">
-                <s:textfield name="adress.infoSub" label="infoSub" requiredLabel="false"/>
+                <s:textfield name="adress.infoSub" label="infoSub" requiredLabel="false" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -130,10 +125,11 @@ Liste de vos informations personnelles :
                           headerKey="-1" headerValue="%{adress.principalAdress}"
                           list="{'Oui', 'Non'}"
                           name="adress.principalAdress"
-                          value="0"/>
+                          value="0" cssClass="form-control"/>
             </div>
             <div class="col-sm-4"></div>
         </div>
+        </br>
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-2">

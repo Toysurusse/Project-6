@@ -6,11 +6,13 @@ import dao.DaoFactory;
 import dao.beans.SiteDao;
 import dao.beans.TopoDao;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Filter {
 
     private DaoFactory daoFactory;
+
     public DaoFactory getDaoFactory() {
         return daoFactory;
     }
@@ -58,6 +60,38 @@ public class Filter {
         this.sitelist = sitelist;
     }
 
+    private String requestfind;
+    public String getRequestfind() {
+        return requestfind;
+    }
+    public void setRequestfind(String requestfind) {
+        this.requestfind = requestfind;
+    }
+
+    private Topo topo;
+    public Topo getTopo() {
+        return topo;
+    }
+    public void setTopo(Topo topo) {
+        this.topo = topo;
+    }
+
+    private Site site;
+    public Site getSite() {
+        return site;
+    }
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    private HashMap<Topo,Site> findResult;
+    public HashMap<Topo, Site> getFindResult() {
+        return findResult;
+    }
+    public void setFindResult(HashMap<Topo, Site> findResult) {
+        this.findResult = findResult;
+    }
+
     public Integer topoid;
     public Integer siteid;
     public Integer getTopoid() {
@@ -74,6 +108,10 @@ public class Filter {
     }
 
     public String execute() {
+        topolist=null;
+        sitelist=null;
+        locationlist=null;
+
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
 
@@ -84,6 +122,23 @@ public class Filter {
         return "success";
     }
 
+    public String find() {
+        topolist=null;
+        sitelist=null;
+        locationlist=null;
+        findResult=null;
+
+        this.topoDao = this.daoFactory.getTopoDAO();
+        this.siteDao = this.daoFactory.getSiteDAO();
+        this.topoDao = this.daoFactory.getTopoDAO();
+
+        findResult=topoDao.find(requestfind);
+        topolist=topoDao.read();
+        sitelist=siteDao.read();
+        locationlist=siteDao.LocationSelect();
+
+        return "success";
+    }
 
 
 }

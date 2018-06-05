@@ -215,6 +215,7 @@ public class SiteShow {
         commentaire.setCreateAt(new Timestamp(date.getTime()));
         commentaire.setPageId(commentaire.getComId());
         this.commentaireDao.add(commentaire);
+        commentaire=null;
         return "success";
     }
 

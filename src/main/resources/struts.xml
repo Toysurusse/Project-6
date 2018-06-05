@@ -5,7 +5,6 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <constant name="struts.ui.theme" value="simple"/>
     <package name="default" namespace="/" extends="struts-default">
 
         <action name="accueil">
@@ -119,6 +118,16 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
+        </action>
+
+
+        <!-- ======================Filter========================-->
+
+        <action name="find"
+                class="filter"
+                method ="find">
+            <result name="input">/jsp/filter.jsp</result>
+            <result name="success">/jsp/filter.jsp</result>
         </action>
 
         <!-- ======================Login========================-->

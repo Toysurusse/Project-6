@@ -32,13 +32,28 @@
     <div class="col-sm-1"></div>
         <div class="col-sm-10">
     <s:if test="#session.user">
-        <s:form action="addcom">
+
+        <label class="starter-template center-block text-md-center">
+            Ajouter un site d'escalade à ce topo
+            <s:a action="newSite">
+                <img src="../../picture/add.jpg" height="10" width="10"/>
+                <s:param name="id"> <s:property value="topos"/> </s:param>
+            </s:a>
+        </label>
+
+        <s:form action="addcom" theme="simple">
             <s:hidden name="commentaire.topoId" value="%{topoid}"/>
             <s:hidden name="commentaire.siteId" value="%{siteid}"/>
             <s:hidden name="commentaire.account" value="%{#session.user.id}"/>
-            <s:textfield name="commentaire.title" label="title" requiredLabel="true"/>
-            <s:textfield name="commentaire.commentary" label="commentaire" requiredLabel="true"/>
-            <s:submit value="OK"/>
+            <div class="form-group">
+                <label for="comment">Titre :</label>
+            <s:textarea name="commentaire.title" label="title" requiredLabel="true" class="form-control" rows="1" id="titre"/>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment :</label>
+            <s:textarea name="commentaire.commentary" label="commentaire" requiredLabel="true" class="form-control" rows="5" id="comment"/>
+        </div>
+            <s:submit value="OK" cssClass="btn-primary"/>
         </s:form>
     </s:if>
     <s:else>
@@ -57,7 +72,7 @@
             Ecrit par : <s:property value="value.pseudo"/> </br>
         </div>
 
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <p>
                 <s:property value="key.title"/>
             </p>

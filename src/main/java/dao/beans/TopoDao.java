@@ -1,7 +1,9 @@
 package dao.beans;
 
+import entity.Site;
 import entity.Topo;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface TopoDao {
@@ -11,4 +13,5 @@ public interface TopoDao {
     Topo topoSelectbyid(int id);
     void delete(int id);
     int lastId (List <Topo> topo);
+    HashMap<Topo, Site> find(String request);
 }

@@ -1,13 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="../../structure/layout.jsp" %>
+<title>Add Site</title>
+<%@ include file="../../structure/head.jsp" %>
 
-<p>
-    Ajouter un site :
-</p>
-
+<label class="starter-template center-block text-md-center">Ajouter un site :</label>
 
 <s:actionerror/>
-<s:form action="addSite">
+<s:form action="addSite" theme="simple">
 
     <%@ include file="site.jsp" %>
     <div class="starter-template">

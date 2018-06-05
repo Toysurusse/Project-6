@@ -1,10 +1,12 @@
 package dao;
 
+import entity.Site;
 import entity.Topo;
 import dao.beans.TopoDao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TopoDaoImpl implements TopoDao {
@@ -117,7 +119,61 @@ public class TopoDaoImpl implements TopoDao {
         return comnb;
     }
 
+    @Override
+    public HashMap<Topo, Site> find(String request) {
+        HashMap<Topo, Site> findResult=new HashMap<>();
 
+        Statement statement ;
+        ResultSet resultat ;
+        System.out.println(request);
+        try {
+            statement = daoFactory.getStatement();
+            resultat = statement.executeQuery("SELECT * FROM public.topo Inner JOIN site_de_grimpe ON topo_id = topo WHERE topo_titre LIKE '%"+request+"%' or secteur LIKE '%"+request+"%' or voie LIKE '%"+request+"%';");
+
+            while (resultat.next()) {
+                Topo topo=new Topo ();
+                Site site= new Site();
+
+                int id = resultat.getInt(1);
+                String spot = resultat.getString(2);
+                String descript = resultat.getString(3);
+                int accountid = resultat.getInt(4);
+
+                topo.setId(id);
+                topo.setLocation(spot);
+                topo.setResume(descript);
+                topo.setAccountid(accountid);
+
+                int idsite = resultat.getInt(5);
+                String location = resultat.getString(6);
+                String way = resultat.getString(7);
+                String height = resultat.getString(8);
+                String hardness = resultat.getString(9);
+                String points_nb = resultat.getString(10);
+                int topos = resultat.getInt(11);
+                int accsiteif = resultat.getInt(12);
+
+                site.setId(idsite);
+                site.setLocation(location);
+                site.setWay(way);
+                site.setHeight(height);
+                site.setHardness(hardness);
+                site.setPoints_nb(points_nb);
+                site.setTopos(topos);
+                site.setAccountid(accsiteif);
+                System.out.println(topo.getLocation() +" ;"+site.getWay());
+                if(topo.getIdentifiant()!=0){
+                findResult.put(topo,site);
+                    System.out.println(findResult.size());
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return findResult;
+    }
 
 
 }

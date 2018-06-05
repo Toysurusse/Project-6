@@ -23,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
+                     <div class="col-sm-10">
                         <s:property value="resume"/>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
 <div class="row border border-info">
 <div class="col-sm-12">
 <s:if test="#session.user">
-    <s:form action="rentAdd">
+    <s:form theme="simple" action="rentAdd">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-2">

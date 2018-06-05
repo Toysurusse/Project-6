@@ -18,17 +18,16 @@
     </div>
     <div clas="starter-template">
         <div class="border border-info">
-            <s:form cssClass="form-group" action="createaccount">
+            <s:form theme="simple" cssClass="form-group" action="createaccount">
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
                         <label>Nom</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield labelposition="left" name="account.name" label="name" requiredLabel="true"
-                                     title="name"/>
+                        <s:textfield cssClass="form-control" labelposition="left" name="account.name" label="name" title="name"/>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"><html:errors property="error.emptyName"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -36,9 +35,9 @@
                         <label>Prénom</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield title="firstName" name="account.firstName" label="firstName" requiredLabel="true"/>
+                        <s:textfield cssClass="form-control" labelSeparator="" title="firstName" name="account.firstName" label="firstName" requiredLabel="true"/>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"><html:errors property="error.emptyFirstName"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -46,9 +45,9 @@
                         <label>Pseudo :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="account.pseudo" label="pseudo" requiredLabel="true"/>
+                        <s:textfield cssClass="form-control" name="account.pseudo" label="pseudo" requiredLabel="true"/>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"><html:errors property="error.emptyPseudo"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -56,9 +55,9 @@
                         <label>Password :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="account.password" label="password" requiredLabel="true"/>
+                        <s:textfield cssClass="form-control" name="account.password" label="password" requiredLabel="true"/>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"><html:errors property="error.emptyPassword"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -66,13 +65,13 @@
                         <label>Sexe :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:select label="Sexe"
+                        <s:select cssClass="form-control" label="Sexe"
                                   headerKey="-1" headerValue="Choisir Sexe"
                                   list="{'H', 'F'}"
                                   name="account.sex"
                                   value="0" requiredLabel="true"/>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"><html:errors property="error.emptySex"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -80,7 +79,7 @@
                         <label>Numéro de rue :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.nbStreet" label="nbStreet" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.nbStreet" label="nbStreet" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -90,7 +89,7 @@
                         <label>Rue :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.street" label="street" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.street" label="street" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -100,7 +99,7 @@
                         <label>Code Postal :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.postalCode" label="postalCode" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.postalCode" label="postalCode" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -110,7 +109,7 @@
                         <label>Ville :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.city" label="city" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.city" label="city" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -120,27 +119,27 @@
                         <label>Code :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.code" label="code" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.code" label="code" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Info :</label>
+                        <label class="text-primary text-md-center">Info :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield name="adress.infoSub" label="infoSub" requiredLabel="false"/>
+                        <s:textfield cssClass="form-control" name="adress.infoSub" label="infoSub" requiredLabel="false"/>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 text-primary text-lg-left">
                         <label>Adresse Principale :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:select label="Adresse Principale"
+                        <s:select cssClass="form-control" label="Adresse Principale"
                                   headerKey="-1" headerValue="Type d'adresse"
                                   list="{'Oui', 'Non'}"
                                   name="adress.principalAdress"

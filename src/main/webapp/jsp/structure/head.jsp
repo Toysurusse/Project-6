@@ -1,4 +1,4 @@
-
+<%@ page pageEncoding="UTF-8" %>
 <!-- Bootstrap core CSS -->
 <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -54,8 +54,10 @@
                     <s:if test="#session.user">
                     <div class="row">
                         <div class="text-primary">
+                            <s:a href="connected" cssClass="btn btn-primary center-block">
                             Utilisateur connecté :
                             <s:property value="#session.user.pseudo"/>
+                            </s:a>
                         </div>
                         <div>
                             <s:a action="disconnect" cssClass="btn btn-primary center-block">Déconnexion</s:a>
