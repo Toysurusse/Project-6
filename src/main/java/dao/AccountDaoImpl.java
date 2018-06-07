@@ -7,6 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement AccountDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class AccountDaoImpl implements AccountDao {
 
     public AccountDaoImpl(DaoFactory daoFactory){
@@ -70,6 +76,11 @@ public class AccountDaoImpl implements AccountDao {
         return accounts;
     }
 
+    /**
+     * insert account from the database
+     * @param request
+     * @param account
+     */
     public void insert (Account account, String request){
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -91,7 +102,11 @@ public class AccountDaoImpl implements AccountDao {
 
     }
 
-
+    /**
+     * extract account from the database
+     * @param request
+     * @return List<Account>
+     */
     public List<Account> extract(String request) {
         List<Account> accounts = new ArrayList<Account>();
         Statement statement ;

@@ -8,6 +8,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement Siteao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class SiteDaoImpl implements SiteDao {
 
     public SiteDaoImpl(DaoFactory daoFactory){
@@ -145,6 +151,11 @@ public class SiteDaoImpl implements SiteDao {
         }
     }
 
+    /**
+     * extract Site from the database
+     * @param request
+     * @return List<Site>
+     */
     private List<Site> extract(String request) {
         List<Site> sites = new ArrayList<Site>();
         Statement statement ;

@@ -4,6 +4,12 @@ import dao.beans.*;
 
 import java.sql.*;
 
+/**
+ * Dao factory to organize relation between DataBase and server
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class DaoFactory {
         private String url;
         private String username;

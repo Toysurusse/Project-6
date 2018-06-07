@@ -8,6 +8,12 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement CommentaireDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class CommentaireDaoImpl implements CommentaireDao {
     public CommentaireDaoImpl(DaoFactory daoFactory){
         this.daoFactory =daoFactory;
@@ -116,7 +122,11 @@ public class CommentaireDaoImpl implements CommentaireDao {
         }
     }
 
-
+    /**
+     * extract Commentaire from the database
+     * @param request
+     * @return List<Commentaire>
+     */
     private List<Commentaire> extract(String request){
         List<Commentaire> commentaires = new ArrayList<Commentaire>();
         Statement statement ;

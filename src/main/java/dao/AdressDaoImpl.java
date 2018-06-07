@@ -8,6 +8,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement AdressDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class AdressDaoImpl implements AdressDao {
 
     public AdressDaoImpl(DaoFactory daoFactory){
@@ -64,6 +70,12 @@ public class AdressDaoImpl implements AdressDao {
         adresss = extract ("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id;");
         return adresss;
     }
+
+    /**
+     * extract account from the database
+     * @param request
+     * @return List<Adress>
+     */
 
     private List<Adress> extract(String request){
         List<Adress> adresss = new ArrayList<Adress>();

@@ -7,6 +7,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement InfoDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
 
 public class InfoDaoImpl implements InfoDao{
     public InfoDaoImpl(DaoFactory daoFactory){
@@ -65,7 +70,11 @@ public class InfoDaoImpl implements InfoDao{
         }
     }
 
-
+    /**
+     * extract information from the database
+     * @param request
+     * @return List<Information>
+     */
     private List<Information> extract(String request){
         List<Information> informations = new ArrayList<Information>();
         Statement statement ;

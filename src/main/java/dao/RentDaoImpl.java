@@ -9,6 +9,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement RentDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class RentDaoImpl implements RentDao {
 
     RentDaoImpl (DaoFactory daoFactory){
@@ -81,6 +87,11 @@ public class RentDaoImpl implements RentDao {
         }
     }
 
+    /**
+     * extract RentTopo from the database
+     * @param request
+     * @return List<RentTopo>
+     */
     private List<RentTopo> extract(String request) {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
         Statement statement ;

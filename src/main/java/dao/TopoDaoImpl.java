@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Implement TopoDao to load info from DataBase
+ *  @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class TopoDaoImpl implements TopoDao {
 
     TopoDaoImpl (DaoFactory daoFactory){
@@ -93,6 +99,11 @@ public class TopoDaoImpl implements TopoDao {
         return topo;
     }
 
+    /**
+     * extract Topo from the database
+     * @param request
+     * @return List<Topo>
+     */
     private List<Topo> extract (String request){
         List<Topo> topos = new ArrayList<Topo>();
         Statement statement ;
