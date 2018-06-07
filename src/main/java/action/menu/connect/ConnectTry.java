@@ -2,6 +2,12 @@ package action.menu.connect;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * organise connection try and disconnection
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class ConnectTry extends Connect {
 
     public String execute() {
@@ -14,8 +20,6 @@ public class ConnectTry extends Connect {
         this.accountDAO=daoFactory.getAccountDAO();
         if (pseudo != null && password!=null) {
             account = accountDAO.control(pseudo, password, accountDAO.read());
-            System.out.println(pseudo + password);
-            System.out.println(account = accountDAO.control(pseudo, password, accountDAO.read()));
             if (account== null){
                 this.addActionError(getText("error.connectError"));
             }else {

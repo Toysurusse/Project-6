@@ -9,56 +9,14 @@ import dao.beans.TopoDao;
 import java.util.HashMap;
 import java.util.List;
 
-public class Filter {
+/**
+ * Class wich let filter topo, site and sectors
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
 
-    private DaoFactory daoFactory;
+public class Filter extends AbstractDaoAndList {
 
-    public DaoFactory getDaoFactory() {
-        return daoFactory;
-    }
-    public void setDaoFactory(DaoFactory daoFactory) {
-        this.daoFactory = daoFactory;
-    }
-
-    private SiteDao siteDao;
-    public SiteDao getSiteDao() {
-        return siteDao;
-    }
-    public void setSiteDao(SiteDao siteDao) {
-        this.siteDao = siteDao;
-    }
-
-    private TopoDao topoDao;
-    public void setTopoDao(TopoDao topoDao) {
-        this.topoDao = topoDao;
-    }
-    public TopoDao getTopoDao() {
-        return topoDao;
-    }
-
-    private List<String> locationlist;
-    public List<String> getLocationlist() {
-        return locationlist;
-    }
-    public void setLocationlist(List<String> locationlist) {
-        this.locationlist = locationlist;
-    }
-
-    private List<Topo> topolist;
-    public List<Topo> getTopolist() {
-        return topolist;
-    }
-    public void setTopolist(List<Topo> topolist) {
-        this.topolist = topolist;
-    }
-
-    private List<Site> sitelist;
-    public List<Site> getSitelist() {
-        return sitelist;
-    }
-    public void setSitelist(List<Site> sitelist) {
-        this.sitelist = sitelist;
-    }
 
     private String requestfind;
     public String getRequestfind() {
@@ -66,22 +24,6 @@ public class Filter {
     }
     public void setRequestfind(String requestfind) {
         this.requestfind = requestfind;
-    }
-
-    private Topo topo;
-    public Topo getTopo() {
-        return topo;
-    }
-    public void setTopo(Topo topo) {
-        this.topo = topo;
-    }
-
-    private Site site;
-    public Site getSite() {
-        return site;
-    }
-    public void setSite(Site site) {
-        this.site = site;
     }
 
     private HashMap<Topo,Site> findResult;
@@ -92,20 +34,16 @@ public class Filter {
         this.findResult = findResult;
     }
 
-    public Integer topoid;
-    public Integer siteid;
-    public Integer getTopoid() {
-        return topoid;
+
+    private List<String> locationlist;
+    public List<String> getLocationlist() {
+        return locationlist;
     }
-    public void setTopoid(Integer topoid) {
-        this.topoid = topoid;
+    public void setLocationlist(List<String> locationlist) {
+        this.locationlist = locationlist;
     }
-    public Integer getSiteid() {
-        return siteid;
-    }
-    public void setSiteid(Integer siteid) {
-        this.siteid = siteid;
-    }
+
+
 
     public String execute() {
         topolist=null;

@@ -15,160 +15,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class SiteShow {
-    public Integer topoid;
-    public Integer siteid;
-    public int id;
-    public Topo topo;
-    private DaoFactory daoFactory;
-    private SiteDao siteDao;
-    private TopoDao topoDao;
-    private CommentaireDao commentaireDao;
-    private AccountDao accountDAO;
-    private List<Topo> topolist;
-    private List<Site> sitelist;
-    private String location;
-    private Site site;
-    private List<Commentaire> commentaireList;
-    private Commentaire commentaire;
-    private Account account;
-    private HashMap<Commentaire, Account> hashMap = new HashMap<>();
+/**
+ * Class wich load sites and sectors
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
 
-    public DaoFactory getDaoFactory() {
-        return daoFactory;
-    }
-
-    public void setDaoFactory(DaoFactory daoFactory) {
-        this.daoFactory = daoFactory;
-    }
-
-    public SiteDao getSiteDao() {
-        return siteDao;
-    }
-
-    public void setSiteDao(SiteDao siteDao) {
-        this.siteDao = siteDao;
-    }
-
-    public TopoDao getTopoDao() {
-        return topoDao;
-    }
-
-    public void setTopoDao(TopoDao topoDao) {
-        this.topoDao = topoDao;
-    }
-
-    public CommentaireDao getCommentaireDao() {
-        return commentaireDao;
-    }
-
-    public void setCommentaireDao(CommentaireDao commentaireDao) {
-        this.commentaireDao = commentaireDao;
-    }
-
-    public AccountDao getAccountDAO() {
-        return accountDAO;
-    }
-
-    public void setAccountDAO(AccountDao accountDAO) {
-        this.accountDAO = accountDAO;
-    }
-
-    public List<Topo> getTopolist() {
-        return topolist;
-    }
-
-    public void setTopolist(List<Topo> topolist) {
-        this.topolist = topolist;
-    }
-
-    public List<Site> getSitelist() {
-        return sitelist;
-    }
-
-    public void setSitelist(List<Site> sitelist) {
-        this.sitelist = sitelist;
-    }
-
-    public String getLocationlist() {
-        return location;
-    }
-
-    public void setLocationlist(String location) {
-        this.location = location;
-    }
-
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
-    }
-
-    public List<Commentaire> getCommentaireList() {
-        return commentaireList;
-    }
-
-    public void setCommentaireList(List<Commentaire> commentaireList) {
-        this.commentaireList = commentaireList;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Integer getTopoid() {
-        return topoid;
-    }
-
-    public void setTopoid(Integer topoid) {
-        this.topoid = topoid;
-    }
-
-    public Integer getSiteid() {
-        return siteid;
-    }
-
-    public void setSiteid(Integer siteid) {
-        this.siteid = siteid;
-    }
-
-    public Commentaire getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(Commentaire commentaire) {
-        this.commentaire = commentaire;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public HashMap<Commentaire, Account> getHashMap() {
-        return hashMap;
-    }
-
-    public void setHashMap(HashMap<Commentaire, Account> hashMap) {
-        this.hashMap = hashMap;
-    }
-
-    public Topo getTopo() {
-        return topo;
-    }
-
-    public void setTopo(Topo topo) {
-        this.topo = topo;
-    }
+public class SiteShow extends AbstractDaoAndList {
 
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
@@ -223,13 +76,5 @@ public class SiteShow {
         this.commentaireDao = daoFactory.getCommentaireDAO();
         this.commentaireDao.deleteTime(id);
         return "success";
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getLocation() {
-        return location;
     }
 }

@@ -10,39 +10,13 @@ import dao.beans.TopoDao;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Class wich load topos
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class TopoShow extends Connect {
-
-    private DaoFactory daoFactory;
-    public DaoFactory getDaoFactory() {
-        return daoFactory;
-    }
-    public void setDaoFactory(DaoFactory daoFactory) {
-        this.daoFactory = daoFactory;
-    }
-
-    private TopoDao topoDao ;
-    public TopoDao getTopoDao() {
-        return topoDao;
-    }
-    public void setTopoDao(TopoDao topoDao) {
-        this.topoDao = topoDao;
-    }
-
-    private RentDao rentDao;
-    public RentDao getRentDao() {
-        return rentDao;
-    }
-    public void setRentDao(RentDao rentDao) {
-        this.rentDao = rentDao;
-    }
-
-    private List<Topo> topolist;
-    public List<Topo> getTopolist() {
-        return topolist;
-    }
-    public void setTopolist(List<Topo> topolist) {
-        this.topolist = topolist;
-    }
 
     private RentTopo rentTopo;
     public RentTopo getRentTopo() {

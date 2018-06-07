@@ -10,23 +10,14 @@ import entity.Topo;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Organise rentTopo
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class ActionRentTopo  extends Connect {
 
-    protected RentDao rentDao;
-    public RentDao getRentDao() {
-        return rentDao;
-    }
-    public void setRentDao(RentDao rentDao) {
-        this.rentDao = rentDao;
-    }
-
-    protected TopoDao topoDao;
-    public TopoDao getTopoDao() {
-        return topoDao;
-    }
-    public void setTopoDao(TopoDao topoDao) {
-        this.topoDao = topoDao;
-    }
 
     private List<RentTopo> listrent;
     public List<RentTopo> getListrent() {

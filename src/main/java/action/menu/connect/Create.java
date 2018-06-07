@@ -3,6 +3,12 @@ package action.menu.connect;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 
+/**
+ * Create and update personnal account  information
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class Create extends Connect {
 
     public String initUpdate () {

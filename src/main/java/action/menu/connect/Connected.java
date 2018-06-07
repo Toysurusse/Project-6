@@ -1,5 +1,6 @@
 package action.menu.connect;
 
+import action.menu.AbstractDaoAndList;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.beans.SiteDao;
 import entity.Account;
@@ -11,15 +12,14 @@ import dao.beans.TopoDao;
 import java.util.HashMap;
 import java.util.List;
 
-public class Connected extends Connect {
+/**
+ * Manage personnal account options
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
 
-    public int id;
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+
+public class Connected extends AbstractDaoAndList {
 
     private List<Topo> topolist;
     public List<Topo> getTopolist() {
@@ -29,45 +29,6 @@ public class Connected extends Connect {
         this.topolist = topolist;
     }
 
-    public List<Site>listsite;
-    public List<Site> getListSite() {
-        return listsite;
-    }
-    public void setListSite(List<Site> listSite) {
-        this.listsite = listSite;
-    }
-
-    public Topo topo;
-    public Topo getTopo() {
-        return topo;
-    }
-    public void setTopo(Topo topo) {
-        this.topo = topo;
-    }
-
-    public Site site;
-    public Site getSite() {
-        return site;
-    }
-    public void setSite(Site site) {
-        this.site = site;
-    }
-
-    private TopoDao topoDao ;
-    public TopoDao getTopoDao() {
-        return topoDao;
-    }
-    public void setTopoDao(TopoDao topoDao) {
-        this.topoDao = topoDao;
-    }
-
-    private SiteDao siteDao;
-    public SiteDao getSiteDao() {
-        return siteDao;
-    }
-    public void setSiteDao(SiteDao siteDao) {
-        this.siteDao = siteDao;
-    }
 
     protected HashMap<Site, Topo> hashMapST= new HashMap<>();
     public HashMap<Site, Topo> getHashMapST() {
@@ -80,18 +41,18 @@ public class Connected extends Connect {
     public String execute (){
         hashMap.clear();
         hashMapST.clear();
-        this.commentaireDAO=daoFactory.getCommentaireDAO();
+        this.commentaireDao=daoFactory.getCommentaireDAO();
         this.topoDao=this.daoFactory.getTopoDAO();
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         this.siteDao=daoFactory.getSiteDAO();
         account = (Account) this.session.get("user");
         adress = this.adressDao.readByAccount(account.getId());
-        listsite=siteDao.siteIDSelect(account.getId());
+        sitelist=siteDao.siteIDSelect(account.getId());
         topolist=topoDao.topoSelect(account.getId());
-        listCommentaire=this.commentaireDAO.readCompteId(account.getId());
+        listCommentaire=this.commentaireDao.readCompteId(account.getId());
 
-        for(Site aListSite : listsite){
+        for(Site aListSite : sitelist){
             hashMapST.put(aListSite, this.topoDao.topoSelectbyid(aListSite.getTopos()));
         }
 
@@ -103,8 +64,8 @@ public class Connected extends Connect {
     }
 
     public String deleteadmincom() {
-        this.commentaireDAO=daoFactory.getCommentaireDAO();
-        this.commentaireDAO.delete(id);
+        this.commentaireDao=daoFactory.getCommentaireDAO();
+        this.commentaireDao.delete(id);
         return ActionSupport.SUCCESS;
     }
 
@@ -181,6 +142,16 @@ public class Connected extends Connect {
 
             this.siteDao.deleteByTopo(id);
             this.topoDao.delete(id);
+
+        return ActionSupport.SUCCESS;
+    }
+
+    public String addInfo() {
+        this.topoDao=this.daoFactory.getTopoDAO();
+        this.siteDao=this.daoFactory.getSiteDAO();
+
+        this.siteDao.deleteByTopo(id);
+        this.topoDao.delete(id);
 
         return ActionSupport.SUCCESS;
     }
