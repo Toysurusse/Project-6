@@ -21,7 +21,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
 
     //________________________DAO import_______________________
 
-
+    /**
+     * import Dao Factory
+     */
     protected DaoFactory daoFactory;
     public DaoFactory getDaoFactory() {
         return daoFactory;
@@ -30,6 +32,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.daoFactory = daoFactory;
     }
 
+    /**
+     * import TopoDao from Factory
+     */
     protected TopoDao topoDao ;
     public TopoDao getTopoDao() {
         return topoDao;
@@ -38,6 +43,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.topoDao = topoDao;
     }
 
+    /**
+     * import SiteDao from Factory
+     */
     protected SiteDao siteDao;
     public SiteDao getSiteDao() {
         return siteDao;
@@ -46,6 +54,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.siteDao = siteDao;
     }
 
+    /**
+     * import RentDao from Factory
+     */
     protected RentDao rentDao;
     public RentDao getRentDao() {
         return rentDao;
@@ -54,6 +65,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.rentDao = rentDao;
     }
 
+    /**
+     * import AccountDao from Factory
+     */
     protected AccountDao accountDAO;
     public AccountDao getAccountDAO() {
         return accountDAO;
@@ -62,6 +76,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.accountDAO = accountDAO;
     }
 
+    /**
+     * import CommentaireDao from Factory
+     */
     protected CommentaireDao commentaireDao;
     public CommentaireDao getCommentaireDao() {
         return commentaireDao;
@@ -70,6 +87,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.commentaireDao = commentaireDAO;
     }
 
+    /**
+     * import AdressDao from Factory
+     */
     protected AdressDao adressDao;
     public AdressDao getAdressDao() {
         return adressDao;
@@ -78,12 +98,11 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.adressDao = adressDao;
     }
 
-
-
-
-
     //__________________________Entity_________________________
 
+    /**
+     * import Topo from entity
+     */
     public Topo topo;
     public Topo getTopo() {
         return topo;
@@ -92,6 +111,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.topo = topo;
     }
 
+    /**
+     * import Site from entity
+     */
     protected Site site;
     public Site getSite() {
         return site;
@@ -100,6 +122,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.site = site;
     }
 
+    /**
+     * import Account from entity
+     */
     protected Account account=new Account();
     public Account getAccount() {
         return account;
@@ -108,6 +133,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.account = account;
     }
 
+    /**
+     * import Adress from entity
+     */
     protected Adress adress = new Adress();
     public Adress getAdress() {
         return adress;
@@ -116,6 +144,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.adress = adress;
     }
 
+    /**
+     * import Commentaire from entity
+     */
     protected Commentaire commentaire;
     public Commentaire getCommentaire() {
         return commentaire;
@@ -124,8 +155,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.commentaire = commentaire;
     }
 
-
-
+    /**
+     * import location from entity
+     */
     protected String location;
     public String getLocation() {
         return location;
@@ -136,6 +168,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
 
     //__________________________List_________________________
 
+    /**
+     * import ListTopo to load Data informations
+     */
     protected List<Topo> topolist;
     public List<Topo> getTopolist() {
         return topolist;
@@ -144,6 +179,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.topolist = topolist;
     }
 
+    /**
+     * import ListSite to load Data informations
+     */
     protected List<Site> sitelist;
     public List<Site> getSitelist() {
         return sitelist;
@@ -152,6 +190,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.sitelist = sitelist;
     }
 
+    /**
+     * import ListAccount to load Data informations
+     */
     protected List<Account> listAccount;
     public List<Account> getListAccount() {
         return listAccount;
@@ -160,6 +201,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.listAccount = listAccount;
     }
 
+    /**
+     * import ListCommentaire to load Data informations
+     */
     protected List<Commentaire> listCommentaire;
     public void setListCommentaire(List<Commentaire> listCommentaire) {
         this.listCommentaire = listCommentaire;
@@ -168,6 +212,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         return listCommentaire;
     }
 
+    /**
+     * import CommentaireList to load Data informations
+     */
     protected List<Commentaire> commentaireList;
     public List<Commentaire> getCommentaireList() {
         return commentaireList;
@@ -176,7 +223,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.commentaireList = commentaireList;
     }
 
-
+    /**
+     * MapString to import session
+     */
     protected Map<String, Object> session;
     public void setSession(Map<String, Object> pSession) {
         this.session = pSession;
@@ -185,9 +234,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         return session;
     }
 
-
-
-
+    /**
+     * id to load entity from data
+     */
 
     public int id;
     public int getId() {
@@ -197,22 +246,9 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.id = id;
     }
 
-    protected String pseudo;
-    public String getPseudo() {
-        return pseudo;
-    }
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
-    }
-
-    protected String password;
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    /**
+     * HashMap<Commentaire, Account> to associate each commentary to an account
+     */
     protected HashMap<Commentaire, Account> hashMap= new HashMap<>();
     public HashMap<Commentaire, Account> getHashMap() {
         return hashMap;
@@ -221,27 +257,25 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
         this.hashMap = hashMap;
     }
 
+    /**
+     * Integer parameter to load topo
+     */
     public Integer topoid;
-    public Integer siteid;
     public Integer getTopoid() {
         return topoid;
     }
     public void setTopoid(Integer topoid) {
         this.topoid = topoid;
     }
+
+    /**
+     * Integer parameter to load site
+     */
+    public Integer siteid;
     public Integer getSiteid() {
         return siteid;
     }
     public void setSiteid(Integer siteid) {
         this.siteid = siteid;
-    }
-
-
-    protected Boolean addAdress ;
-    public Boolean getAddAdress() {
-        return addAdress;
-    }
-    public void setAddAdress(Boolean addAdress) {
-        this.addAdress = addAdress;
     }
 }

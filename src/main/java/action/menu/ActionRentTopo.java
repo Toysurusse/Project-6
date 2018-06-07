@@ -19,6 +19,9 @@ import java.util.List;
 public class ActionRentTopo  extends Connect {
 
 
+    /**
+     * List<RentTopo> to load RentTopo from the Database
+     */
     private List<RentTopo> listrent;
     public List<RentTopo> getListrent() {
         return listrent;
@@ -27,6 +30,9 @@ public class ActionRentTopo  extends Connect {
         this.listrent = listrent;
     }
 
+    /**
+     * List<Topo> to load Topo from the Database
+     */
     private List<Topo> topoList;
     public List<Topo> getTopoList() {
         return topoList;
@@ -35,6 +41,9 @@ public class ActionRentTopo  extends Connect {
         this.topoList = topoList;
     }
 
+    /**
+     * RentTopo to add a rentTopo to the data base the Database
+     */
     private RentTopo rentTopo;
     public RentTopo getRentTopo() {
         return rentTopo;
@@ -43,6 +52,9 @@ public class ActionRentTopo  extends Connect {
         this.rentTopo = rentTopo;
     }
 
+    /**
+     * integer to load rentid
+     */
     public int rentid;
     public int getRentid() {
         return rentid;
@@ -51,6 +63,9 @@ public class ActionRentTopo  extends Connect {
         this.rentid = rentid;
     }
 
+    /**
+     * Timestamp to define the timeStamp
+     */
     private Timestamp rent;
     public Timestamp getRent() {
         return rent;
@@ -59,13 +74,16 @@ public class ActionRentTopo  extends Connect {
         this.rent = rent;
     }
 
+    /**
+     * initialize RentTopo page
+     *  @return String succes
+     */
     public String execute(){
 
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         this.rentDao=daoFactory.getRentDAO();
         this.topoDao=daoFactory.getTopoDAO();
-
         Account account = (Account) this.session.get("user");
         topoList=this.topoDao.read();
         listrent = this.rentDao.read();
@@ -73,17 +91,26 @@ public class ActionRentTopo  extends Connect {
         return "success";
     }
 
+
+    /**
+     * delet au rentTopo
+     * @return String succes
+     */
     public String delete(){
 
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         this.rentDao=daoFactory.getRentDAO();
-
         this.rentDao.delete(rentid);
 
         return "success";
     }
 
+
+    /**
+     * Add a RentTopo
+     * @return String succes
+     */
     public String add(){
 
         this.accountDAO=daoFactory.getAccountDAO();

@@ -23,6 +23,10 @@ import java.util.List;
 
 public class SiteShow extends AbstractDaoAndList {
 
+    /**
+     * initialize Site page
+     * @return String succes
+     */
     public String execute() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.topoDao = this.daoFactory.getTopoDAO();
@@ -46,6 +50,10 @@ public class SiteShow extends AbstractDaoAndList {
         return "success";
     }
 
+    /**
+     * initialize Site page from sector list in filter
+     * @return String succes
+     */
     public String listeSiteByLocation() {
         this.siteDao = this.daoFactory.getSiteDAO();
         this.commentaireDao = this.daoFactory.getCommentaireDAO();
@@ -61,6 +69,10 @@ public class SiteShow extends AbstractDaoAndList {
         return "success";
     }
 
+    /**
+     * add a commentary
+     * @return String succes
+     */
     public String addcom() {
         Date date = new Date();
         this.commentaireDao = daoFactory.getCommentaireDAO();
@@ -72,6 +84,10 @@ public class SiteShow extends AbstractDaoAndList {
         return "success";
     }
 
+    /**
+     * delete a commentary
+     * @return String succes
+     */
     public String deletecom() {
         this.commentaireDao = daoFactory.getCommentaireDAO();
         this.commentaireDao.deleteTime(id);

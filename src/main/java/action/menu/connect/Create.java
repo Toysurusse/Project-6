@@ -11,6 +11,11 @@ import entity.Account;
 
 public class Create extends Connect {
 
+    /**
+     * Initialize account and adress to prepare update
+     * @return String Success
+     */
+
     public String initUpdate () {
         this.clearErrors();
         this.accountDAO=daoFactory.getAccountDAO();
@@ -20,6 +25,10 @@ public class Create extends Connect {
         return ActionSupport.SUCCESS;
     }
 
+    /**
+     * Create a new profile
+     * @return String Success or error if controlMDP return error
+     */
 
     public String input () {
         this.clearErrors();
@@ -47,6 +56,11 @@ public class Create extends Connect {
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    /**
+     * Update profile
+     * @return String Success or error if controlMDP return error
+     */
+
     public String doUpdateAccount () {
         this.clearErrors();
         this.accountDAO=daoFactory.getAccountDAO();
@@ -64,6 +78,11 @@ public class Create extends Connect {
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
+
+    /**
+     * Control if profil proposed is Ok with DataBase parameters
+     * @param account
+     */
 
     private void controlMDP (Account account){
         if(account.getName().equals("")){

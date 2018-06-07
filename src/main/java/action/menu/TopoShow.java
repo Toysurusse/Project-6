@@ -18,6 +18,9 @@ import java.util.List;
 
 public class TopoShow extends Connect {
 
+    /**
+     * RentTopo entity
+     */
     private RentTopo rentTopo;
     public RentTopo getRentTopo() {
         return rentTopo;
@@ -26,6 +29,9 @@ public class TopoShow extends Connect {
         this.rentTopo = rentTopo;
     }
 
+    /**
+     * TimeStamp of a topo
+     */
     private Timestamp rent;
     public Timestamp getRent() {
         return rent;
@@ -34,6 +40,10 @@ public class TopoShow extends Connect {
         this.rent = rent;
     }
 
+    /**
+     * initialize Topo page
+     * @return String succes
+     */
     public String execute (){
         this.topoDao=this.daoFactory.getTopoDAO();
         topolist=topoDao.read();

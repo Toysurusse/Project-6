@@ -17,7 +17,9 @@ import java.util.List;
 
 public class Filter extends AbstractDaoAndList {
 
-
+    /**
+     * Key world to init the search of Topo, Site and sectors
+     */
     private String requestfind;
     public String getRequestfind() {
         return requestfind;
@@ -26,6 +28,9 @@ public class Filter extends AbstractDaoAndList {
         this.requestfind = requestfind;
     }
 
+    /**
+     * HashMap<Topo,Site> to load list of result of request
+     */
     private HashMap<Topo,Site> findResult;
     public HashMap<Topo, Site> getFindResult() {
         return findResult;
@@ -34,7 +39,9 @@ public class Filter extends AbstractDaoAndList {
         this.findResult = findResult;
     }
 
-
+    /**
+     * List<String> to load list of sectors
+     */
     private List<String> locationlist;
     public List<String> getLocationlist() {
         return locationlist;
@@ -43,8 +50,10 @@ public class Filter extends AbstractDaoAndList {
         this.locationlist = locationlist;
     }
 
-
-
+    /**
+     * initialize filter page and dropdown
+     *  @return String succes
+     */
     public String execute() {
         topolist=null;
         sitelist=null;
@@ -60,6 +69,10 @@ public class Filter extends AbstractDaoAndList {
         return "success";
     }
 
+    /**
+     * oraganise search
+     *  @return String succes
+     */
     public String find() {
         topolist=null;
         sitelist=null;

@@ -21,14 +21,10 @@ import java.util.List;
 
 public class Connected extends AbstractDaoAndList {
 
-    private List<Topo> topolist;
-    public List<Topo> getTopolist() {
-        return topolist;
-    }
-    public void setTopolist(List<Topo> topolist) {
-        this.topolist = topolist;
-    }
 
+    /**
+     * HashMap<Site, Topo> to attach one topo to each site
+    */
 
     protected HashMap<Site, Topo> hashMapST= new HashMap<>();
     public HashMap<Site, Topo> getHashMapST() {
@@ -37,6 +33,11 @@ public class Connected extends AbstractDaoAndList {
     public void setHashMapST(HashMap<Site, Topo> hashMapST) {
         this.hashMapST = hashMapST;
     }
+
+    /**
+     * execute method to load personnal information
+     * @return String Success
+     */
 
     public String execute (){
         hashMap.clear();
@@ -63,12 +64,21 @@ public class Connected extends AbstractDaoAndList {
         return ActionSupport.SUCCESS;
     }
 
+    /**
+     * Delete commentary from DataBase
+     * @return String Success
+     */
+
     public String deleteadmincom() {
         this.commentaireDao=daoFactory.getCommentaireDAO();
         this.commentaireDao.delete(id);
         return ActionSupport.SUCCESS;
     }
 
+    /**
+     * Add Site in DataBase
+     * @return String Success
+     */
 
     public String addSite(){
         account = (Account) this.session.get("user");
@@ -84,12 +94,22 @@ public class Connected extends AbstractDaoAndList {
         return "success";
     }
 
+    /**
+     * Delete Site from DataBase
+     * @return String Success
+     */
+
     public String deleteSite() {
         this.siteDao=this.daoFactory.getSiteDAO();
         this.siteDao.delete(id);
 
         return ActionSupport.SUCCESS;
     }
+
+    /**
+     * Add Topo in DataBase
+     * @return String Success or error if controlTopo return true
+     */
 
     public String addTopo() {
         this.clearErrors();
@@ -111,6 +131,11 @@ public class Connected extends AbstractDaoAndList {
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    /**
+     * Update Site from DataBase
+     * @return String Success or error if controlSite return true
+     */
+
     public String updateSite() {
         this.clearErrors();
         account = (Account) this.session.get("user");
@@ -123,7 +148,10 @@ public class Connected extends AbstractDaoAndList {
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
-
+    /**
+     * Update Topo from DataBase
+     * @return String Success or error if controlTopo return true
+     */
     public String updateTopo() {
         this.clearErrors();
         account = (Account) this.session.get("user");
@@ -136,6 +164,11 @@ public class Connected extends AbstractDaoAndList {
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    /**
+     * Delete Topo from DataBase
+     * @return String Success or error if controlTopo return true
+     */
+
     public String deleteTopo() {
             this.topoDao=this.daoFactory.getTopoDAO();
             this.siteDao=this.daoFactory.getSiteDAO();
@@ -146,6 +179,11 @@ public class Connected extends AbstractDaoAndList {
         return ActionSupport.SUCCESS;
     }
 
+    /**
+     * Add Info from DataBase
+     * @return String Success or error if controlTopo return true
+     */
+
     public String addInfo() {
         this.topoDao=this.daoFactory.getTopoDAO();
         this.siteDao=this.daoFactory.getSiteDAO();
@@ -155,6 +193,12 @@ public class Connected extends AbstractDaoAndList {
 
         return ActionSupport.SUCCESS;
     }
+
+    /**
+     * control if Topo added respect DataBase format
+     * @param topo
+     * @return false if it is Ok and true if control failed
+     */
 
     boolean controlTopo(Topo topo){
         boolean test = false;
@@ -168,6 +212,12 @@ public class Connected extends AbstractDaoAndList {
         }
         return test;
     }
+
+    /**
+     * control if Site added respect DataBase format
+     * @param site
+     * @return false if it is Ok and true if control failed
+     */
 
     boolean controlSite(Site site){
         boolean test = false;
@@ -189,5 +239,4 @@ public class Connected extends AbstractDaoAndList {
         }
         return test;
     }
-
 }
