@@ -3,88 +3,93 @@
 <title>Rent Topo</title>
 <%@ include file="structure/head.jsp" %>
 
-<div class="container">
-    <div class="starter-template">
-        <div class="container-fluid">
-            <s:iterator var="RentTopo" value="listrent">
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-9">
-                        <s:property value="title"/>
-                    </div>
-                    <div class="col-sm-1">
-                        <s:if test="#session.user.id==account.id">
-                            <s:a action="rentDelete">
-                                <img src="../picture/Delete.JPG" height="10" width="10"/>
-                                <s:param name="rentid"><s:property value="id"/> </s:param>
-                            </s:a>
-                        </s:if>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                     <div class="col-sm-10">
-                        <s:property value="resume"/>
-                    </div>
-                </div>
-            </s:iterator>
-        </div>
-    </div>
+<label class="starter-template center-block text-md-center">
+    Liste des topos réservés
+</label>
+<div class="align-center">
+    <table class="table-striped table">
+        <tr>
+            <th>Topo</th>
+            <th>Compte</th>
+            <th>Statut</th>
+            <th>Date</th>
+            <th>Suppr</th>
+        </tr>
+        <s:iterator var="RentTopo" value="listrent">
+            <tr>
+                <th>
+                    <s:property value="topo_id"/>
+                </th>
+                <th>
+                    <s:property value="compte_id"/>
+                </th>
+                <th>
+                    <s:property value="statut"/>
+                </th>
+                <th>
+                    <s:property value="date"/>
+                </th>
+                <th>
+                        <s:a action="rentDelete">
+                            <img src="../picture/Delete.JPG" height="10" width="10"/>
+                            <s:param name="rentid"><s:property value="id"/> </s:param>
+                        </s:a>
+                </th>
+            </tr>
+        </s:iterator>
+    </table>
+
 </div>
 
 
 <div class="row border border-info">
-<div class="col-sm-12">
-<s:if test="#session.user">
-    <s:form theme="simple" action="rentAdd">
-        <div class="row">
+    <div class="col-sm-12">
+        <s:if test="#session.user">
             <div class="col-sm-4"></div>
-            <div class="col-sm-2">
-                <label>Topo</label>
+
+            <div class="container-fluid col-sm-4">
+                <s:form theme="simple" action="rentAdd">
+                    <s:select cssClass="form-control" theme="simple" name="rentTopo.topo_id" label="topo"
+                              list="topoList" listKey="identifiant" listValue="location"
+                              emptyOption="true"
+                              requiredLabel="true"/>
+                    <div id="datetimepicker" class="input-append date">
+                        <s:textfield cssClass="form-control" name="rentTopo.date" label="Date"
+                                     requiredLabel="true"/>
+                        <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+                    </div>
+                    </br>
+                    <s:submit value="enregistrer le RDV" cssClass="btn btn-primary center-block"/>
+                </s:form>
             </div>
-            <div class="col-sm-2">
-                <s:select name="rentTopo.topo_id" label="topo"
-                          list="topoList" listKey="identifiant" listValue="location"
-                          emptyOption="true"
-                          requiredLabel="true"/>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-2">
-                <label>Titre du Topo</label>
-            </div>
-            <div class="col-sm-2">
-                <s:textfield name="rentTopo.title" label="title" requiredLabel="true"/>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-2">
-                <label>Résumé</label>
-            </div>
-            <div class="col-sm-2">
-                <s:textfield name="rentTopo.resume" label="resume" requiredLabel="true"/>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4"></div>
-        </div>
-        <div class="col-sm-4">
-            <s:submit value="Proposer ce topo en location" cssClass="btn-primary center-block"/>
-        </div>
-        </div>
-        </div>
-    </s:form>
-</s:if>
-<s:else>
-    <s:a action="connectTry" class="btn btn-primary center-block">Connectez vous pour ajouter un Topo à louer</s:a>
-</s:else>
-</div>
-<div class="col-sm-1"></div>
+
+            <script type="text/javascript"
+                    src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+            </script>
+            <script type="text/javascript"
+                    src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+            </script>
+            <script type="text/javascript"
+                    src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+            </script>
+            <script type="text/javascript"
+                    src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+            </script>
+            <script type="text/javascript">
+                $('#datetimepicker').datetimepicker({
+                    format: 'dd/MM/yyyy hh:mm',
+                    language: 'pt-BR'
+                });
+            </script>
+        </s:if>
+        <s:else>
+            <s:a action="connectTry"
+                 class="btn btn-primary center-block">Connectez vous pour ajouter un Topo à louer</s:a>
+        </s:else>
+    </div>
+    <div class="col-sm-1"></div>
 </div>
 
 

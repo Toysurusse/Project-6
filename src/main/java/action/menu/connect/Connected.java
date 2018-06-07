@@ -139,7 +139,6 @@ public class Connected extends Connect {
         if(!controlTopo(topo) && !controlSite(site)){
             this.topoDao=this.daoFactory.getTopoDAO();
             topo.setId(this.topoDao.lastId(this.topoDao.read()));
-            System.out.println(topo.getIdentifiant());
             site.setTopos(topo.getIdentifiant());
 
             this.siteDao=this.daoFactory.getSiteDAO();
@@ -147,6 +146,31 @@ public class Connected extends Connect {
 
             this.topoDao.add(topo);
             this.siteDao.add(site);
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+    public String updateSite() {
+        this.clearErrors();
+        account = (Account) this.session.get("user");
+        site.setAccountid(account.getId());
+        site.setId(getId());
+        if(!controlSite(site)){
+            this.siteDao=this.daoFactory.getSiteDAO();
+            this.siteDao.update(site);
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+
+    public String updateTopo() {
+        this.clearErrors();
+        account = (Account) this.session.get("user");
+        topo.setAccountid(account.getId());
+        topo.setId(getId());
+        if(!controlTopo(topo)){
+            this.topoDao=this.daoFactory.getTopoDAO();
+            this.topoDao.update(topo);
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

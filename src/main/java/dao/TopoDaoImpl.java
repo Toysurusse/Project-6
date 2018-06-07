@@ -42,6 +42,23 @@ public class TopoDaoImpl implements TopoDao {
     }
 
     @Override
+    public void update(Topo topo) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            System.out.println(topo.getIdentifiant());
+            preparedStatement = connexion.prepareStatement("UPDATE public.topo SET topo_titre=?, topo_texte=?, account=? WHERE topo_id="+topo.getIdentifiant()+";");
+        preparedStatement.setString(1,topo.getLocation());
+        preparedStatement.setString(2, topo.getResume());
+        preparedStatement.setInt(3, topo.getAccountid());
+        preparedStatement.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @Override
     public void delete(int id) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;

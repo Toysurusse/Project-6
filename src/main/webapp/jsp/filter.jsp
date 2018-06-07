@@ -58,9 +58,8 @@
     </div>
 </s:if>
 <label class="starter-template center-block text-md-center">Rechercher par liste déroulante :</label>
-<div class=" container ">
-    <div class="col-md-4 col-md-offset-4">
-        <label class="starter-template center-block text-md-center">Topod :</label>
+    <div class="col-md-4 bg-light">
+        <label class="starter-template center-block text-md-center">Topos :</label>
         <s:form theme="simple" action="listSite">
             <s:select cssClass="form-control" theme="simple" name="topoid" label="topo"
                       list="topolist" listKey="identifiant" listValue="location"
@@ -70,6 +69,8 @@
             </br>
             <s:submit value="Rechercher ce topo" cssClass="btn btn-primary center-block"/>
         </s:form>
+    </div>
+        <div class="col-md-4 bg-light">
         <label class="starter-template center-block text-md-center">Secteurs :</label>
         <s:form theme="simple" action="listSiteByLocation">
             <s:select cssClass="form-control" name="location" label="Secteur"
@@ -79,6 +80,8 @@
             </br>
             <s:submit value="Rechercher ce secteur" cssClass="btn btn-primary center-block"/>
         </s:form>
+        </div>
+            <div class="col-md-4 bg-white">
         <label class="starter-template center-block text-md-center">Sites :</label>
         <s:form theme="simple" action="listSite">
             <s:select cssClass="form-control" name="siteid" label="site"
@@ -88,7 +91,7 @@
             </br>
             <s:submit value="Rechercher ce site" cssClass="btn btn-primary center-block"/>
         </s:form>
-    </div>
+            </div>
 </div>
 
 

@@ -46,26 +46,26 @@
                     <s:a href="rent">Louer un topo</s:a>
                 </li>
                 <li>
+                    <s:a href="jsp/test.jsp">test</s:a>
+                </li>
+                <li>
                     <div class="col-sm-6"></div>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <s:if test="#session.user">
-                    <div class="row">
-                        <div class="text-primary">
-                            <s:a href="connected" cssClass="btn btn-primary center-block">
-                            Utilisateur connecté :
-                            <s:property value="#session.user.pseudo"/>
-                            </s:a>
+                        <div class="row">
+                                <s:a href="connected" cssClass="btn btn-primary center-block">
+                                    Utilisateur connecté :
+                                    <s:property value="#session.user.pseudo"/>
+                                </s:a>
+                                <s:a action="disconnect" cssClass="btn btn-primary center-block">Déconnexion</s:a>
                         </div>
-                        <div>
-                            <s:a action="disconnect" cssClass="btn btn-primary center-block">Déconnexion</s:a>
-                        </div>
-                        </s:if>
-                        <s:else>
+                    </s:if>
+                    <s:else>
                         <s:a href="connectTry" cssClass="btn btn-default">Se Connecter</s:a>
-                        </s:else>
+                    </s:else>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->

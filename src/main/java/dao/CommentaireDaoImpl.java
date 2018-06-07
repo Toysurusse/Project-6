@@ -64,7 +64,6 @@ public class CommentaireDaoImpl implements CommentaireDao {
         PreparedStatement preparedStatement = null;
         Date date = new Date();
         Timestamp heure = new Timestamp(date.getTime());
-        System.out.println(heure);
         try {
             connexion = daoFactory.getInstance();
             preparedStatement = connexion.prepareStatement("UPDATE commentaires SET deleteat = CURRENT_TIMESTAMP WHERE com_id = "+id+";");
@@ -137,6 +136,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
                 String commentary= resultat.getString(8);
                 Timestamp createAt= resultat.getTimestamp(9);
 
+                System.out.println(commentary);
+
                 Commentaire commentaire = new Commentaire();
                 commentaire.setAccount(account);
                 commentaire.setTitle(title);
@@ -146,7 +147,6 @@ public class CommentaireDaoImpl implements CommentaireDao {
                 commentaire.setSiteId(siteId);
                 commentaire.setTopoId(topoId);
                 commentaire.setCreateAt(createAt);
-                System.out.println(commentaire.getComId());
                 commentaires.add(commentaire);
             }
         } catch (SQLException e) {

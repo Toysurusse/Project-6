@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SiteDao {
     void add(Site site);
+    void update (Site site);
     List <Site> read();
     List<Site> siteIDSelect (int accountid);
     List <Site> topoSiteSelect(int siteid);

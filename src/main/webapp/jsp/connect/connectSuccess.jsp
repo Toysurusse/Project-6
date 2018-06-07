@@ -89,6 +89,7 @@
         <tr>
             <th>Topos :</th>
             <th>Ajouter Site</th>
+            <th>Update</th>
             <th>Suppr</th>
         </tr>
         <s:iterator value="topolist">
@@ -104,6 +105,15 @@
                     <s:a action="newSite">
                         <img src="../../picture/add.jpg" height="10" width="10"/>
                         <s:param name="id"><s:property value="identifiant"/> </s:param>
+                    </s:a>
+                </th>
+                <th>
+                    <s:a action="upTopo">
+                        <img src="../../picture/update.png" height="10" width="10"/>
+                        <s:param name="id"><s:property value="identifiant"/> </s:param>
+                        <s:param name="topo.identifiant"><s:property value="identifiant"/> </s:param>
+                        <s:param name="topo.location"><s:property value="location"/> </s:param>
+                        <s:param name="topo.resume"><s:property value="resume"/> </s:param>
                     </s:a>
                 </th>
                 <th>
@@ -128,6 +138,7 @@
         <th>Topo</th>
         <th>Secteur</th>
         <th>Voie</th>
+        <th>Modifier</th>
         <th>Suppr</th>
     </tr>
     <s:iterator value="hashMapST">
@@ -139,6 +150,19 @@
                     <s:param name="topoid"><s:property value="key.topos"/> </s:param>
                     <s:param name="siteid"><s:property value="key.identifiant"/></s:param>
                     <s:property value="key.way"/>
+                </s:a>
+            </th>
+            <th>
+                <s:a action="upSite">
+                    <img src="../../picture/update.png" height="10" width="10"/>
+                    <s:param name="id"><s:property value="key.identifiant"/> </s:param>
+                    <s:param name="site.identifiant"><s:property value="key.identifiant"/> </s:param>
+                    <s:param name="site.location"><s:property value="key.location"/> </s:param>
+                    <s:param name="site.points_nb"><s:property value="key.points_nb"/> </s:param>
+                    <s:param name="site.way"><s:property value="key.way"/> </s:param>
+                    <s:param name="site.height"><s:property value="key.height"/> </s:param>
+                    <s:param name="site.hardness"><s:property value="key.hardness"/> </s:param>
+                    <s:param name="site.topos"><s:property value="key.topos"/> </s:param>
                 </s:a>
             </th>
             <th>

@@ -121,6 +121,30 @@ public class SiteDaoImpl implements SiteDao {
         }
     }
 
+    @Override
+    public void update(Site site) {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connexion = daoFactory.getInstance();
+            System.out.println(site.getIdentifiant());
+            preparedStatement = connexion.prepareStatement("UPDATE public.site_de_grimpe\n" +
+                    "\tSET site_id=?, secteur=?, voie=?, hauteur=?, cotation=?, nb_points=?, topo=?, accountid=?\n" +
+                    "\tWHERE site_id="+site.getIdentifiant()+";");
+            preparedStatement.setInt(1, site.getIdentifiant());
+            preparedStatement.setString(2, site.getLocation());
+            preparedStatement.setString(3, site.getWay());
+            preparedStatement.setString(4, site.getHeight());
+            preparedStatement.setString(5, site.getHardness());
+            preparedStatement.setString(6, site.getPoints_nb());
+            preparedStatement.setInt(7, site.getTopos());
+            preparedStatement.setInt(8, site.getAccountid());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private List<Site> extract(String request) {
         List<Site> sites = new ArrayList<Site>();
         Statement statement ;

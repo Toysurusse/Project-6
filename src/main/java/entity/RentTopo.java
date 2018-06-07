@@ -1,13 +1,22 @@
 package entity;
 
+import java.sql.Timestamp;
+
 public class RentTopo {
 
     private int id;
     private int compte_id;
     private int topo_id;
     private boolean statut;
-    private String title;
-    private String resume;
+    private Timestamp date;
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
 
     public int getId() {
         return id;
@@ -41,20 +50,5 @@ public class RentTopo {
         this.statut = statut;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getResume() {
-        return resume;
-    }
-
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
 
 }

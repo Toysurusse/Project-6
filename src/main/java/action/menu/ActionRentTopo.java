@@ -7,6 +7,7 @@ import entity.Account;
 import entity.RentTopo;
 import entity.Topo;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class ActionRentTopo  extends Connect {
@@ -59,6 +60,14 @@ public class ActionRentTopo  extends Connect {
         this.rentid = rentid;
     }
 
+    private Timestamp rent;
+    public Timestamp getRent() {
+        return rent;
+    }
+    public void setRent(Timestamp rent) {
+        this.rent = rent;
+    }
+
     public String execute(){
 
         this.accountDAO=daoFactory.getAccountDAO();
@@ -93,27 +102,9 @@ public class ActionRentTopo  extends Connect {
         rentTopo.setCompte_id(account.getId());
         rentTopo.setStatut(true);
 
-        if (controlAddRent(rentTopo)){
             this.rentDao.add(rentTopo);
-        }
 
         return "success";
-    }
-
-    private boolean controlAddRent(RentTopo rentTopo){
-
-        boolean test = true;
-
-        if(rentTopo.getTitle().length()>99) {
-            this.addActionError(getText("error.TitreRentTopoTooLong"));
-            test = false;
-        }
-        if(rentTopo.getResume().length()>49000) {
-            this.addActionError(getText("error.ResumeRentTopoTooLong"));
-            test = false;
-        }
-
-        return test;
     }
 
 }

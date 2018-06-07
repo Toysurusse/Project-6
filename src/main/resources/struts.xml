@@ -50,6 +50,54 @@
             <result name="success">/jsp/site.jsp</result>
         </action>
 
+        <action name="newSite"
+                class="connected">
+            <result name="success">
+                /jsp/connect/addInformation/addSite.jsp
+            </result>
+        </action>
+
+        <action name="addSite"
+                class="connected"
+                method="addSite">
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/addInformation/addSite.jsp</result>
+        </action>
+
+        <action name="upSite"
+                class="connected">
+            <result name="success">
+                /jsp/connect/update/updateSite.jsp
+            </result>
+        </action>
+
+        <action name="updateSite"
+                class="connected"
+                method="updateSite">
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/update/updateSite.jsp</result>
+        </action>
+
+        <action name="deleteSite"
+                class="connected"
+                method="deleteSite">
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+        </action>
+
+        <!-- ======================Com========================-->
+
         <action name="addcom"
                 class="siteShow"
                 method ="addcom">
@@ -66,18 +114,32 @@
             </result>
         </action>
 
+        <!-- ======================Topos========================-->
+
         <action name="newTopo"
                 class="connected">
             <result name="success">
-                /jsp/connect/AddInformation/addTopo.jsp
+                /jsp/connect/addInformation/addTopo.jsp
             </result>
         </action>
 
-        <action name="newSite"
+        <action name="upTopo"
                 class="connected">
             <result name="success">
-                /jsp/connect/AddInformation/addSite.jsp
+                /jsp/connect/update/updateTopo.jsp
             </result>
+        </action>
+
+        <action name="updateTopo"
+                class="connected"
+                method="updateTopo">
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">/jsp/connect/update/updateTopo.jsp</result>
         </action>
 
         <action name="addTopo"
@@ -89,27 +151,7 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/AddInformation/addTopo.jsp</result>
-        </action>
-
-        <action name="addSite"
-                class="connected"
-                method="addSite">
-            <result name="input" type="redirectAction">
-                <param name="actionName">connected</param>
-            </result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">connected</param>
-            </result>
-            <result name="error">/jsp/connect/AddInformation/addSite.jsp</result>
-        </action>
-
-        <action name="deleteSite"
-                class="connected"
-                method="deleteSite">
-            <result name="success" type="redirectAction">
-                <param name="actionName">connected</param>
-            </result>
+            <result name="error">/jsp/connect/addInformation/addTopo.jsp</result>
         </action>
 
         <action name="deleteTopo"

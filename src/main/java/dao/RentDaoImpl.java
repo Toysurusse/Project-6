@@ -27,13 +27,12 @@ public class RentDaoImpl implements RentDao {
         try {
             connexion = daoFactory.getInstance();
             preparedStatement = connexion.prepareStatement("INSERT INTO public.pret_de_topo(\n" +
-                    "\tcompte_id, topo_id, statut_topo, topo_title, topo_resume)\n" +
-                    "\tVALUES (?, ?, ?, ?, ?);");
+                    "\tcompte_id, topo_id, statut_topo, rent)\n" +
+                    "\tVALUES (?, ?, ?, ?);");
             preparedStatement.setInt(1, rentTopo.getCompte_id());
             preparedStatement.setInt(2, rentTopo.getTopo_id());
             preparedStatement.setBoolean(3, rentTopo.getStatut());
-            preparedStatement.setString(4, rentTopo.getTitle());
-            preparedStatement.setString(5, rentTopo.getResume());
+            preparedStatement.setTimestamp(4,rentTopo.getDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,15 +42,15 @@ public class RentDaoImpl implements RentDao {
     @Override
     public List<RentTopo> read() {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
-        rentTopos=extract("SELECT topo_pret_id, compte_id, topo_id, statut_topo, topo_title, topo_resume\n" +
-                "\tFROM public.pret_de_topo;");
+        rentTopos=extract("SELECT *\n" +
+                "\tFROM public.pret_de_topo order by rent;");
         return rentTopos;
     }
 
     @Override
     public List<RentTopo> topoSelectbyid(int accountid) {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
-        rentTopos=extract("SELECT topo_pret_id, compte_id, topo_id, statut_topo, topo_title, topo_resume\n" +
+        rentTopos=extract("SELECT *\n" +
                 "\tFROM public.pret_de_topo WHERE compte_id ="+accountid+";");
         return rentTopos;
     }
@@ -92,21 +91,18 @@ public class RentDaoImpl implements RentDao {
             resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
-
                 int id = resultat.getInt(1);
                 int account = resultat.getInt(2);
                 int topo = resultat.getInt(3);
                 boolean statut = resultat.getBoolean(4);
-                String title = resultat.getString(5);
-                String resume = resultat.getString(6);
+                Timestamp date = resultat.getTimestamp(5);
 
                 RentTopo rentTopo = new RentTopo();
                 rentTopo.setId(id);
                 rentTopo.setCompte_id(account);
                 rentTopo.setTopo_id(topo);
                 rentTopo.setStatut(statut);
-                rentTopo.setTitle(title);
-                rentTopo.setResume(resume);
+                rentTopo.setDate(date);
                 rentTopos.add(rentTopo);
             }
         } catch (SQLException e) {

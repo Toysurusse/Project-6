@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface TopoDao {
     void add (Topo topo);
+    void update (Topo topo);
     List<Topo> read();
     List<Topo> topoSelect(int accountid);
     Topo topoSelectbyid(int id);

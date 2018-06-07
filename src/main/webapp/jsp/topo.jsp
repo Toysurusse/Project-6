@@ -12,13 +12,16 @@
                 <s:param name="siteid">0</s:param>
                 <s:property value="location" />
             </s:a>
-            <p>
+            <pre class="text-md-center">
                 <s:property value="resume" />
-            </p>
+            </pre>
         </s:iterator>
     </div>
 
 </div><!-- /.container -->
 </div>
+
+
+
 
 <%@ include file="structure/foot.jsp" %>

@@ -22,6 +22,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="topoShow" class="action.menu.TopoShow">
             <property name="daoFactory" ref="daoFactory" />
             <property name="topoDao" ref="topoDao" />
+            <property name="rentDao" ref="rentDao" />
         </bean>
 
         <bean id="siteShow" class="action.menu.SiteShow">

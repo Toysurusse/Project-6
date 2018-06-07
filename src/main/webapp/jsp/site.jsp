@@ -30,36 +30,39 @@
 
 <div class="row border border-info">
     <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-    <s:if test="#session.user">
+    <div class="col-sm-10">
+        <s:if test="#session.user">
 
-        <label class="starter-template center-block text-md-center">
-            Ajouter un site d'escalade à ce topo
-            <s:a action="newSite">
-                <img src="../../picture/add.jpg" height="10" width="10"/>
-                <s:param name="id"> <s:property value="topos"/> </s:param>
-            </s:a>
-        </label>
+            <label class="starter-template center-block text-md-center">
+                Ajouter un site d'escalade à ce topo
+                <s:a action="newSite">
+                    <img src="../../picture/add.jpg" height="10" width="10"/>
+                    <s:param name="id"> <s:property value="topos"/> </s:param>
+                </s:a>
+            </label>
 
-        <s:form action="addcom" theme="simple">
-            <s:hidden name="commentaire.topoId" value="%{topoid}"/>
-            <s:hidden name="commentaire.siteId" value="%{siteid}"/>
-            <s:hidden name="commentaire.account" value="%{#session.user.id}"/>
-            <div class="form-group">
-                <label for="comment">Titre :</label>
-            <s:textarea name="commentaire.title" label="title" requiredLabel="true" class="form-control" rows="1" id="titre"/>
-        </div>
-        <div class="form-group">
-            <label for="comment">Comment :</label>
-            <s:textarea name="commentaire.commentary" label="commentaire" requiredLabel="true" class="form-control" rows="5" id="comment"/>
-        </div>
-            <s:submit value="OK" cssClass="btn btn-primary"/>
-        </s:form>
-    </s:if>
-    <s:else>
-        <s:a action="connectTry" class="btn btn-primary center-block">Connectez vous pour ajouter un commentaire</s:a>
-    </s:else>
-        </div>
+            <s:form action="addcom" theme="simple">
+                <s:hidden name="commentaire.topoId" value="%{topoid}"/>
+                <s:hidden name="commentaire.siteId" value="%{siteid}"/>
+                <s:hidden name="commentaire.account" value="%{#session.user.id}"/>
+                <div class="form-group">
+                    <label for="comment">Titre :</label>
+                    <s:textarea name="commentaire.title" label="title" requiredLabel="true" class="form-control"
+                                rows="1" id="titre"/>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment :</label>
+                    <s:textarea name="commentaire.commentary" label="commentaire" requiredLabel="true"
+                                class="form-control" rows="5" id="comment"/>
+                </div>
+                <s:submit value="OK" cssClass="btn btn-primary"/>
+            </s:form>
+        </s:if>
+        <s:else>
+            <s:a action="connectTry"
+                 class="btn btn-primary center-block">Connectez vous pour ajouter un commentaire</s:a>
+        </s:else>
+    </div>
     <div class="col-sm-1"></div>
 </div>
 
@@ -73,21 +76,19 @@
         </div>
 
         <div class="col-sm-6">
-            <p>
+            <pre>
                 <s:property value="key.title"/>
-            </p>
-            <p>
                 <s:property value="key.commentary"/>
-            </p>
+            </pre>
         </div>
         <div class="col-sm-1">
             <s:if test="%{#session.user.id==key.account}">
                 <s:a action="deleteCom">
-                <s:param name="commentaire.topoId" value="%{topoid}"/>
-                <s:param name="commentaire.siteId" value="%{siteid}"/>
-                <img src="../picture/Delete.JPG" height="10" width="10"/>
-                <s:param name="id"><s:property value="key.comId"/> </s:param>
-            </s:a>
+                    <s:param name="commentaire.topoId" value="%{topoid}"/>
+                    <s:param name="commentaire.siteId" value="%{siteid}"/>
+                    <img src="../picture/Delete.JPG" height="10" width="10"/>
+                    <s:param name="id"><s:property value="key.comId"/> </s:param>
+                </s:a>
             </s:if>
         </div>
         <div class="col-sm-1"></div>
