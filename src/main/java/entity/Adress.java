@@ -1,14 +1,68 @@
 package entity;
 
+/**
+ * Adress entity
+ *
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class Adress {
 
+    /**
+     * Adress id
+     *
+     * @return int
+     */
     private int adressId;
+
+    /**
+     * Adress nbStreet
+     *
+     * @return int
+     */
     private int nbStreet;
+
+    /**
+     * Adress street
+     *
+     * @return String
+     */
     private String street;
+
+    /**
+     * Adress postalCode
+     *
+     * @return int
+     */
     private int postalCode;
+
+    /**
+     * Adress city
+     *
+     * @return String
+     */
     private String city;
+
+    /**
+     * Adress code
+     *
+     * @return String
+     */
     private String code;
+
+    /**
+     * Adress infoSub
+     *
+     * @return String
+     */
     private String infoSub;
+
+    /**
+     * Adress Principal or not
+     *
+     * @return boolean
+     */
     private boolean principalAdress;
 
     public String getCode() {

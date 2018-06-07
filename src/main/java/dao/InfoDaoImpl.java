@@ -9,27 +9,29 @@ import java.util.List;
 
 /**
  * Implement InfoDao to load info from DataBase
- *  @author Le Boiteux Maximilien
+ *
+ * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
 
-public class InfoDaoImpl implements InfoDao{
-    public InfoDaoImpl(DaoFactory daoFactory){
-        this.daoFactory =daoFactory;
-    }
+public class InfoDaoImpl implements InfoDao {
     private DaoFactory daoFactory;
 
-    public int lastIDInfo (List <Information> info){
-        int infonb=0;
+    public InfoDaoImpl(DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
 
-        for (int i=0; i<=info.size()-2;i++){
-            System.out.println(info.get(i).getId()+" ; "+info.get(i+1).getId());
-            if (info.get(i).getId()==info.get(i+1).getId()-1){
-                infonb =info.get(i).getId()+1;
+    public int lastIDInfo(List<Information> info) {
+        int infonb = 0;
+
+        for (int i = 0; i <= info.size() - 2; i++) {
+            System.out.println(info.get(i).getId() + " ; " + info.get(i + 1).getId());
+            if (info.get(i).getId() == info.get(i + 1).getId() - 1) {
+                infonb = info.get(i).getId() + 1;
             }
         }
-        if (infonb==0){
-            infonb = info.get(info.size()-1).getId();
+        if (infonb == 0) {
+            infonb = info.get(info.size() - 1).getId();
         }
         return infonb;
     }
@@ -47,7 +49,7 @@ public class InfoDaoImpl implements InfoDao{
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("DELETE FROM information WHERE info_id = "+id+";");
+            preparedStatement = connexion.prepareStatement("DELETE FROM information WHERE info_id = " + id + ";");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +63,7 @@ public class InfoDaoImpl implements InfoDao{
         try {
             connexion = daoFactory.getInstance();
             preparedStatement = connexion.prepareStatement("INSERT INTO public.information(info_id, info_titre, info_texte)VALUES (?, ?, ?);");
-            preparedStatement.setInt(1,  information.getId());
+            preparedStatement.setInt(1, information.getId());
             preparedStatement.setString(2, information.getTitle());
             preparedStatement.setString(3, information.getInfo());
             preparedStatement.executeUpdate();
@@ -72,29 +74,30 @@ public class InfoDaoImpl implements InfoDao{
 
     /**
      * extract information from the database
+     *
      * @param request
      * @return List<Information>
      */
-    private List<Information> extract(String request){
+    private List<Information> extract(String request) {
         List<Information> informations = new ArrayList<Information>();
-        Statement statement ;
-        ResultSet resultat ;
+        Statement statement;
+        ResultSet resultat;
 
         try {
             statement = daoFactory.getStatement();
             resultat = statement.executeQuery(request);
 
             while (resultat.next()) {
-                int id= resultat.getInt(1);
-                String title= resultat.getString(2);
-                String info= resultat.getString(3);
+                int id = resultat.getInt(1);
+                String title = resultat.getString(2);
+                String info = resultat.getString(3);
 
                 Information information = new Information();
                 information.setId(id);
                 information.setTitle(title);
                 information.setInfo(info);
 
-                System.out.println(id+title+info);
+                System.out.println(id + title + info);
                 informations.add(information);
             }
         } catch (SQLException e) {

@@ -2,8 +2,6 @@ package dao;
 
 import dao.beans.RentDao;
 import entity.RentTopo;
-import entity.RentTopo;
-import entity.Topo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,17 +9,18 @@ import java.util.List;
 
 /**
  * Implement RentDao to load info from DataBase
- *  @author Le Boiteux Maximilien
+ *
+ * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
 
 public class RentDaoImpl implements RentDao {
 
-    RentDaoImpl (DaoFactory daoFactory){
-        this.daoFactory =daoFactory;
-    }
-
     private DaoFactory daoFactory;
+
+    RentDaoImpl(DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
 
     public RentDaoImpl() {
     }
@@ -38,7 +37,7 @@ public class RentDaoImpl implements RentDao {
             preparedStatement.setInt(1, rentTopo.getCompte_id());
             preparedStatement.setInt(2, rentTopo.getTopo_id());
             preparedStatement.setBoolean(3, rentTopo.getStatut());
-            preparedStatement.setTimestamp(4,rentTopo.getDate());
+            preparedStatement.setTimestamp(4, rentTopo.getDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,7 +47,7 @@ public class RentDaoImpl implements RentDao {
     @Override
     public List<RentTopo> read() {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
-        rentTopos=extract("SELECT *\n" +
+        rentTopos = extract("SELECT *\n" +
                 "\tFROM public.pret_de_topo order by rent;");
         return rentTopos;
     }
@@ -56,21 +55,21 @@ public class RentDaoImpl implements RentDao {
     @Override
     public List<RentTopo> topoSelectbyid(int accountid) {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
-        rentTopos=extract("SELECT *\n" +
-                "\tFROM public.pret_de_topo WHERE compte_id ="+accountid+";");
+        rentTopos = extract("SELECT *\n" +
+                "\tFROM public.pret_de_topo WHERE compte_id =" + accountid + ";");
         return rentTopos;
     }
 
     @Override
     public void delete(int id) {
         del("DELETE FROM public.pret_de_topo\n" +
-                "\tWHERE topo_pret_id = "+id+";");
+                "\tWHERE topo_pret_id = " + id + ";");
     }
 
     @Override
     public void deleteByCompte(int id) {
         del("DELETE FROM public.pret_de_topo\n" +
-                "\tWHERE compte_id = "+id+";");
+                "\tWHERE compte_id = " + id + ";");
     }
 
     public void del(String request) {
@@ -89,13 +88,14 @@ public class RentDaoImpl implements RentDao {
 
     /**
      * extract RentTopo from the database
+     *
      * @param request
      * @return List<RentTopo>
      */
     private List<RentTopo> extract(String request) {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
-        Statement statement ;
-        ResultSet resultat ;
+        Statement statement;
+        ResultSet resultat;
 
         try {
             statement = daoFactory.getStatement();
@@ -121,6 +121,6 @@ public class RentDaoImpl implements RentDao {
         }
         return rentTopos;
     }
-    
-    
+
+
 }

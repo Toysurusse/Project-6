@@ -1,22 +1,11 @@
 package action.menu;
 
-import dao.DaoFactory;
-import dao.beans.AccountDao;
-import dao.beans.CommentaireDao;
-import dao.beans.SiteDao;
-import dao.beans.TopoDao;
-import entity.Account;
-import entity.Commentaire;
-import entity.Site;
-import entity.Topo;
-
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Class wich load sites and sectors
+ *
  * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
@@ -25,6 +14,7 @@ public class SiteShow extends AbstractDaoAndList {
 
     /**
      * initialize Site page
+     *
      * @return String succes
      */
     public String execute() {
@@ -52,6 +42,7 @@ public class SiteShow extends AbstractDaoAndList {
 
     /**
      * initialize Site page from sector list in filter
+     *
      * @return String succes
      */
     public String listeSiteByLocation() {
@@ -71,6 +62,7 @@ public class SiteShow extends AbstractDaoAndList {
 
     /**
      * add a commentary
+     *
      * @return String succes
      */
     public String addcom() {
@@ -80,12 +72,13 @@ public class SiteShow extends AbstractDaoAndList {
         commentaire.setCreateAt(new Timestamp(date.getTime()));
         commentaire.setPageId(commentaire.getComId());
         this.commentaireDao.add(commentaire);
-        commentaire=null;
+        commentaire = null;
         return "success";
     }
 
     /**
      * delete a commentary
+     *
      * @return String succes
      */
     public String deletecom() {

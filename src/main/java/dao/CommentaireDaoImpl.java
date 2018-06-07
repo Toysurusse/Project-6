@@ -1,11 +1,11 @@
 package dao;
 
-import entity.Commentaire;
 import dao.beans.CommentaireDao;
+import entity.Commentaire;
 
 import java.sql.*;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -124,6 +124,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
     /**
      * extract Commentaire from the database
+     *
      * @param request
      * @return List<Commentaire>
      */

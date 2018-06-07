@@ -1,8 +1,6 @@
 package action.menu;
 
 import action.menu.connect.Connect;
-import dao.beans.RentDao;
-import dao.beans.TopoDao;
 import entity.Account;
 import entity.RentTopo;
 import entity.Topo;
@@ -76,7 +74,8 @@ public class ActionRentTopo  extends Connect {
 
     /**
      * initialize RentTopo page
-     *  @return String succes
+     *
+     * @return String succes
      */
     public String execute(){
 

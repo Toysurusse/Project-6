@@ -1,8 +1,7 @@
 package dao;
 
-import entity.Account;
-import entity.Adress;
 import dao.beans.AdressDao;
+import entity.Adress;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,34 +9,36 @@ import java.util.List;
 
 /**
  * Implement AdressDao to load info from DataBase
- *  @author Le Boiteux Maximilien
+ *
+ * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
 
 public class AdressDaoImpl implements AdressDao {
 
-    public AdressDaoImpl(DaoFactory daoFactory){
-        this.daoFactory =daoFactory;
-    }
     private DaoFactory daoFactory;
+
+    public AdressDaoImpl(DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
 
     public AdressDaoImpl() {
     }
 
     @Override
     public void update(Adress adress) {
-        insert(adress,"UPDATE public.adresse\n" +
+        insert(adress, "UPDATE public.adresse\n" +
                 "\tSET adres_id=?, numero_rue=?, rue=?, code_postal=?, ville=?, code=?, complement_adresse=?, adresse_principale=?\n" +
-                "\tWHERE "+adress.getAdressId()+";");
+                "\tWHERE " + adress.getAdressId() + ";");
     }
 
     @Override
     public void add(Adress adress) {
-        insert(adress,"INSERT INTO public.adresse(adres_id, numero_rue, rue, code_postal, ville, code, complement_adresse, adresse_principale)VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+        insert(adress, "INSERT INTO public.adresse(adres_id, numero_rue, rue, code_postal, ville, code, complement_adresse, adresse_principale)VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
     }
 
 
-     public void insert (Adress adress, String request) {
+    public void insert(Adress adress, String request) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -60,27 +61,28 @@ public class AdressDaoImpl implements AdressDao {
     @Override
     public Adress readByAccount(int account) {
         Adress adresss;
-        adresss = extract ("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id WHERE id ="+account+";").get(0);
+        adresss = extract("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id WHERE id =" + account + ";").get(0);
         return adresss;
     }
 
     @Override
     public List<Adress> read() {
         List<Adress> adresss = new ArrayList<Adress>();
-        adresss = extract ("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id;");
+        adresss = extract("SELECT * FROM adresse INNER JOIN compte ON Adres_id = id;");
         return adresss;
     }
 
     /**
      * extract account from the database
+     *
      * @param request
      * @return List<Adress>
      */
 
-    private List<Adress> extract(String request){
+    private List<Adress> extract(String request) {
         List<Adress> adresss = new ArrayList<Adress>();
-        Statement statement ;
-        ResultSet resultat ;
+        Statement statement;
+        ResultSet resultat;
 
         try {
             statement = daoFactory.getStatement();
@@ -88,14 +90,14 @@ public class AdressDaoImpl implements AdressDao {
 
             while (resultat.next()) {
 
-                int adressId= resultat.getInt(1);
-                int nbStreet= resultat.getInt(2);
-                String street= resultat.getString(3);
-                int postalCode= resultat.getInt(4);
-                String city= resultat.getString(5);
-                String code= resultat.getString(6);
-                String infoSub= resultat.getString(7);
-                boolean principalAdress= resultat.getBoolean(8);
+                int adressId = resultat.getInt(1);
+                int nbStreet = resultat.getInt(2);
+                String street = resultat.getString(3);
+                int postalCode = resultat.getInt(4);
+                String city = resultat.getString(5);
+                String code = resultat.getString(6);
+                String infoSub = resultat.getString(7);
+                boolean principalAdress = resultat.getBoolean(8);
 
                 Adress adress = new Adress();
                 adress.setAdressId(adressId);

@@ -1,7 +1,7 @@
 package dao;
 
-import entity.Account;
 import dao.beans.AccountDao;
+import entity.Account;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,7 +9,8 @@ import java.util.List;
 
 /**
  * Implement AccountDao to load info from DataBase
- *  @author Le Boiteux Maximilien
+ *
+ * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
 

@@ -2,12 +2,48 @@ package entity;
 
 import java.sql.Timestamp;
 
+/**
+ * RentTopo entity
+ *
+ * @author Le Boiteux Maximilien
+ * @version 1.0 Beta
+ */
+
 public class RentTopo {
 
+    /**
+     * RentTopo id
+     *
+     * @return int
+     */
     private int id;
+
+    /**
+     * RentTopo account id
+     *
+     * @return int
+     */
     private int compte_id;
+
+    /**
+     * RentTopo topo id
+     *
+     * @return int
+     */
     private int topo_id;
+
+    /**
+     * RentTopo statut
+     *
+     * @return boolean
+     */
     private boolean statut;
+
+    /**
+     * RentTopo date
+     *
+     * @return TimeStamp
+     */
     private Timestamp date;
 
     public Timestamp getDate() {

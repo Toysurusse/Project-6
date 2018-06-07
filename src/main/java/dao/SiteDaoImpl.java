@@ -1,8 +1,7 @@
 package dao;
 
-import entity.Site;
 import dao.beans.SiteDao;
-import entity.Topo;
+import entity.Site;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,17 +9,18 @@ import java.util.List;
 
 /**
  * Implement Siteao to load info from DataBase
- *  @author Le Boiteux Maximilien
+ *
+ * @author Le Boiteux Maximilien
  * @version 1.0 Beta
  */
 
 public class SiteDaoImpl implements SiteDao {
 
-    public SiteDaoImpl(DaoFactory daoFactory){
-        this.daoFactory =daoFactory;
-    }
-
     private DaoFactory daoFactory;
+
+    public SiteDaoImpl(DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
 
     public SiteDaoImpl() {
     }
@@ -31,7 +31,7 @@ public class SiteDaoImpl implements SiteDao {
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE site_id ="+id+";");
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE site_id =" + id + ";");
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -45,7 +45,7 @@ public class SiteDaoImpl implements SiteDao {
         PreparedStatement preparedStatement = null;
         try {
             connexion = daoFactory.getInstance();
-            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE topo ="+id+";");
+            preparedStatement = connexion.prepareStatement("DELETE FROM public.site_de_grimpe WHERE topo =" + id + ";");
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -53,10 +53,10 @@ public class SiteDaoImpl implements SiteDao {
         }
     }
 
-    public List <String> LocationSelect(){
-        ArrayList <String> location= new ArrayList<String>();
-        Statement statement ;
-        ResultSet resultat ;
+    public List<String> LocationSelect() {
+        ArrayList<String> location = new ArrayList<String>();
+        Statement statement;
+        ResultSet resultat;
 
         try {
             statement = daoFactory.getStatement();
@@ -64,7 +64,7 @@ public class SiteDaoImpl implements SiteDao {
 
             while (resultat.next()) {
                 String Resultlocation = resultat.getString(1);
-                    location.add(Resultlocation);
+                location.add(Resultlocation);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,30 +73,31 @@ public class SiteDaoImpl implements SiteDao {
     }
 
     @Override
-    public List<Site> siteIDSelect (int accountid) {
+    public List<Site> siteIDSelect(int accountid) {
         List<Site> sites = new ArrayList<Site>();
-        sites = extract("SELECT * FROM site_de_grimpe WHERE accountid = "+accountid+" AND site_id <> '0' ORDER BY site_id;");
+        sites = extract("SELECT * FROM site_de_grimpe WHERE accountid = " + accountid + " AND site_id <> '0' ORDER BY site_id;");
         return sites;
     }
 
     @Override
-    public List<Site> siteTopoSelect (int siteid) {
-            List<Site> sites = new ArrayList<Site>();
-            sites = extract("SELECT * FROM site_de_grimpe WHERE site_id = "+siteid+" AND site_id <> '0' ORDER BY site_id;");
-            return sites;
+    public List<Site> siteTopoSelect(int siteid) {
+        List<Site> sites = new ArrayList<Site>();
+        sites = extract("SELECT * FROM site_de_grimpe WHERE site_id = " + siteid + " AND site_id <> '0' ORDER BY site_id;");
+        return sites;
     }
 
     @Override
     public List<Site> topoSiteSelect(int topoid) {
-            List<Site> sites = new ArrayList<Site>();
-            sites = extract("SELECT * FROM site_de_grimpe WHERE topo = "+topoid+" AND site_id <> '0' ORDER BY site_id;");
-            return sites;
+        List<Site> sites = new ArrayList<Site>();
+        sites = extract("SELECT * FROM site_de_grimpe WHERE topo = " + topoid + " AND site_id <> '0' ORDER BY site_id;");
+        return sites;
     }
 
-    public List <Site> siteSelectByString(String location){
+    public List<Site> siteSelectByString(String location) {
         List<Site> sites = new ArrayList<Site>();
-        sites = extract("SELECT * FROM site_de_grimpe WHERE secteur = '"+location+"' AND site_id <> '0' ORDER BY site_id;");
-        return sites;}
+        sites = extract("SELECT * FROM site_de_grimpe WHERE secteur = '" + location + "' AND site_id <> '0' ORDER BY site_id;");
+        return sites;
+    }
 
     @Override
     public List<Site> read() {
@@ -136,7 +137,7 @@ public class SiteDaoImpl implements SiteDao {
             System.out.println(site.getIdentifiant());
             preparedStatement = connexion.prepareStatement("UPDATE public.site_de_grimpe\n" +
                     "\tSET site_id=?, secteur=?, voie=?, hauteur=?, cotation=?, nb_points=?, topo=?, accountid=?\n" +
-                    "\tWHERE site_id="+site.getIdentifiant()+";");
+                    "\tWHERE site_id=" + site.getIdentifiant() + ";");
             preparedStatement.setInt(1, site.getIdentifiant());
             preparedStatement.setString(2, site.getLocation());
             preparedStatement.setString(3, site.getWay());
@@ -153,13 +154,14 @@ public class SiteDaoImpl implements SiteDao {
 
     /**
      * extract Site from the database
+     *
      * @param request
      * @return List<Site>
      */
     private List<Site> extract(String request) {
         List<Site> sites = new ArrayList<Site>();
-        Statement statement ;
-        ResultSet resultat ;
+        Statement statement;
+        ResultSet resultat;
 
         try {
             statement = daoFactory.getStatement();
@@ -192,15 +194,15 @@ public class SiteDaoImpl implements SiteDao {
         return sites;
     }
 
-    public int lastID (List <Site> site){
-        int comnb=0;
-        for (int i=0; i<=site.size()-2;i++){
+    public int lastID(List<Site> site) {
+        int comnb = 0;
+        for (int i = 0; i <= site.size() - 2; i++) {
             //System.out.println(site.get(i).getIdentifiant());
-            if (site.get(i).getIdentifiant()==site.get(i+1).getIdentifiant()-1){
-                comnb =site.get(i).getIdentifiant()+1;
+            if (site.get(i).getIdentifiant() == site.get(i + 1).getIdentifiant() - 1) {
+                comnb = site.get(i).getIdentifiant() + 1;
             }
         }
-        if (comnb==0){
+        if (comnb == 0) {
             comnb = site.get(site.size()).getIdentifiant();
         }
         return comnb;

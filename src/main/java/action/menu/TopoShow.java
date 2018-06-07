@@ -1,14 +1,9 @@
 package action.menu;
 
 import action.menu.connect.Connect;
-import dao.beans.RentDao;
 import entity.RentTopo;
-import entity.Topo;
-import dao.DaoFactory;
-import dao.beans.TopoDao;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * Class wich load topos
