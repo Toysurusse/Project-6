@@ -1,0 +1,184 @@
+CREATE TABLE public.Site_De_Grimpe (
+                site_id INTEGER NOT NULL,
+                secteur VARCHAR(100) NOT NULL,
+                Voie VARCHAR(200) NOT NULL,
+                hauteur INTEGER NOT NULL,
+                cotation VARCHAR(10) NOT NULL,
+                nb_Points INTEGER NOT NULL,
+                CONSTRAINT site_de_grimpe_pk PRIMARY KEY (site_id)
+);
+
+
+CREATE TABLE public.Topo (
+                topo_id INTEGER NOT NULL,
+                Topo_titre VARCHAR(100) NOT NULL,
+                Topo_Texte VARCHAR(50000) NOT NULL,
+                site_id INTEGER NOT NULL,
+                CONSTRAINT topo_pk PRIMARY KEY (topo_id)
+);
+
+
+CREATE SEQUENCE public.liste_droits_acces_droit_id_seq_1;
+
+CREATE TABLE public.Liste_Droits_Acces (
+                droit_id INTEGER NOT NULL DEFAULT nextval('public.liste_droits_acces_droit_id_seq_1'),
+                nom_Droit VARCHAR(50) NOT NULL,
+                CONSTRAINT liste_droits_acces_pk PRIMARY KEY (droit_id)
+);
+
+
+ALTER SEQUENCE public.liste_droits_acces_droit_id_seq_1 OWNED BY public.Liste_Droits_Acces.droit_id;
+
+CREATE SEQUENCE public.adresse_id_seq_1;
+
+CREATE TABLE public.Adresse (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adresse_id_seq_1'),
+                numero_Rue INTEGER,
+                rue VARCHAR(100) NOT NULL,
+                code_Postal INTEGER NOT NULL,
+                ville VARCHAR(100) NOT NULL,
+                code VARCHAR(20),
+                complement_Adresse VARCHAR(100),
+                adresse_Principale BOOLEAN NOT NULL,
+                CONSTRAINT adresse_pk PRIMARY KEY (adres_id)
+);
+
+
+ALTER SEQUENCE public.adresse_id_seq_1 OWNED BY public.Adresse.adres_id;
+
+CREATE SEQUENCE public.compte_id_seq_2_1;
+
+CREATE TABLE public.Compte (
+                id INTEGER NOT NULL DEFAULT nextval('public.compte_id_seq_2_1'),
+                nom VARCHAR(50) NOT NULL,
+                prenom VARCHAR(50) NOT NULL,
+                pseudo VARCHAR(50),
+                mot_De_Passe VARCHAR(20) NOT NULL,
+                sexe VARCHAR(1) NOT NULL,
+                adresse_id INTEGER NOT NULL,
+                CONSTRAINT compte_pk PRIMARY KEY (id)
+);
+
+
+ALTER SEQUENCE public.compte_id_seq_2_1 OWNED BY public.Compte.id;
+
+CREATE TABLE public.Pret_De_Topo (
+                topo_pret_id INTEGER NOT NULL,
+                id INTEGER NOT NULL,
+                topo_id INTEGER NOT NULL,
+                statut_Topo VARCHAR NOT NULL,
+                CONSTRAINT pret_de_topo_pk PRIMARY KEY (topo_pret_id)
+);
+
+
+CREATE TABLE public.Commentaires (
+                com_id INTEGER NOT NULL,
+                compte_id INTEGER NOT NULL,
+                titre VARCHAR(1000),
+                commentaire VARCHAR(50000),
+                CONSTRAINT commentaires_pk PRIMARY KEY (com_id)
+);
+
+
+CREATE TABLE public.Page_Index (
+                page_id INTEGER NOT NULL,
+                com_id INTEGER NOT NULL,
+                site_id INTEGER NOT NULL,
+                topo_id INTEGER NOT NULL,
+                CONSTRAINT page_index_pk PRIMARY KEY (page_id)
+);
+
+
+CREATE TABLE public.droits_Acces (
+                acces_id INTEGER NOT NULL,
+                droit_id INTEGER NOT NULL,
+                compte_id INTEGER NOT NULL,
+                CONSTRAINT droits_acces_pk PRIMARY KEY (acces_id)
+);
+
+
+CREATE TABLE public.Mails (
+                Mails_id INTEGER NOT NULL,
+                adresse_Mail VARCHAR(100) NOT NULL,
+                compte_identifiant INTEGER NOT NULL,
+                mail_Principal BOOLEAN NOT NULL,
+                CONSTRAINT mails_pk PRIMARY KEY (Mails_id)
+);
+
+
+ALTER TABLE public.Topo ADD CONSTRAINT site_de_grimpe_topo_fk
+FOREIGN KEY (site_id)
+REFERENCES public.Site_De_Grimpe (site_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Page_Index ADD CONSTRAINT site_de_grimpe_page_index_fk
+FOREIGN KEY (site_id)
+REFERENCES public.Site_De_Grimpe (site_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Page_Index ADD CONSTRAINT topo_page_index_fk
+FOREIGN KEY (topo_id)
+REFERENCES public.Topo (topo_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Pret_De_Topo ADD CONSTRAINT topo_pret_de_topo_fk
+FOREIGN KEY (topo_id)
+REFERENCES public.Topo (topo_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.droits_Acces ADD CONSTRAINT liste_droits_acces_droits_acces_fk
+FOREIGN KEY (droit_id)
+REFERENCES public.Liste_Droits_Acces (droit_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Compte ADD CONSTRAINT adresse_compte_fk
+FOREIGN KEY (adresse_id)
+REFERENCES public.Adresse (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.droits_Acces ADD CONSTRAINT compte_droits_acces_fk
+FOREIGN KEY (compte_id)
+REFERENCES public.Compte (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Mails ADD CONSTRAINT compte_mails_fk
+FOREIGN KEY (compte_identifiant)
+REFERENCES public.Compte (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Commentaires ADD CONSTRAINT compte_commentaires_fk
+FOREIGN KEY (compte_id)
+REFERENCES public.Compte (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Pret_De_Topo ADD CONSTRAINT compte_pret_de_topo_fk
+FOREIGN KEY (id)
+REFERENCES public.Compte (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Page_Index ADD CONSTRAINT commentaires_page_index_fk
+FOREIGN KEY (com_id)
+REFERENCES public.Commentaires (com_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
