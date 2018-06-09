@@ -13,49 +13,41 @@ public class Commentaire {
 
     /**
      * Commentaire accountid
-     * return int
      */
     private int account;
 
     /**
      * Commentaire title
-     * return String
      */
     private String title;
 
     /**
      * Commentaire commentaire
-     * return String
      */
     private String commentary;
 
     /**
      * Commentaire idCommentaire
-     * return int
      */
     private int comId;
 
     /**
      * Commentaire pageId
-     * return int
      */
     private int pageId;
 
     /**
      * Commentaire SiteId
-     * return int
      */
     private int siteId;
 
     /**
      * Commentaire topoId
-     * return int
      */
     private int topoId;
 
     /**
      * Commentaire create at TimeStamp
-     * return TimeStamp
      */
     private Timestamp createAt;
 

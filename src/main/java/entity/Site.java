@@ -11,57 +11,41 @@ public class Site {
 
     /**
      * Site identifiant
-     *
-     * @return int
      */
     private int identifiant;
 
     /**
      * Site location
-     *
-     * @return String
      */
     private String location;
 
     /**
      * Site way
-     *
-     * @return String
      */
     private String way;
 
     /**
      * Site hight
-     *
-     * @return String
      */
     private String height;
 
     /**
      * Site hardness way
-     *
-     * @return String
      */
     private String hardness;
 
     /**
      * Site number point to climb
-     *
-     * @return String
      */
     private String points_nb;
 
     /**
      * Site topo id
-     *
-     * @return int
      */
     private int topos;
 
     /**
      * Site account id
-     *
-     * @return int
      */
     private int accountid;
 

@@ -5,7 +5,13 @@
 
 <label class="starter-template center-block text-md-center">Liste de vos informations personnelles :</label>
 
-    <s:actionerror/>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="starter-template col-sm-4">
+        <s:actionerror/>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
 
     <div clas="starter-template">
     <div class="border border-info">
@@ -48,7 +54,7 @@
             </div>
             <div class="col-sm-2">
                 <s:select label="Sexe"
-                          headerKey="-1" headerValue="%{account.sex}"
+                          headerKey="%{account.sex}" headerValue="%{account.sex}"
                           list="{'H', 'F'}"
                           name="account.sex"
                           value="0" requiredLabel="true" cssClass="form-control"/>
@@ -122,7 +128,7 @@
             </div>
             <div class="col-sm-2">
                 <s:select label="Adresse Principale"
-                          headerKey="-1" headerValue="%{adress.principalAdress}"
+                          headerKey="%{adress.principalAdress}" headerValue="%{adress.principalAdress}"
                           list="{'Oui', 'Non'}"
                           name="adress.principalAdress"
                           value="0" cssClass="form-control"/>

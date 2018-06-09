@@ -11,30 +11,22 @@ public class Topo {
 
     /**
      * Topo id
-     *
-     * @return int
      */
 
     private int identifiant;
 
     /**
      * Topo location
-     *
-     * @return String
      */
     private String location;
 
     /**
      * Topo resume
-     *
-     * @return String
      */
     private String resume;
 
     /**
      * Topo account id
-     *
-     * @return int
      */
     private int accountid;
 

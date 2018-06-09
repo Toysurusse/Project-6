@@ -6,6 +6,7 @@
 <label class="starter-template center-block text-md-center">Ajouter un site :</label>
 
 <s:actionerror/>
+<div class="container col-md-12 col-md-offset-4">
 <s:form action="addSite" theme="simple">
 
     <%@ include file="site.jsp" %>
@@ -18,4 +19,5 @@
     </div>
     </div>
 </s:form>
+</div>
 <%@ include file="../../structure/foot.jsp" %>

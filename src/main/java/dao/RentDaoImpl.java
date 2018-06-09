@@ -4,7 +4,9 @@ import dao.beans.RentDao;
 import entity.RentTopo;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,15 +31,18 @@ public class RentDaoImpl implements RentDao {
     public void add(RentTopo rentTopo) {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
+        System.out.println(rentTopo.getDate());
         try {
             connexion = daoFactory.getInstance();
             preparedStatement = connexion.prepareStatement("INSERT INTO public.pret_de_topo(\n" +
-                    "\tcompte_id, topo_id, statut_topo, rent)\n" +
-                    "\tVALUES (?, ?, ?, ?);");
+                    "\tcompte_id, topo_id, statut_topo, rentdate, topotitle)\n" +
+                    "\tVALUES (?, ?, ?, ? ,?);");
             preparedStatement.setInt(1, rentTopo.getCompte_id());
             preparedStatement.setInt(2, rentTopo.getTopo_id());
             preparedStatement.setBoolean(3, rentTopo.getStatut());
-            preparedStatement.setTimestamp(4, rentTopo.getDate());
+            preparedStatement.setDate(4, (java.sql.Date) rentTopo.getDate());
+            preparedStatement.setString(5, rentTopo.getTitleTopo());
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,9 +53,10 @@ public class RentDaoImpl implements RentDao {
     public List<RentTopo> read() {
         List<RentTopo> rentTopos = new ArrayList<RentTopo>();
         rentTopos = extract("SELECT *\n" +
-                "\tFROM public.pret_de_topo order by rent;");
+                "\tFROM public.pret_de_topo order by rentdate;");
         return rentTopos;
     }
+
 
     @Override
     public List<RentTopo> topoSelectbyid(int accountid) {
@@ -106,14 +112,17 @@ public class RentDaoImpl implements RentDao {
                 int account = resultat.getInt(2);
                 int topo = resultat.getInt(3);
                 boolean statut = resultat.getBoolean(4);
-                Timestamp date = resultat.getTimestamp(5);
-
+                java.sql.Date date = resultat.getDate(6);
+                String title =resultat.getString(5);
+                System.out.println(date);
                 RentTopo rentTopo = new RentTopo();
                 rentTopo.setId(id);
                 rentTopo.setCompte_id(account);
                 rentTopo.setTopo_id(topo);
                 rentTopo.setStatut(statut);
                 rentTopo.setDate(date);
+                rentTopo.setTitleTopo(title);
+
                 rentTopos.add(rentTopo);
             }
         } catch (SQLException e) {

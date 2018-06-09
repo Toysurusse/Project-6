@@ -7,7 +7,7 @@
     Liste des topos réservés
 </label>
 <div class="align-center">
-    <table class="table-striped table">
+    <table class="table table-striped">
         <tr>
             <th>Topo</th>
             <th>Compte</th>
@@ -18,7 +18,7 @@
         <s:iterator var="RentTopo" value="listrent">
             <tr>
                 <th>
-                    <s:property value="topo_id"/>
+                    <s:property value="titleTopo"/>
                 </th>
                 <th>
                     <s:property value="compte_id"/>
@@ -27,13 +27,13 @@
                     <s:property value="statut"/>
                 </th>
                 <th>
-                    <s:property value="date"/>
+                    <s:date name="%{date}" format="dd/MM/yyyy"/>
                 </th>
                 <th>
-                        <s:a action="rentDelete">
-                            <img src="../picture/Delete.JPG" height="10" width="10"/>
-                            <s:param name="rentid"><s:property value="id"/> </s:param>
-                        </s:a>
+                    <s:a action="rentDelete">
+                        <img src="../picture/Delete.JPG" height="10" width="10"/>
+                        <s:param name="rentid"><s:property value="id"/> </s:param>
+                    </s:a>
                 </th>
             </tr>
         </s:iterator>
@@ -49,19 +49,19 @@
 
             <div class="container-fluid col-sm-4">
                 <s:form theme="simple" action="rentAdd">
-                    <s:select cssClass="form-control" theme="simple" name="rentTopo.topo_id" label="topo"
+                    <s:select cssClass="form-control" theme="simple" headerKey="-1"
+                              headerValue="Choisir un topo" name="rentTopo.topo_id" label="topo"
                               list="topoList" listKey="identifiant" listValue="location"
                               emptyOption="true"
                               requiredLabel="true"/>
-                    <div id="datetimepicker" class="input-append date">
-                        <s:textfield cssClass="form-control" name="rentTopo.date" label="Date"
-                                     requiredLabel="true"/>
-                        <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-      </span>
-                    </div>
+
+                        <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+                            <s:textfield cssClass="form-control" name="rentTopo.date" label="Date"
+                                         requiredLabel="true"/>
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
                     </br>
-                    <s:submit value="enregistrer le RDV" cssClass="btn btn-primary center-block"/>
+                    <s:submit value="enregistrer la location" cssClass="btn btn-primary center-block"/>
                 </s:form>
             </div>
 
@@ -69,7 +69,7 @@
                     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
             </script>
             <script type="text/javascript"
-                    src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+                    src="../bootstrap/bootstrap-datetimepicker-master/sample%20in%20bootstrap%20v2/bootstrap/js/bootstrap.min.js">
             </script>
             <script type="text/javascript"
                     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
@@ -77,12 +77,18 @@
             <script type="text/javascript"
                     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
             </script>
+
+
             <script type="text/javascript">
-                $('#datetimepicker').datetimepicker({
-                    format: 'dd/MM/yyyy hh:mm',
-                    language: 'pt-BR'
+                $(".form_datetime").datetimepicker({
+                    format: "dd/MM/yyyy",
+                    autoclose: true,
+                    todayBtn: true,
+                    startDate: "2013-02-14 10:00",
+                    minuteStep: 10
                 });
             </script>
+            <div class="col-md-12 starter-template text-danger"><s:actionerror/></div>
         </s:if>
         <s:else>
             <s:a action="connectTry"

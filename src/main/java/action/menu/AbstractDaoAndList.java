@@ -20,8 +20,6 @@ import java.util.Map;
 public class AbstractDaoAndList extends ActionSupport implements SessionAware {
 
 
-    //________________________DAO import_______________________
-
     /**
      * import Topo from entity
      */
@@ -108,7 +106,6 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
      */
     protected List<Commentaire> commentaireList;
 
-    //__________________________Entity_________________________
     /**
      * MapString to import session
      */
@@ -181,8 +178,6 @@ public class AbstractDaoAndList extends ActionSupport implements SessionAware {
     public void setTopo(Topo topo) {
         this.topo = topo;
     }
-
-    //__________________________List_________________________
 
     public Site getSite() {
         return site;

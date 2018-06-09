@@ -99,12 +99,13 @@ hr {
           box-sizing: content-box;
 }
 pre {
-  overflow: auto;
+  text-indent:0;
 }
 code,
 kbd,
 pre,
 samp {
+  text-indent:0;
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -180,6 +181,7 @@ optgroup {
   font-weight: bold;
 }
 table {
+  text-align: center;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -2258,7 +2260,7 @@ caption {
   text-align: left;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 .table {
   width: 100%;
@@ -2271,12 +2273,14 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
+  text-align: center;
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
+  text-align: center;
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
 }
@@ -2318,6 +2322,7 @@ th {
   border-bottom-width: 2px;
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
+  text-align: center;
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
@@ -6545,7 +6550,6 @@ button.close {
   position: fixed;
 }
 @-ms-viewport {
-  width: device-width;
 }
 .visible-xs,
 .visible-sm,

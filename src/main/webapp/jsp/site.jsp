@@ -15,7 +15,6 @@
                             <s:param name="siteid"><s:property value="identifiant"/> </s:param>
                             <s:property value="location"/> : <s:property value="way"/>
                         </s:a>
-
                     </p>
                     hauteur : <s:property value="height"/> mètres </br>
                     difficulté : <s:property value="hardness"/> </br>
@@ -34,10 +33,10 @@
         <s:if test="#session.user">
 
             <label class="starter-template center-block text-md-center">
-                Ajouter un site d'escalade à ce topo
+                Ajouter un site d'escalade à ce topo :
                 <s:a action="newSite">
                     <img src="../../picture/add.jpg" height="10" width="10"/>
-                    <s:param name="id"> <s:property value="topos"/> </s:param>
+                    <s:param name="id"> <s:property value="topoid"/> </s:param>
                 </s:a>
             </label>
 
@@ -68,8 +67,9 @@
 
 <div class="col-md-12 center-block"></div>
 <s:iterator value="hashMap">
-    <div class="row border">
-        <div class="col-sm-1"></div>
+
+    <div class="col-sm-1"></div>
+    <div class="container">
         <div class="col-sm-3">
             Le <s:property value="key.createAt"/> </br>
             Ecrit par : <s:property value="value.pseudo"/> </br>
@@ -91,9 +91,9 @@
                 </s:a>
             </s:if>
         </div>
-        <div class="col-sm-1"></div>
     </div>
     </div>
+    </br>
     <div class="col-md-12 center-block"></div>
 </s:iterator>
 

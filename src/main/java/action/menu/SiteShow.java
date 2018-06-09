@@ -12,6 +12,8 @@ import java.util.Date;
 
 public class SiteShow extends AbstractDaoAndList {
 
+    private String locationlist;
+
     /**
      * initialize Site page
      *
@@ -24,7 +26,11 @@ public class SiteShow extends AbstractDaoAndList {
         this.accountDAO = this.daoFactory.getAccountDAO();
         hashMap.clear();
         topolist = topoDao.read();
-        if (siteid == 0) {
+
+        if (siteid == null) {
+            listeSiteByLocation();
+        }
+        else if (siteid == 0) {
             sitelist = this.siteDao.topoSiteSelect(topoid);
             commentaireList = this.commentaireDao.readTopo(topoid);
             for (int i = 0; i < commentaireList.size(); i++) {
@@ -51,12 +57,6 @@ public class SiteShow extends AbstractDaoAndList {
         this.accountDAO = this.daoFactory.getAccountDAO();
         hashMap.clear();
         sitelist = this.siteDao.siteSelectByString(location);
-
-        /*commentaireList = this.commentaireDao.readWay(siteid);
-        for (int i = 0; i < commentaireList.size(); i++) {
-            hashMap.put(commentaireList.get(i), this.accountDAO.findAccount(commentaireList.get(i).getAccount()));
-        }*/
-
         return "success";
     }
 
@@ -85,5 +85,13 @@ public class SiteShow extends AbstractDaoAndList {
         this.commentaireDao = daoFactory.getCommentaireDAO();
         this.commentaireDao.deleteTime(id);
         return "success";
+    }
+
+    public void setLocationlist(String locationlist) {
+        this.locationlist = locationlist;
+    }
+
+    public String getLocationlist() {
+        return locationlist;
     }
 }

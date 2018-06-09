@@ -28,6 +28,14 @@ public interface InfoDao {
     List<Information> read();
 
     /**
+     * List<Information> select from id in the database
+     *
+     * @param accountid
+     * @return List<Information>
+     */
+    List<Information> selectByAccountId(int accountid);
+
+    /**
      * find the appropriate id
      *
      * @return integer

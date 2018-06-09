@@ -6,11 +6,6 @@
     <display-name>Struts 2 Web Application</display-name>
   <!-- Filter Struts -->
 
-  <context-param>
-    <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-    <param-value>/WEB-INF/tiles.xml</param-value>
-  </context-param>
-
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>

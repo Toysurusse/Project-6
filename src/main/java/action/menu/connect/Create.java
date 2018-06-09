@@ -1,5 +1,6 @@
 package action.menu.connect;
 
+import action.menu.AbstractDaoAndList;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 
@@ -10,7 +11,20 @@ import entity.Account;
  * @version 1.0 Beta
  */
 
-public class Create extends Connect {
+public class Create extends AbstractDaoAndList {
+
+
+    /**
+     * Initialize account and adress to prepare update
+     *
+     * @return String Success
+     */
+
+    public String execute() {
+        account=null;
+        adress=null;
+        return ActionSupport.SUCCESS;
+    }
 
     /**
      * Initialize account and adress to prepare update

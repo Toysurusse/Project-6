@@ -1,0 +1,167 @@
+create table if not exists topo
+(
+	topo_id serial not null
+		constraint topo_pk
+			primary key,
+	topo_titre varchar(100) not null,
+	topo_texte varchar(50000) not null,
+	account integer not null
+)
+;
+
+create table if not exists site_de_grimpe
+(
+	site_id serial not null
+		constraint site_de_grimpe_pk
+			primary key,
+	secteur varchar(100) not null,
+	voie varchar(200) not null,
+	hauteur varchar(20) not null,
+	cotation varchar(10) not null,
+	nb_points varchar(10) not null,
+	topo integer not null
+		constraint topo_site_de_grimpe_fk
+			references topo,
+	accountid integer default 1 not null
+)
+;
+
+create table if not exists liste_droits_acces
+(
+	droit_id serial not null
+		constraint liste_droits_acces_pk
+			primary key,
+	nom_droit varchar(50) not null
+)
+;
+
+create table if not exists adresse
+(
+	adres_id serial not null
+		constraint adresse_pk
+			primary key,
+	numero_rue integer,
+	rue varchar(100) not null,
+	code_postal integer not null,
+	ville varchar(100) not null,
+	code varchar(20),
+	complement_adresse varchar(100),
+	adresse_principale boolean not null
+)
+;
+
+create table if not exists compte
+(
+	id serial not null
+		constraint compte_pk
+			primary key,
+	nom varchar(50) not null,
+	prenom varchar(50) not null,
+	pseudo varchar(50),
+	mot_de_passe varchar(20) not null,
+	sexe varchar(1) not null,
+	adresse_id integer not null
+		constraint adresse_compte_fk
+			references adresse,
+	accessuser integer
+		constraint compte_liste_droits_acces_droit_id_fk
+			references liste_droits_acces
+)
+;
+
+alter table topo
+	add constraint topo_compte_id_fk
+		foreign key (account) references compte
+;
+
+alter table site_de_grimpe
+	add constraint site_de_grimpe_compte_id_fk
+		foreign key (accountid) references compte
+;
+
+create table if not exists pret_de_topo
+(
+	topo_pret_id serial not null
+		constraint pret_de_topo_pk
+			primary key,
+	compte_id integer not null
+		constraint compte_pret_de_topo_fk
+			references compte,
+	topo_id integer not null
+		constraint topo_pret_de_topo_fk
+			references topo,
+	statut_topo boolean not null,
+	rent timestamp,
+	topotitle varchar(100) default 'Fontainebleau'::character varying
+)
+;
+
+create table if not exists commentaires
+(
+	com_id integer not null
+		constraint commentaires_pk
+			primary key,
+	compte_id integer not null
+		constraint compte_commentaires_fk
+			references compte,
+	titre varchar(1000),
+	commentaire varchar(50000),
+	createat timestamp,
+	deleteat timestamp
+)
+;
+
+create table if not exists page_index
+(
+	page_id integer not null
+		constraint page_index_pk
+			primary key,
+	comid integer not null
+		constraint commentaires_page_index_fk
+			references commentaires,
+	siteid integer not null
+		constraint site_de_grimpe_page_index_fk
+			references site_de_grimpe,
+	topoid integer not null
+		constraint topo_page_index_fk
+			references topo
+)
+;
+
+create table if not exists droits_acces
+(
+	acces_id serial not null
+		constraint droits_acces_pk
+			primary key,
+	droit_id integer not null
+		constraint liste_droits_acces_droits_acces_fk
+			references liste_droits_acces,
+	compte_id integer not null
+		constraint compte_droits_acces_fk
+			references compte
+)
+;
+
+create table if not exists mails
+(
+	mails_id integer not null
+		constraint mails_pk
+			primary key,
+	adresse_mail varchar(100) not null,
+	compte_identifiant integer not null
+		constraint compte_mails_fk
+			references compte,
+	mail_principal boolean not null
+)
+;
+
+create table if not exists information
+(
+	info_id serial not null
+		constraint info_pk
+			primary key,
+	info_titre varchar(100) not null,
+	info_texte varchar(50000) not null,
+	account integer default 1
+)
+;

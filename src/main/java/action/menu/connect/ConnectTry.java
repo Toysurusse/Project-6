@@ -1,5 +1,6 @@
 package action.menu.connect;
 
+import action.menu.AbstractDaoAndList;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -9,16 +10,16 @@ import com.opensymphony.xwork2.ActionSupport;
  * @version 1.0 Beta
  */
 
-public class ConnectTry extends Connect {
+public class ConnectTry extends AbstractDaoAndList {
 
     /**
      * String to load the pseudo proposal from user
      */
-    protected String pseudo;
+    protected String pseudo="";
     /**
      * String to load the password proposal from user
      */
-    protected String password;
+    protected String password="";
 
     public String getPseudo() {
         return pseudo;
@@ -43,8 +44,7 @@ public class ConnectTry extends Connect {
      */
 
     public String execute() {
-        this.addActionError(getText("error.connectEmpty"));
-        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+        return ActionSupport.SUCCESS;
     }
 
     /**
@@ -52,11 +52,11 @@ public class ConnectTry extends Connect {
      *
      * @return String Success or error if password and pin are different
      */
-
     public String input() {
         this.clearErrors();
         this.accountDAO = daoFactory.getAccountDAO();
-        if (pseudo != null && password != null) {
+        System.out.println(pseudo+" ; "+password);
+        if (pseudo != "" && password != "") {
             account = accountDAO.control(pseudo, password, accountDAO.read());
             if (account == null) {
                 this.addActionError(getText("error.connectError"));
@@ -66,7 +66,7 @@ public class ConnectTry extends Connect {
                 password = null;
             }
         } else {
-            this.addFieldError("pseudo", getText("error.connectEmpty"));
+            this.addActionError(getText("error.connectEmpty"));
         }
         this.accountDAO = null;
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;

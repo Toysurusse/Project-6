@@ -1,6 +1,7 @@
 package entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * RentTopo entity
@@ -13,44 +14,41 @@ public class RentTopo {
 
     /**
      * RentTopo id
-     *
-     * @return int
      */
     private int id;
 
     /**
      * RentTopo account id
-     *
-     * @return int
      */
     private int compte_id;
 
     /**
      * RentTopo topo id
-     *
-     * @return int
      */
     private int topo_id;
 
+
+    /**
+     * RentTopo topo id
+     */
+    private String titleTopo;
+
     /**
      * RentTopo statut
-     *
-     * @return boolean
      */
-    private boolean statut;
 
     /**
      * RentTopo date
-     *
-     * @return TimeStamp
      */
-    private Timestamp date;
+    private java.sql.Date date;
 
-    public Timestamp getDate() {
+    private boolean statut;
+
+    public java.sql.Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
 
@@ -86,5 +84,11 @@ public class RentTopo {
         this.statut = statut;
     }
 
+    public String getTitleTopo() {
+        return titleTopo;
+    }
 
+    public void setTitleTopo(String titleTopo) {
+        this.titleTopo = titleTopo;
+    }
 }

@@ -12,49 +12,41 @@ public class Account {
 
     /**
      * Account id
-     * return in
      */
     private int id;
 
     /**
      * Account name
-     * return String
      */
     private String name;
 
     /**
      * Account firstName
-     * return String
      */
     private String firstName;
 
     /**
      * Account pseudo
-     * return String
      */
     private String pseudo;
 
     /**
      * Account password
-     * return String
      */
     private String password;
 
     /**
      * Account sex
-     * return String
      */
     private String sex;
 
     /**
      * Account adressid
-     * return in
      */
     private int adressId;
 
     /**
      * Account accessLevel
-     * return in
      */
     private int accessLevel;
 

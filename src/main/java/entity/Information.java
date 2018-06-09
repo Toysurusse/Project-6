@@ -11,24 +11,23 @@ public class Information {
 
     /**
      * Information id
-     *
-     * @return int
      */
     private int id;
 
     /**
      * Information title
-     *
-     * @return String
      */
     private String title;
 
     /**
      * Information Information
-     *
-     * @return String
      */
     private String info;
+
+    /**
+     * Information account id
+     */
+    private int account;
 
     public int getId() {
         return id;
@@ -52,5 +51,13 @@ public class Information {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public int getAccount() {
+        return account;
+    }
+
+    public void setAccount(int account) {
+        this.account = account;
     }
 }

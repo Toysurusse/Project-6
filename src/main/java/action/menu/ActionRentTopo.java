@@ -1,11 +1,13 @@
 package action.menu;
 
-import action.menu.connect.Connect;
+import com.opensymphony.xwork2.ActionSupport;
 import entity.Account;
 import entity.RentTopo;
 import entity.Topo;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ import java.util.List;
  * @version 1.0 Beta
  */
 
-public class ActionRentTopo  extends Connect {
+public class ActionRentTopo  extends AbstractDaoAndList{
 
 
     /**
@@ -111,7 +113,8 @@ public class ActionRentTopo  extends Connect {
      * @return String succes
      */
     public String add(){
-
+        this.clearErrors();
+        this.topoDao=daoFactory.getTopoDAO();
         this.accountDAO=daoFactory.getAccountDAO();
         this.adressDao=daoFactory.getAdressDAO();
         this.rentDao=daoFactory.getRentDAO();
@@ -119,9 +122,41 @@ public class ActionRentTopo  extends Connect {
         rentTopo.setCompte_id(account.getId());
         rentTopo.setStatut(true);
 
-            this.rentDao.add(rentTopo);
+        System.out.println(rentTopo.getDate());
 
-        return "success";
+        if(rentTopo.getTopo_id()!=-1){
+            if(controlAvaibility(rentTopo,this.rentDao.read())){
+                rentTopo.setTitleTopo(this.topoDao.topoSelectbyid(rentTopo.getTopo_id()).getLocation());
+                this.rentDao.add(rentTopo);
+            }
+            else{
+                this.addActionError(getText("error.Date"));
+            }
+        }
+        else{
+            this.addActionError(getText("error.RentTopo"));
+        }
+        rentTopo=null;
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    /**
+     * Add a RentTopo
+     * @return String succes
+     */
+    public boolean controlAvaibility(RentTopo rentTopo,List<RentTopo> rentTopos) {
+        boolean control = true;
+        java.sql.Date proposal = rentTopo.getDate();
+        java.sql.Date data;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        for (int i = 0; i < rentTopos.size(); i++) {
+            data = (Date) rentTopos.get(i).getDate();
+            if (proposal.compareTo(data) == 0) {
+                if (rentTopo.getTopo_id() == rentTopos.get(i).getTopo_id()) {
+                    control = false;
+                }
+            }
+        }
+        return control;
+    }
 }

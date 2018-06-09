@@ -20,8 +20,6 @@
             </div>
         </div>
 
-        <label class="starter-template center-block text-md-center">Site du Topo (vous devez renseigner un site pour créer le topo) :</label>
-
         <%@ include file="site.jsp" %>
 
         <div class="row">

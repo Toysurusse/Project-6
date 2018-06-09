@@ -147,8 +147,6 @@ public class CommentaireDaoImpl implements CommentaireDao {
                 String commentary= resultat.getString(8);
                 Timestamp createAt= resultat.getTimestamp(9);
 
-                System.out.println(commentary);
-
                 Commentaire commentaire = new Commentaire();
                 commentaire.setAccount(account);
                 commentaire.setTitle(title);

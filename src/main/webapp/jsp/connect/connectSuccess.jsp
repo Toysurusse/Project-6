@@ -6,8 +6,10 @@
 
 <label class="starter-template center-block text-md-center">Information du compte</label>
 
+</br>
+
 <div class="container">
-    <table class="col-md-2 col-md-offset-5">
+    <table class="col-md-4 col-md-offset-4">
         <tr>
             <th>Nom</th>
             <th>
@@ -36,10 +38,12 @@
 
     <div class="col-sm-12"></div>
 </div>
+</br>
 <label class="starter-template center-block text-md-center">Information adresse</label>
+</br>
 </div>
 <div class="container">
-    <table class="col-md-2 col-md-offset-5">
+    <table class="col-md-4 col-md-offset-4">
         <tr>
             <th>Numéro de rue :</th>
             <th>
@@ -82,8 +86,9 @@
 </div>
 <s:a action="updateA" cssClass="center-block text-center">Mettre à jour vos informations personnelles</s:a>
 <div class="col-sm-12"></div>
+</br>
 <label class="starter-template center-block text-md-center">Liste de vos Topos :</label>
-
+</br>
 <div class="align-center">
     <table class="table-striped table">
         <tr>
@@ -111,9 +116,6 @@
                     <s:a action="upTopo">
                         <img src="../../picture/update.png" height="10" width="10"/>
                         <s:param name="id"><s:property value="identifiant"/> </s:param>
-                        <s:param name="topo.identifiant"><s:property value="identifiant"/> </s:param>
-                        <s:param name="topo.location"><s:property value="location"/> </s:param>
-                        <s:param name="topo.resume"><s:property value="resume"/> </s:param>
                     </s:a>
                 </th>
                 <th>
@@ -129,9 +131,9 @@
         Ajouter un nouveau topo
     </s:a>
 </div>
-
+</br>
 <label class="starter-template center-block text-md-center">Liste de vos sites</label>
-
+</br>
 <div class="align-center">
 <table class="table-striped table">
     <tr>
@@ -156,13 +158,6 @@
                 <s:a action="upSite">
                     <img src="../../picture/update.png" height="10" width="10"/>
                     <s:param name="id"><s:property value="key.identifiant"/> </s:param>
-                    <s:param name="site.identifiant"><s:property value="key.identifiant"/> </s:param>
-                    <s:param name="site.location"><s:property value="key.location"/> </s:param>
-                    <s:param name="site.points_nb"><s:property value="key.points_nb"/> </s:param>
-                    <s:param name="site.way"><s:property value="key.way"/> </s:param>
-                    <s:param name="site.height"><s:property value="key.height"/> </s:param>
-                    <s:param name="site.hardness"><s:property value="key.hardness"/> </s:param>
-                    <s:param name="site.topos"><s:property value="key.topos"/> </s:param>
                 </s:a>
             </th>
             <th>
@@ -174,10 +169,51 @@
         </tr>
     </s:iterator>
 </table>
+</br>
+<label class="starter-template center-block text-md-center">
+    Partager une information :
+    <s:a action="addInfoinit">
+        <img src="../../picture/add.jpg" height="10" width="10"/>
+    </s:a>
+</label>
+</br>
+<label class="starter-template center-block text-md-center">
+    Liste des informations partagées :
+</label>
+</br>
+<div class="container">
+    <div class="starter-template">
+        <div class="container-fluid">
+            <s:iterator var="Information" value="informationList">
 
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <label class="starter-template center-block col-md-9">
+                        <s:property value="title"/>
+                    </label>
+                    <div class="col-sm-1">
+                        <s:a action="deleteInfo">
+                            <img src="../../picture/Delete.JPG" height="10" width="10"/>
+                            <s:param name="id"><s:property value="id"/> </s:param>
+                        </s:a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <pre class="text-md-center">
+                <s:property value="info"/>
+            </pre>
+            </s:iterator>
+        </div>
+
+    </div><!-- /.container -->
+</div>
+
+</br>
 <label class="starter-template center-block text-md-center">Liste de vos commentaires :</label>
 
 <s:iterator value="hashMap">
+    <div class="container">
+    </br>
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-3">
@@ -202,8 +238,9 @@
         <div class="col-sm-2"></div>
     </div>
     </div>
+    </div>
+    </br>
     <div class="col-md-12 center-block"></div>
 </s:iterator>
-
 
 <%@ include file="../structure/foot.jsp" %>

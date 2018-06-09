@@ -3,9 +3,8 @@
 <title>Filter</title>
 <%@ include file="structure/head.jsp" %>
 
-<label class="starter-template center-block text-md-center">Rechercher votre lieu de grimpe par mot clef :</label>
-
 <div class=" container ">
+<label class="starter-template center-block text-md-center">Rechercher votre lieu de grimpe par mot clef :</label>
     <div class="col-md-4 col-md-offset-4">
         <s:form theme="simple" action="find">
             <s:textfield cssClass="form-control" placeholder="mot clef" name="requestfind" label="requestfind"
@@ -57,6 +56,8 @@
         </table>
     </div>
 </s:if>
+
+</br>
 <label class="starter-template center-block text-md-center">Rechercher par liste déroulante :</label>
     <div class="col-md-4 bg-light">
         <label class="starter-template center-block text-md-center">Topos :</label>

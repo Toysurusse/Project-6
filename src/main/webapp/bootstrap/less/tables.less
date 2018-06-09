@@ -10,10 +10,10 @@ caption {
   padding-top: @table-cell-padding;
   padding-bottom: @table-cell-padding;
   color: @text-muted;
-  text-align: left;
+  text-align: center;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 
 
@@ -30,6 +30,7 @@ th {
     > tr {
       > th,
       > td {
+        text-align: center;
         padding: @table-cell-padding;
         line-height: @line-height-base;
         vertical-align: top;
@@ -39,6 +40,7 @@ th {
   }
   // Bottom align for column headings
   > thead > tr > th {
+    text-align: center;
     vertical-align: bottom;
     border-bottom: 2px solid @table-border-color;
   }
@@ -113,6 +115,7 @@ th {
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
     background-color: @table-bg-accent;
+    text-align: center;
   }
 }
 

@@ -7,7 +7,8 @@
 <struts>
     <package name="default" namespace="/" extends="struts-default">
 
-        <action name="accueil">
+        <action name="accueil"
+                class="accueil">
             <result name="success">/jsp/accueil.jsp</result>
         </action>
 
@@ -53,7 +54,7 @@
         <action name="newSite"
                 class="connected">
             <result name="success">
-                /jsp/connect/addInformation/addSite.jsp
+                /jsp/connect/add/addsite.jsp
             </result>
         </action>
 
@@ -66,11 +67,12 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/addInformation/addSite.jsp</result>
+            <result name="error">/jsp/connect/add/addsite.jsp</result>
         </action>
 
         <action name="upSite"
-                class="connected">
+                class="connected"
+                method="upSite">
             <result name="success">
                 /jsp/connect/update/updateSite.jsp
             </result>
@@ -119,12 +121,13 @@
         <action name="newTopo"
                 class="connected">
             <result name="success">
-                /jsp/connect/addInformation/addTopo.jsp
+                /jsp/connect/add/addTopo.jsp
             </result>
         </action>
 
         <action name="upTopo"
-                class="connected">
+                class="connected"
+                method="upTopo">
             <result name="success">
                 /jsp/connect/update/updateTopo.jsp
             </result>
@@ -151,7 +154,7 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/addInformation/addTopo.jsp</result>
+            <result name="error">/jsp/connect/add/addTopo.jsp</result>
         </action>
 
         <action name="deleteTopo"
@@ -174,11 +177,9 @@
 
         <!-- ======================Login========================-->
 
-
         <action name="connectTry"
                 class="connectTry"
                 method="input">
-
             <result name="input">/jsp/connect/connect.jsp</result>
         <result name="success" type="redirectAction">
             <param name="actionName">connected</param>
@@ -227,21 +228,56 @@
         <action name="createaccount"
                 class="create"
                 method ="input">
-            <result name="input">/jsp/connect/connect.jsp</result>
+            <result name="input">/jsp/connect/createAccount.jsp
+            </result>
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
-            <result name="error">/jsp/connect/connect.jsp</result>
+            <result name="error">/jsp/connect/createAccount.jsp
+            </result>
         </action>
 
         <action name="updateaccount"
                 class="create"
                 method ="doUpdateAccount">
-            <result name="input">/jsp/connect/connectSuccess.jsp</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
             <result name="success" type="redirectAction">
                 <param name="actionName">connected</param>
             </result>
             <result name="error">/jsp/connect/connectSuccess.jsp</result>
+        </action>
+
+        <!-- ===============Add Info================= -->
+
+        <action name="addInfoinit"
+                class="connected">
+            <result name="success">
+                /jsp/connect/add/info.jsp
+            </result>
+        </action>
+
+        <action name="addInfo"
+                class="connected"
+                method="addInfo">
+            <result name="input">
+                /jsp/connect/add/info.jsp
+            </result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
+            <result name="error">
+                /jsp/connect/add/info.jsp
+            </result>
+        </action>
+
+        <action name="deleteInfo"
+                class="connected"
+                method="deleteInfo">
+            <result name="success" type="redirectAction">
+                <param name="actionName">connected</param>
+            </result>
         </action>
 
         <!-- ===============Rent Dao================= -->
@@ -258,6 +294,7 @@
             <result name="success" type="redirectAction">
             <param name="actionName">rent</param>
         </result>
+            <result name="error">/jsp/rentTopo.jsp</result>
         </action>
 
         <action name="rentDelete"

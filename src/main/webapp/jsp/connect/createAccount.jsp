@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Nom</label>
+                        <label class="text-primary text-md-center">Nom</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" labelposition="left" name="account.name" label="name" title="name"/>
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Prénom</label>
+                        <label class="text-primary text-md-center">Prénom</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" labelSeparator="" title="firstName" name="account.firstName" label="firstName" requiredLabel="true"/>
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Pseudo :</label>
+                        <label class="text-primary text-md-center">Pseudo :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="account.pseudo" label="pseudo" requiredLabel="true"/>
@@ -52,21 +52,21 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Password :</label>
+                        <label class="text-primary text-md-center">Password :</label>
                     </div>
                     <div class="col-sm-2">
-                        <s:textfield cssClass="form-control" name="account.password" label="password" requiredLabel="true"/>
+                        <s:password cssClass="form-control" name="account.password" label="password" requiredLabel="true"/>
                     </div>
                     <div class="col-sm-4"><html:errors property="error.emptyPassword"/></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Sexe :</label>
+                        <label class="text-primary text-md-center">Sexe :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:select cssClass="form-control" label="Sexe"
-                                  headerKey="-1" headerValue="Choisir Sexe"
+                                  headerKey="Choisir Sexe" headerValue="Choisir Sexe"
                                   list="{'H', 'F'}"
                                   name="account.sex"
                                   value="0" requiredLabel="true"/>
@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Numéro de rue :</label>
+                        <label class="text-primary text-md-center">Numéro de rue :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="adress.nbStreet" label="nbStreet" requiredLabel="false"/>
@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Rue :</label>
+                        <label class="text-primary text-md-center">Rue :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="adress.street" label="street" requiredLabel="false"/>
@@ -96,7 +96,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Code Postal :</label>
+                        <label class="text-primary text-md-center">Code Postal :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="adress.postalCode" label="postalCode" requiredLabel="false"/>
@@ -106,7 +106,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Ville :</label>
+                        <label class="text-primary text-md-center">Ville :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="adress.city" label="city" requiredLabel="false"/>
@@ -116,7 +116,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
-                        <label>Code :</label>
+                        <label class="text-primary text-md-center">Code :</label>
                     </div>
                     <div class="col-sm-2">
                         <s:textfield cssClass="form-control" name="adress.code" label="code" requiredLabel="false"/>
@@ -147,6 +147,7 @@
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
+                </br>
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
