@@ -3,12 +3,14 @@
 <title>Add Topo</title>
 <%@ include file="../../structure/head.jsp" %>
 
-<label class="starter-template center-block text-md-center">Ajouter un topo :</label>
 
-<s:actionerror/>
+
+
 
 <div class="col-sm-4"></div>
-<div class="container-fluid col-sm-4">
+<div class="container col-sm-4">
+<s:actionerror/>
+<label class="starter-template center-block text-md-center">Ajouter un topo :</label>
     <s:form action="updateSite" theme="simple">
         <div class="row">
             <div class="col-sm-6">

@@ -3,21 +3,19 @@
 <title>Add Site</title>
 <%@ include file="../../structure/head.jsp" %>
 
-<label class="starter-template center-block text-md-center">Ajouter un site :</label>
-
 <s:actionerror/>
-<div class="container col-md-12 col-md-offset-4">
-<s:form action="addSite" theme="simple">
+<div class="row col-md-12">
+        <div class="col-md-4"></div>
+        <div class="container col-md-4">
+            <label class="starter-template center-block text-md-center">Ajouter un site :</label>
+            <s:form action="addSite" theme="simple">
 
-    <%@ include file="site.jsp" %>
-    <div class="starter-template">
-    <div class="row">
-        <div class="col-sm-4">
+            <%@ include file="site.jsp" %>
             </br>
-            <s:submit value="enregistrer le site" class="btn btn-primary"/>
+            <s:submit value="enregistrer le site" class="btn btn-primary center-block"/>
         </div>
-    </div>
-    </div>
-</s:form>
+        </s:form>
+
+    <div class="col-md-4"></div>
 </div>
 <%@ include file="../../structure/foot.jsp" %>
