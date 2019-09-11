@@ -55,7 +55,7 @@ Il comporte :
  
  Maximilien LeBoiteux alias ToyTheRusse : https://github.com/Toysurusse
  
- Ce projet est libre de droit et disponible gratuitement : https://github.com/Toysurusse/Projet-6.git
+ Ce projet est libre de droit et disponible gratuitement : https://github.com/Toysurusse/Project-6/
  
  ## License
  
